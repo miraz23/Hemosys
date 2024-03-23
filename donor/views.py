@@ -16,15 +16,15 @@ def donation_request(request):
             if profile.phone:
                 return render(request, "donationrequest.html")
             else:
-                messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET!")
+                messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET")
                 return redirect('/')
 
         except ObjectDoesNotExist:
-            messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET!")
+            messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET")
             return redirect('/')
     
     else: 
-        messages.warning(request, "LOGIN TO DONATE!")
+        messages.warning(request, "PLEASE LOG IN TO DONATE")
         return redirect('/') 
     
     

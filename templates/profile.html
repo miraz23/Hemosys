@@ -21,7 +21,7 @@
           <h3>Bio</h3>
           <ul>
             {% if user.is_authenticated %}
-            <li><strong>Name</strong>: {{ user.first_name }} {{user.last_name}} </li>
+            <li><strong>Name</strong>: {{ user.first_name }} </li>
             <li><strong>Email</strong>: {{ user.email }} </li>
             
             {% if user.userprofile.phone %}

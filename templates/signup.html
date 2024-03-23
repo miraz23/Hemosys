@@ -27,23 +27,17 @@
 
   <h2 class="text-dark">Sign up</h2>
 
-  <form action="/auth/signup/" method="post">
+  <form method="POST">
     {% csrf_token %}
     <br>
-    <label for="username">Username</label>
-    <div class="form-group">
-      <input type="text" class="form-control p-2" id="username" name="username" required/>
-    </div>
 
-    <label for="first_name">First name</label>
+    
+    <label for="first_name">Name</label>
     <div class="form-group">
       <input type="text" class="form-control p-2" id="first_name" name="first_name" required/>
     </div>
 
-    <label for="last_name">Last name</label>
-    <div class="form-group">
-      <input type="text" class="form-control p-2" id="last_name" name="last_name" required/>
-    </div>
+
 
     <label for="email">Email</label>
     <div class="form-group">
@@ -61,7 +55,7 @@
     </div>
 
     <br/>
-    <button type="submit" class="btn btn-dark">Sign in</button>
+    <button type="submit" class="btn btn-dark">Sign up</button>
     <br><br>
     Already User? <a href="/auth/login/">Log in</a>
     <br>

@@ -19,22 +19,6 @@ def signup(request):
         form = signupForm(request.POST)
 
         if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password1 = form.cleaned_data.get('password1')
-            password2 = form.cleaned_data.get('password2')
-
-            if password1 != password2:
-                messages.warning(request,"PASSWORD IS NOT MATCHING!")
-                return render(request,'signup.html')
-
-            try:
-                if User.objects.filter(username=username).exists():
-                    messages.warning(request, "EMAIL IS ALREADY TAKEN!")
-                    return render(request, 'signup.html')
-
-            except Exception as identifier:
-                pass
-            
             user = form.save(commit=False)
             user.is_active = False
             user.save()
@@ -54,6 +38,17 @@ def signup(request):
             messages.success(request,"ACTIVATE YOUR ACCOUNT BY CLICKING THE LINK IN YOUR GMAIL")
             return redirect('/auth/login/')
         
+        else:
+            password1 = form.cleaned_data.get('password1')
+            password2 = form.cleaned_data.get('password2')
+
+            if password1 != password2:
+                messages.warning(request,"PASSWORD NOT MATCHED")
+                return redirect('/auth/signup/')
+            else:
+                messages.warning(request,"EMAIL IS ALREADY REGISTERED")
+                return redirect('/auth/signup/')
+            
     else:
         form = signupForm()
     
@@ -90,7 +85,7 @@ def handlelogin(request):
 
             if user is not None:
                 login(request,user)
-                messages.success(request,"LOGIN SUCCESS")
+                messages.success(request,"LOG IN SUCCESS")
                 return redirect('/')
             else:
                 messages.error(request,"INVALID CREDENTIALS")
@@ -103,12 +98,18 @@ def handlelogin(request):
 
 def handlelogout(request):
     logout(request)
-    messages.info(request,"LOGOUT SUCCESS")
+    messages.info(request,"LOG OUT SUCCESS")
     return redirect('/auth/login')
 
 
 def user_profile(request):
-    return render(request, "profile.html")
+    if request.user.is_authenticated:
+        return render(request, "profile.html")
+    else:
+        messages.warning(request,"PLEASE LOG IN TO ACCESS YOUR PROFILE")
+        redirect('/')
+
+    return redirect('/')
 
 def complete_profile(request):
     if request.method == "POST":
