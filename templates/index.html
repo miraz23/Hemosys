@@ -1,0 +1,264 @@
+{% extends "base.html" %} 
+{% block title %} Hemosys | Home {% endblock title %}
+{% block content %} 
+
+<!-- ======= Hero Section ======= -->
+  <section id="home">
+  <div class="home-container">
+    <h3>Welcome to <strong>HEMOSYS</strong></h3>
+    <h1>DONATE BLOOD SAVE LIFE</h1>
+    <h2>Someone is needing blood somewhere</h2>
+    <a href="#learn-about-donation" class="btn-get-started scrollto">Get Started</a>
+  </div>
+  </section>
+<!-- End Hero -->
+
+<!-- ======= Main Section ======= -->
+<main id="main">
+
+  <!-- ======= Learn about donation ======= -->
+  <section id="learn-about-donation" class="lad">
+    <div class="container">
+      <div class="section-title">
+        <h2>Donation</h2>
+        <h3>Learn about <span>Donation</span></h3>
+      </div>
+
+      <div class="img_tbl">
+        <div class="imgtxt">
+          <img class="bloodbag" src="static/images/donationFact.webp" />
+          <br><br>
+          <p>
+            After donating blood, the body works to replenish the blood loss.
+            This stimulates the production of new blood cells and in turn, helps
+            in maintaining good health.
+          </p>
+        </div>
+        
+        <div class="tcol col-sm-6" style="font-size: 1.5rem">
+          <table class="table table-responsive">
+            <tbody>
+              <tr>
+                <th class="thdr" colspan="3">Compatible Blood Type Donors</th>
+              </tr>
+              <tr class="rwtxt">
+                <td><b>Blood Type</b></td>
+                <td><b>Donate Blood To</b></td>
+                <td><b>Receive Blood From</b></td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>A+</b></span>
+                </td>
+                <td>A+ AB+</td>
+                <td>A+ A- O+ O-</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>O+</b></span>
+                </td>
+                <td>O+ A+ B+ AB+</td>
+                <td>O+ O-</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>B+</b></span>
+                </td>
+                <td>B+ AB+</td>
+                <td>B+ B- O+ O-</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>AB+</b></span>
+                </td>
+                <td>AB+</td>
+                <td>Everyone</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>A-</b></span>
+                </td>
+                <td>A+ A- AB+ AB-</td>
+                <td>A- O-</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>O-</b></span>
+                </td>
+                <td>Everyone</td>
+                <td>O-</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>B-</b></span>
+                </td>
+                <td>B+ B- AB+ AB-</td>
+                <td>B- O-</td>
+              </tr>
+              <tr class="rwtxt">
+                <td>
+                  <span style="color: #961e1b"><b>AB-</b></span>
+                </td>
+                <td>AB+ AB-</td>
+                <td>AB- A- B- O-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- ======= End of lad ======= -->
+
+  <!-- ======= Types of donation ======= -->
+  <section id="tod" class="tod">
+    <div class="container">
+      <div class="section-title">
+        <h2>Types</h2>
+        <h3>Types of <span>Donation</span></h3>
+      </div>
+      <div class="content">
+        <p style="text-align: center">
+          The average human body contains about five liters of blood, which is
+          made of several cellular and non-cellular components such as
+          <strong>Red blood cell</strong>, <strong>Platelet</strong>, and
+          <strong>Plasma</strong>.
+        </p>
+      </div>
+      <div>
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#tab1"
+              >Red Blood Cells</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tab2">Plasma</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tab3">Platelet</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <!-- ======= End of tod ======= -->
+
+  <!-- ======= Activity Section ======= -->
+  <section id="activity" class="activity">
+    <div class="container">
+      <div class="section-title">
+        <h2>Activity</h2>
+        <br><br>
+      </div>
+
+      
+
+      <div class="row">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box">
+            <h1><b>{{user_count}}</b></h1>
+            <p class="description">
+              <b>Registered Users</b>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box">
+            <h1><b>{{donor_count}}</b></h1>
+            <p class="description">
+              <b>Registered Donors</b>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box">
+            <h1><b>{{bank_count}}</b></h1>
+            <p class="description">
+              <b>Registered Banks</b>
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box">
+
+            <h1><b>{{camp_count}}</b></h1>
+            <p class="description">
+              <b>Registered Camps</b>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Activity Section -->
+
+  <!-- ======= F.A.Q Section ======= -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>F.A.Q</h2>
+        <h3>Frequently Asked <span>Questions</span></h3>
+      </div>
+
+      <ul class="faq-list">
+        <li>
+          {% for n in faqdet %}
+          <div
+            data-bs-toggle="collapse"
+            class="collapsed question"
+            href="#faq{{n.id}}"
+          >
+            {{n.ques}}<i class="bi bi-chevron-down icon-show"></i
+            ><i class="bi bi-chevron-up icon-close"></i>
+          </div>
+          <div id="faq{{ n.id }}" class="collapse" data-bs-parent=".faq-list">
+            <p>{{n.ans | safe}}</p>
+          </div>
+          <br />
+          {% endfor %}
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- End F.A.Q Section -->
+
+  <!-- ======= Top Donors ======= -->
+  <section id="team" class="team">
+    <div class="container">
+      <div class="section-title">
+        <h2>Heros</h2>
+        <h3>Our <span>Top Donors</span></h3>
+      </div>
+    </div>
+  </section>
+  <!-- End Top Donors -->
+
+  <!-- ======= Alert Messages ======= -->
+  {% for message in messages %}
+  <div class="message-box">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show fixed-top" role="alert" style="position: fixed; top: 80px">
+      <strong>{{message}}</strong>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        setTimeout(function () {
+          $(".alert").fadeOut("slow", function () {
+            $(this).remove();
+          });
+        }, 800);
+      });
+    </script>
+  </div>
+  {% endfor %}
+  <!-- ======= End Alert Messages ======= -->
+
+</main>
+<!-- End #main -->
+
+{% endblock content %}

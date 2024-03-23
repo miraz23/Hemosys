@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %} Hemosys | Blood banks{% endblock title%}
+{% block content %}
+
+  <section id="bloodbanks" class="bloodbanks">
+    <div class="container">
+      <div class="section-title">
+        <br><br>
+        <h2>Banks</h2>
+        <h3>Registered <span>Blood Banks</span></h3>
+      </div>
+      <div class="container mt-3 mb-3"> 
+        <form method="GET" action="">
+          <div class="form-group">
+            <input type="text" class="form-control" id="search" name="search" placeholder="Search">
+          </div>
+          <br>
+          <button type="submit" class="btn btn-secondary" style="background-color: #e43c5c">Search</button>
+        </form>
+      </div>
+      
+      <div class="container mt-5">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Bank name</th>
+              <th>Website link</th>
+              <th>Phone number</th>
+              <th>Email</th>
+              <th>Location</th>
+              <th>Available groups</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for n in bankdata%}
+            <tr>
+              <td>{{n.bloodbankname}}</td>
+              <td>{{n.bloodbankemail}}</td>
+              <td>{{n.bloodbankphone}}</td>
+              <td>{{n.bloodbanklink}}</td>
+              <td>{{n.bloodbanklocation}}</td>
+              <td>{{n.bloodbankgroups}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+{% endblock content %}

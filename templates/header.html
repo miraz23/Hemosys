@@ -1,0 +1,96 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static '/images/logo.png' %}" rel="icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' >
+
+  <link href="/static/assets/css/style.css" rel="stylesheet">
+
+</head> 
+
+<body>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <a href="/" class="logo"><img src="{% static '/images/logo.png' %}" alt="" class="img-fluid"> HEMOSYS </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          {% url 'index' as url %}
+          <li><a class="{% if request.path == url %} active {% endif %}" href="/">HOME</a></li>
+          {% url 'requestblood' as url1 %}
+          {% url 'bloodavailability' as url2 %}
+          <li class="dropdown"><a class="{% if request.path == url1 or request.path == url2 %} active {% endif %}" href="#"><span>RECEIVE BLOOD</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/recipient/blood-availability/">Blood Availability</a></li>
+              <li><a href="/recipient/request-blood/">Request Blood</a></li>
+            </ul>
+          </li>
+          
+          {% url 'donorregistration' as url3 %}
+          {% url 'registereddonors' as url4 %}
+          {% url 'donationcamp' as url5 %}
+          {% url 'amieligible' as url6 %}
+          {% url 'donationrequest' as url7 %}
+          <li class="dropdown"><a class="{% if request.path == url3 or request.path == url4 or request.path == url5 or request.path == url6 or request.path == url7 %} active {% endif %}" href="#"><span>DONATE BLOOD</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/donor/donation-request/">Donation Requests</a></li>
+              <li><a href="/donor/blood-donation-camp/">Blood Donation Camps</a></li>
+              <li><a href="/donor/am-i-eligible/">Am I Eligible?</a></li>
+            </ul>
+          </li>
+          
+          {% comment %} {% url 'addbloodbank' as url7 %}
+          {% url 'registeredbloodbanks' as url8 %}
+          <li class="dropdown"><a class="{% if request.path == url7 or request.path == url8 %} active {% endif %}" href="#"><span>BLOOD BANKS</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/blood-bank/add-blood-bank/">Add Blood Bank</a></li>
+              <li><a href="/blood-bank/registered-blood-banks/">Registered Blood Banks</a></li>
+            </ul>
+          </li> {% endcomment %}
+
+          {% url 'about' as url %}
+          <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">ABOUT</a></li>
+          {% url 'contact' as url %}
+          <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">CONTACT</a></li>
+          
+          {% url 'profile' as url %}
+          <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">{{ user }}</a></li>
+          
+          {% if request.user.is_authenticated %}
+          <li><a  class="nav-link scrollto" href="/auth/logout/">LOG OUT<i class="fa-solid fa-right-from-bracket"></i>          
+          </a></li>
+          {% else %}
+          <li class="dropdown"><a href="#"><span>SIGN IN <i class="fa-solid fa-user"></i></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="/auth/signup/">SIGN UP<i class="fa-solid fa-user"></i></a></li>
+              <li><a href="/auth/login/">LOG IN</a></li>
+            </ul>
+          </li>
+          {% endif %}
+
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header>
+  <!-- End Header -->

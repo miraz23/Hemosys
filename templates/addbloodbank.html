@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %} Hemosys | Blood banks{% endblock title%}
+{% block content %}
+
+<div class="card bg-light p-5">
+  <br><br> 
+  <div class= "section-title">
+      <h2>Blood Bank</h2>
+      <h3>Add <span>Blood Bank</span></h3>
+  </div>
+
+  <form action="/blood-bank/add-blood-bank/" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="bloodbankname">Blood bank name</label>
+    <div class="form-group">
+      <input type="text" class="form-control p2" id="bloodbankname" name="bloodbankname" required/>
+    </div>
+    
+    <label for="bloodbankemail">Email</label>
+    <div class="form-group">
+      <input type="email" class="form-control p-2" id="bloodbankemail" name="bloodbankemail" required/>
+    </div>
+    
+    <label for="bloodbankphone">Phone number</label>
+    <div class="form-group">
+      <input type="tel" class="form-control p-2" id="bloodbankphone" name="bloodbankphone" required/>
+    </div> 
+    
+    <label for="bloodbanklink">Website link</label>
+    <div class="form-group">
+      <input type="link" class="form-control p-2" id="bloodbanklink" name="bloodbanklink" required/>
+    </div>
+    
+    <label for="bloodbanklocation">Location</label>
+    <div class="form-group">
+      <input type="text" class="form-control p-2" id="bloodbanklocation" name="bloodbanklocation" required/>
+    </div>
+
+    <label for="bloodbankgroups">Available groups</label>
+    <div class="blood-grp">
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodA+" name="bloodbankgroups" value="A+">
+          <label class="form-check-label" for="bloodA+">A+</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodA-" name="bloodbankgroups" value="A-">
+          <label class="form-check-label" for="bloodA-">A-</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodB+" name="bloodbankgroups" value="B+">
+          <label class="form-check-label" for="bloodB+">B+</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodB-" name="bloodbankgroups" value="B-">
+          <label class="form-check-label" for="bloodB-">B-</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodAB" name="bloodbankgroups" value="AB+">
+          <label class="form-check-label" for="bloodAB">AB+</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodAB-" name="bloodbankgroups" value="AB-">
+          <label class="form-check-label" for="bloodAB-">AB-</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodO+" name="bloodbankgroups" value="O+">
+          <label class="form-check-label" for="bloodO+">O+</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="bloodO-" name="bloodbankgroups" value="O-">
+          <label class="form-check-label" for="bloodO-">O-</label>
+      </div>
+
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-dark">Submit</button></form>
+</div>
+{% endblock content %} 

@@ -1,0 +1,101 @@
+{% extends "base.html" %} 
+{% block title %} Hemosys | Donor Registration {% endblock title %} 
+{% block content %}
+
+<div class="card bg-light p-5">
+    <br><br> 
+    <div class="section-title">
+        <h2>Donor</h2>
+        <h3>Donor <span>Registration</span></h3>
+    </div>
+
+    <form action="/donor/donor-registration/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <label for="donorname">Name</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="donorname" name="donorname" required/>
+        </div>
+    
+        <label for="donoremail">Email</label>
+        <div class="form-group">
+          <input type="email" class="form-control p-2" id="donoremail" name="donoremail" required/>
+        </div>
+    
+        <label for="donorphone">Phone number</label>
+        <div class="form-group">
+          <input type="tel" class="form-control p-2" id="donorphone" name="donorphone" required/>
+        </div>
+    
+        <label for="donoraddress">Address</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="donoraddress" name="donoraddress" required/>
+        </div>
+    
+        <label for="donorblood">Blood group</label>
+        <div class="blood-grp">
+            <div class="form-check" >
+                <input class="form-check-input" type="radio" id="bloodA+" name="donorblood" value="A+" required>
+                <label class="form-check-label" for="bloodA+">A+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodA-" name="donorblood" value="A-">
+                <label class="form-check-label" for="bloodA-">A-</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="bloodB+" name="donorblood" value="B+">
+              <label class="form-check-label" for="bloodB">B+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodB-" name="donorblood" value="B-">
+                <label class="form-check-label" for="bloodB-">B-</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodAB" name="donorblood" value="AB">
+                <label class="form-check-label" for="bloodAB">AB+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodAB-" name="donorblood" value="AB-">
+                <label class="form-check-label" for="bloodAB-">AB-</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodO+" name="donorblood" value="O+">
+                <label class="form-check-label" for="bloodO+">O+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodO-" name="donorblood" value="O-">
+                <label class="form-check-label" for="bloodO-">O-</label>
+            </div>
+        </div>
+        <br>
+    
+        <label for="donorage">Age</label>
+        <div class="form-group">
+          <input type="number" class="form-control p-2" id="donorage" name="donorage" required/>
+        </div>
+    
+        <label for="donorgender">Gender</label>
+        <div class="blood-grp">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="male" name="donorgender" value="male">
+            <label class="form-check-label" for="male">Male</label> 
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="female" name="donorgender" value="female">
+            <label class="form-check-label" for="female">Female</label> 
+          </div>
+        </div>
+        <br>
+
+        <label for="donorimage">Upload image</label> 
+        <br>
+        <div class="form-group">
+          <input type="file" class="form-control-file" id="donorimage" name="donorimage" required/>
+        </div>
+
+        <br>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Hemosys | Registered Donors {% endblock title %}
+{% block content %}
+<!-- ======= Portfolio Section ======= -->
+<section id="portfolio" class="portfolio">
+    <div class="container"> 
+
+      <div class="section-title">
+        <h2>Donor</h2>
+        <h3>Our <span>Registered Donors</span></h3>
+      </div>
+
+      <div class="row portfolio-container">
+        {% for donor in donors %}
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="/donor/media/{{donor.donorimage}}" class="img-fluid" alt="">
+            <div class="portfolio-info"> 
+              <h4>{{ donor.donorname }}</h4>
+              <p>{{ donor.donorblood }}</p>
+              <a href="{% url 'donordetails' id=donor.id %}" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section><!-- End Portfolio Section -->
+{% endblock content %}

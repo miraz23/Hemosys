@@ -1,0 +1,34 @@
+{% extends 'base.html' %} 
+{% block title %} Hemosys | Donation Request {%endblock title %} 
+{% block content %}
+
+<section id="donationrequest" class="donationrequest">
+  <div class="container">
+    <div class="section-title">
+      <br /><br />
+      <h2>Request</h2>
+      <h3>Donation <span>Request</span></h3>
+    </div>
+  </div>
+  <div class="container">
+    {% for n in reqdata %}
+    <ul>
+      <li><h3><b>{{ n.recipientname }}<b><h3></li>
+      <ul>Phone Number: {{ n.recipientphone }}</ul>
+      <ul>Location: {{ n.recipientlocation }}</ul>
+      <ul>Age: {{ n.recipientage }}</ul>
+      <ul>Gender: {{ n.recipientgender }}</ul>
+      <ul>Blood Group: {{ n.recipientblood }}</ul>
+      <ul>Donation Type: {{ n.recipientdonationtype }}</ul>
+      <ul>Quantity: {{ n.recipientdonationquantity }}</ul>
+      <ul>Patient Condition: {{ n.recipientcondition }}</ul>
+      <ul>Requested Date: {{ n.recipientdate }}</ul>
+      <ul><button>Confirm</button></ul>
+    </ul>
+    
+    <br>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock content %}

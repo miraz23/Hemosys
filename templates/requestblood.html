@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %} Hemosys | Request Blood {% endblock title %}
+{% block content %}
+
+<div class="card bg-light p-5">
+    <br><br> 
+    <div class="section-title">
+        <h2>Recipient</h2>
+        <h3>Request <span>Blood</span></h3>
+    </div>
+
+    <form action="/recipient/request-blood/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <label for="recipientname">Name</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="recipientname" name="recipientname" required/>
+        </div>
+    
+        <label for="recipientphone">Phone number</label>
+        <div class="form-group">
+          <input type="tel" class="form-control p-2" id="recipientphone" name="recipientphone" required/>
+        </div>
+    
+        <label for="recipientlocation">Patients location</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="recipientlocation" name="recipientlocation" required/>
+        </div>
+
+        <label for="recipientgender">Gender</label>
+        <div class = "blood-grp">
+          <div class="form-check" >
+            <input class="form-check-input" type="radio" id="recipientgender" name="recipientgender" value="Male" required>
+            <label class="form-check-label" for="recipientgender">Male</label>
+          </div>
+          <div class="form-check" >
+            <input class="form-check-input" type="radio" id="recipientgender" name="recipientgender" value="Female" required>
+            <label class="form-check-label" for="recipientgender">Female</label>
+          </div>
+        </div>
+        <br>
+            
+        <label for="recipientage">Age</label>
+        <div class="form-group">
+          <input type="number" class="form-control p-2" id="recipientage" name="recipientage" required/>
+        </div>
+
+    
+        <label for="recipientblood">Blood group</label>
+        <div class="blood-grp">
+            <div class="form-check" >
+                <input class="form-check-input" type="radio" id="bloodA+" name="recipientblood" value="A+" required>
+                <label class="form-check-label" for="bloodA+">A+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodA-" name="recipientblood" value="A-">
+                <label class="form-check-label" for="bloodA-">A-</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="bloodB+" name="recipientblood" value="B+">
+              <label class="form-check-label" for="bloodB">B+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodB-" name="recipientblood" value="B-">
+                <label class="form-check-label" for="bloodB-">B-</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodAB" name="recipientblood" value="AB">
+                <label class="form-check-label" for="bloodAB">AB+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodAB-" name="recipientblood" value="AB-">
+                <label class="form-check-label" for="bloodAB-">AB-</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodO+" name="recipientblood" value="O+">
+                <label class="form-check-label" for="bloodO+">O+</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" id="bloodO-" name="recipientblood" value="O-">
+                <label class="form-check-label" for="bloodO-">O-</label>
+            </div>
+        </div>
+        <br>
+
+        <label for="recipientcondition">Patient's condition</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="recipientcondition" name="recipientcondition" required/>
+        </div>
+
+        <label for="recipientdonationtype">Donation type</label>
+        <div class="blood-grp">
+          <div class="form-check" style="margin-right:30px">
+            <input class="form-check-input" type="radio" id="red-blood" name="recipientdonationtype" value="Red Blood">
+            <label class="form-check-label" for="red-blood">Red Blood</label>
+          </div>
+
+          <div class="form-check" style="margin-right:30px">
+            <input class="form-check-input" type="radio" id="platelet" name="recipientdonationtype" value="Platelet">
+            <label class="form-check-label" for="platelet">Platelet</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="plasma" name="recipientdonationtype" value="Plasma">
+            <label class="form-check-label" for="Plasma">Plasma</label> 
+          </div>
+        </div>
+        <br>
+
+
+        <label for="recipientdonationquantity">Quantity</label>
+        <div class="form-group">
+          <input type="number" class="form-control p-2" id="recipientdonationquantity" name="recipientdonationquantity" placeholder = "Bag" required/>
+        </div>
+
+        <label for="recipientdate">Donation date</label>
+        <div class="form-group">
+          <input type="date" class="form-control p-2" id="recipientdate" name="recipientdate" required/>
+        </div>
+    
+        <br>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
+</div>
+
+{% endblock content %}

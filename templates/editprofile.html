@@ -1,0 +1,21 @@
+{% extends "base.html" %} 
+{% block title %} Hemosys | Edit Profile {% endblock title %} 
+{% block content %}
+
+<div class="card bg-light p-5">
+    <br><br> 
+    <div class="section-title">
+        <h2>Edit</h2>
+        <h3>Edit <span>Profile</span></h3>
+    </div>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <br>
+      <button type="submit" class="btn btn-dark">Update Profile</button>
+  </form>
+
+</div>
+
+{% endblock content %}

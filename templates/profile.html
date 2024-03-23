@@ -1,0 +1,83 @@
+{% extends "base.html" %} 
+{% block title %} Hemosys | Profile{% endblock title %} 
+{% block content %}
+
+<!-- ======= Portfolio Details Section ======= -->
+<section id="portfolio-details" class="portfolio-details">
+  <br><br><br><br>
+  <div class="section-title">
+    <h2>Profile</h2>
+  </div>
+
+  <div class="container">
+    <div class="row gy-4"> 
+      <div class="col-lg-8">
+        {% if user.userprofile.image %}
+        <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
+        {% endif %}
+      </div>
+      <div class="col-lg-4">
+        <div class="portfolio-info">
+          <h3>Bio</h3>
+          <ul>
+            {% if user.is_authenticated %}
+            <li><strong>Name</strong>: {{ user.first_name }} {{user.last_name}} </li>
+            <li><strong>Email</strong>: {{ user.email }} </li>
+            
+            {% if user.userprofile.phone %}
+            <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
+            {% endif %}
+
+            {% if user.userprofile.location %}
+            <li><strong>Address</strong>: {{ user.userprofile.location }}</li>
+            {% endif %}
+
+            {% if user.userprofile.bloodgroup %}
+            <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
+            {% endif %}
+
+            {% if user.userprofile.age %}
+            <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
+            {% endif %}
+
+            {% if user.userprofile.gender %}
+            <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
+            {% endif %}
+
+            {% endif %}
+
+            <br>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    {% if not user.userprofile.phone %}
+  
+    {% url 'completeprofile' as url %}
+    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Donor Registration </a>
+
+    {% else %}
+
+    {% url 'editprofile' as url %}
+    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Edit profile </a>
+
+    {% endif %}
+
+    {% if not true %}
+
+    {% url 'addbloodbank' as url %}
+    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Add Blood Bank </a>
+
+    {% else %}
+
+    {% url 'editprofile' as url %}
+    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Edit Blood Bank</a>
+
+    {% endif %}
+  </div>
+</section>
+<!-- End Portfolio Details Section -->
+
+{% endblock content %}
