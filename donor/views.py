@@ -27,12 +27,6 @@ def donation_request(request):
         messages.warning(request, "PLEASE LOG IN TO DONATE")
         return redirect('/') 
     
-    
-def donor_registration(request):
-    return render(request, "donorregistration.html")
-
-def registered_donors(request):
-    return render(request, "registereddonors.html")
 
 def donor_details(request, user_id):
     donor = get_object_or_404(userprofile, user_id=user_id)

@@ -2,6 +2,7 @@ from django import forms
 from  django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 from .models import userprofile
+from .models import bloodbank
 
 class signupForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -27,6 +28,11 @@ class userprofileForm(forms.ModelForm):
     class Meta:
         model = userprofile
         fields = ('phone', 'location', 'bloodgroup', 'age', 'gender', 'image')
+
+class bloodbankForm(forms.ModelForm):
+    class Meta:
+        model = bloodbank
+        fields = ('bloodbankname', 'bloodbankemail', 'bloodbankphone', 'bloodbanklink', 'bloodbanklocation', 'bloodbankgroups')
 
 
 class UpdateUserForm(UserChangeForm):

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from FAQ.models import faq
 from django.contrib.auth.models import User
-from Bloodbank.views import bloodbank
+from authentication.models import bloodbank
 from Donationcamp.views import donationCamp
 from authentication.models import userprofile
 # Create your views here.

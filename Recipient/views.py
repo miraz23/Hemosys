@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import recipient
-from Bloodbank.models import bloodbank
+from authentication.models import bloodbank
 from django.contrib.auth.models import User
 from django.contrib import messages
 

@@ -547,6 +547,8 @@ section {
   border-radius: 8px;
   z-index: 1;
   text-align: center;
+  border: 1.5px solid #e43c5c;
+  box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .activity .icon-box::before {
@@ -567,16 +569,6 @@ section {
   border-radius: 0px;
 }
 
-.activity .icon {
-  margin-bottom: 15px;
-}
-
-.activity .icon i {
-  font-size: 48px;
-  line-height: 1;
-  color: #e43c5c;
-  transition: all 0.3s ease-in-out;
-}
 
 .activity .title {
   font-weight: 700;

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.generic import View
-from .forms import signupForm, userprofileForm
+from .forms import signupForm, userprofileForm, bloodbankForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
@@ -140,4 +140,22 @@ def edit_profile(request):
     else:
         form = userprofileForm(instance=user_profile)
     return render(request, 'editprofile.html', {'form': form})
+
+
+def add_blood_bank(request):
+    if request.method == "POST":
+        bank_form = bloodbankForm(request.POST, request.FILES)
+
+        if bank_form.is_valid():
+            bloodbank = bank_form.save(commit=False)
+            bloodbank.user = request.user
+            bloodbank.save()
+            return redirect('/auth/profile/')
+    
+    else:
+        bank_form = bloodbankForm()
+
+    context = {"bank_form": bank_form}
+
+    return render(request, 'addbloodbank.html', context)
         

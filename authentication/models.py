@@ -13,3 +13,16 @@ class userprofile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class bloodbank(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    bloodbankname = models.CharField(max_length=150)
+    bloodbankemail = models.CharField(max_length=150)
+    bloodbankphone = models.CharField(max_length=150)
+    bloodbanklink = models.CharField(max_length=150)
+    bloodbanklocation = models.CharField(max_length=150)
+    bloodbankgroups = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.user.username

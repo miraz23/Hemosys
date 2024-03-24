@@ -72,9 +72,13 @@
           {% url 'contact' as url %}
           <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">CONTACT</a></li>
           
+          {% if request.user.is_authenticated %}
           {% url 'profile' as url %}
           <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">{{ user.first_name }}</a></li>
-          
+          {% else %}
+          {% url 'profile' as url %}
+          <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">Anonymous</a></li>
+          {% endif %}
           {% if request.user.is_authenticated %}
           <li><a  class="nav-link scrollto" href="/auth/logout/">LOG OUT<i class="fa-solid fa-right-from-bracket"></i>          
           </a></li>
