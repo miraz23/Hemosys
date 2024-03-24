@@ -158,4 +158,16 @@ def add_blood_bank(request):
     context = {"bank_form": bank_form}
 
     return render(request, 'addbloodbank.html', context)
+
+
+def edit_bloodbank(request):
+    bloodbank_profile = request.user.bloodbank
+    if request.method == 'POST':
+        form = bloodbankForm(request.POST, request.FILES, instance=bloodbank_profile)
+        if form.is_valid():
+            form.save()
+            return redirect('/auth/profile/')
+    else:
+        form = bloodbankForm(instance=bloodbank_profile)
+    return render(request, 'editbloodbank.html', {'form': form})
         

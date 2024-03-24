@@ -9,5 +9,6 @@ urlpatterns = [
     path('complete-profile/', views.complete_profile, name="completeprofile"),
     path('add-blood-bank/', views.add_blood_bank, name="addbloodbank"),
     path('edit-profile/', views.edit_profile, name="editprofile"),
+    path('edit-bloodbank/', views.edit_bloodbank, name="editbloodbank"),
     path('activate/<uidb64>/<token>',views.ActivateAccountView.as_view(),name='activate'),
 ]

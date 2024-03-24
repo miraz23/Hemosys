@@ -11,7 +11,7 @@
   {% if not user.bloodbank.bloodbankname %}
   <div class="container">
     <div class="row gy-4"> 
-      <div class="col-lg-8">
+      <div class="col-lg-8"> 
 
         {% if user.userprofile.image %}
         <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
@@ -22,7 +22,7 @@
       </div>
       <div class="col-lg-4">
         <div class="portfolio-info">
-          <h3>Profile</h3>
+          <h3>Bio</h3>
           <ul>
             {% if user.is_authenticated %}
             <li><strong>Name</strong>: {{ user.first_name }} </li>
@@ -51,26 +51,28 @@
             {% endif %}
           </ul>
         </div>
+        <br>
+        <div>
+          {% if not user.userprofile.phone %}
+          {% url 'completeprofile' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 350px;"> Donor Registration </a>
+          {% else %}
+          {% url 'editprofile' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 350px;"> Edit Profile </a>
+          {% endif %}
+        </div>
+        <br>
+        <div>
+          {% if not user.bloodbank.bloodbankname %}
+          {% url 'addbloodbank' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 350px;"> Add Blood Bank </a>
+          {% else %}
+          {% url 'editbloodbank' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 350px;"> Edit Blood Bank</a>
+          {% endif %}
+        </div>
       </div>
     </div>
-
-    <br><br>
-    
-    {% if not user.userprofile.phone %}
-    {% url 'completeprofile' as url %}
-    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Donor Registration </a>
-    {% else %}
-    {% url 'editprofile' as url %}
-    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Edit Profile </a>
-    {% endif %}
-    {% if not user.bloodbank.bloodbankname %}
-    {% url 'addbloodbank' as url %}
-    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Add Blood Bank </a>
-    {% else %}
-    {% url 'editprofile' as url %}
-    <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Edit Blood Bank</a>
-    {% endif %}
-
   </div>
 
   {% else %}
@@ -86,25 +88,30 @@
 
         <br><br><br>
 
-        {% if not user.userprofile.phone %}
-        {% url 'completeprofile' as url %}
-        <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Donor Registration </a>
-        {% else %}
-        {% url 'editprofile' as url %}
-        <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Edit Profile </a>
-        {% endif %}
-        {% if not user.bloodbank.bloodbankname %}
-        {% url 'addbloodbank' as url %}
-        <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Add Blood Bank </a>
-        {% else %}
-        {% url 'editprofile' as url %}
-        <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Edit Blood Bank</a>
-        {% endif %}
+        <div>
+          {% if not user.userprofile.phone %}
+          {% url 'completeprofile' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 280px;"> Donor Registration </a>
+          {% else %}
+          {% url 'editprofile' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 280px;"> Edit Profile </a>
+          {% endif %}
+        </div>
+        <br>
+        <div>
+          {% if not user.bloodbank.bloodbankname %}
+          {% url 'addbloodbank' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 280px;"> Add Blood Bank </a>
+          {% else %}
+          {% url 'editbloodbank' as url %}
+          <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 280px;"> Edit Blood Bank</a>
+          {% endif %}
+        </div>
 
       </div>
       <div class="col-lg-4">
         <div class="portfolio-info">
-          <h3>Profile</h3>
+          <h3>Bio</h3>
           <ul>
             {% if user.is_authenticated %}
             <li><strong>Name</strong>: {{ user.first_name }} </li>
