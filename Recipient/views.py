@@ -27,17 +27,23 @@ def request_blood(request):
         messages.warning(request, "PLEASE LOG IN TO REQUEST")
         return redirect('/')
 
-def blood_availability(request):
+def blood_availability(request): 
 
     bankdata = bloodbank.objects.all()
     users_with_profiles = User.objects.filter(userprofile__isnull=False).select_related('userprofile')
 
-    if request.method == "GET":   
+    try:
+        cleaned_blood_groups = [group.strip("[]'") for group in request.user.bloodbank.bloodbankgroups]
+    except:
+        cleaned_blood_groups = []
+    
+    if request.method == "GET":
         st=request.GET.get('searchBloodGroup')
         if st != None:
             bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = st)
     data={
         'bankdata' : bankdata,
         'users' : users_with_profiles,
+        'cleaned_blood_groups' : cleaned_blood_groups, 
     }
     return render(request, "bloodavailability.html", data)
