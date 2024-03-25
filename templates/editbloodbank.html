@@ -11,9 +11,61 @@
 
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
-      <br>
-      <button type="submit" class="btn btn-dark">Update Blood Bank</button>
+      <p>
+        <label for="id_bloodbankname">Blood Bank Name:</label>{{ form.bloodbankname }}
+      </p>
+      <p>
+          <label for="id_bloodbankemail">Blood Bank Email:</label>{{ form.bloodbankemail }}
+      </p>
+      <p>
+          <label for="id_bloodbankphone">Blood Bank Phone:</label>{{ form.bloodbankphone }}
+      </p>
+      <p>
+          <label for="id_bloodbanklink">Blood Bank Link:</label>{{ form.bloodbanklink }}
+      </p>
+      <p>
+          <label for="id_bloodbanklocation">Blood Bank Location:</label>{{ form.bloodbanklocation }}
+      </p>
+
+      <label for="bloodbankgroups">Update groups</label>
+      <div class="blood-grp">
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodA+" name="bloodbankgroups" value="A+">
+            <label class="form-check-label" for="bloodA+">A+</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodA-" name="bloodbankgroups" value="A-">
+            <label class="form-check-label" for="bloodA-">A-</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodB+" name="bloodbankgroups" value="B+">
+            <label class="form-check-label" for="bloodB+">B+</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodB-" name="bloodbankgroups" value="B-">
+            <label class="form-check-label" for="bloodB-">B-</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodAB" name="bloodbankgroups" value="AB+">
+            <label class="form-check-label" for="bloodAB">AB+</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodAB-" name="bloodbankgroups" value="AB-">
+            <label class="form-check-label" for="bloodAB-">AB-</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodO+" name="bloodbankgroups" value="O+">
+            <label class="form-check-label" for="bloodO+">O+</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="bloodO-" name="bloodbankgroups" value="O-">
+            <label class="form-check-label" for="bloodO-">O-</label>
+        </div>
+
+      </div><br>
+
+      <button type="submit" class="btn btn-dark">Update</button>
   </form>
 
 </div>

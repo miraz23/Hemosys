@@ -145,7 +145,7 @@
             <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
             <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
             <li><strong>Location</strong>: {{ user.bloodbank.bloodbanklocation }} </li> 
-            <li><strong>Available</strong>: {{ user.bloodbank.bloodbankgroups }} </li> 
+            <li><strong>Available</strong>:&nbsp{% for group in cleaned_blood_groups %}{{ group }}{% endfor %}</li> 
             {% endif %}
             <br>
           </ul>

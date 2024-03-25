@@ -12,6 +12,8 @@ from django.utils.encoding import force_bytes,force_str
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from .models import bloodbank
+from django import forms
 
 # Create your views here.
 def signup(request):
@@ -104,7 +106,12 @@ def handlelogout(request):
 
 def user_profile(request):
     if request.user.is_authenticated:
-        return render(request, "profile.html")
+        try:
+            cleaned_blood_groups = [group.strip("[]'") for group in request.user.bloodbank.bloodbankgroups]
+        except:
+            cleaned_blood_groups = []
+
+        return render(request, "profile.html", {'cleaned_blood_groups' : cleaned_blood_groups})
     else:
         messages.warning(request,"PLEASE LOG IN TO ACCESS YOUR PROFILE")
         redirect('/')
