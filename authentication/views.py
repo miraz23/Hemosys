@@ -106,12 +106,7 @@ def handlelogout(request):
 
 def user_profile(request):
     if request.user.is_authenticated:
-        try:
-            cleaned_blood_groups = [group.strip("[]'") for group in request.user.bloodbank.bloodbankgroups]
-        except:
-            cleaned_blood_groups = []
-
-        return render(request, "profile.html", {'cleaned_blood_groups' : cleaned_blood_groups})
+        return render(request, "profile.html")
     else:
         messages.warning(request,"PLEASE LOG IN TO ACCESS YOUR PROFILE")
         redirect('/')
@@ -153,9 +148,16 @@ def add_blood_bank(request):
     if request.method == "POST":
         bank_form = bloodbankForm(request.POST, request.FILES)
 
+        try:
+            cleaned_blood_groups = [group.strip("[]'") for group in request.POST.getlist('bloodbankgroups')]
+            groupdata = ', '.join(cleaned_blood_groups)
+        except:
+            groupdata = ''
+
         if bank_form.is_valid():
             bloodbank = bank_form.save(commit=False)
             bloodbank.user = request.user
+            bloodbank.bloodbankgroups = groupdata
             bloodbank.save()
             return redirect('/auth/profile/')
     

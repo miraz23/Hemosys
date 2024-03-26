@@ -74,12 +74,12 @@
             <tbody>
               {% for n in bankdata%}
               <tr>
-                <td>{{n.user.bloodbank.bloodbankname}}</td> 
+                <td>{{n.user.bloodbank.bloodbankname}}</td>
                 <td>{{n.user.bloodbank.bloodbankemail}}</td>
                 <td>{{n.user.bloodbank.bloodbankphone}}</td>
                 <td>{{n.user.bloodbank.bloodbanklink}}</td>
                 <td>{{n.user.bloodbank.bloodbanklocation}}</td>
-                <td>{% for group in cleaned_blood_groups %}{{ group }}{% endfor %}</td>
+                <td>{{n.user.bloodbank.bloodbankgroups}}</td>
               </tr>
               {% endfor %}
             </tbody>

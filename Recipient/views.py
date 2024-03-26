@@ -32,11 +32,6 @@ def blood_availability(request):
     bankdata = bloodbank.objects.all()
     users_with_profiles = User.objects.filter(userprofile__isnull=False).select_related('userprofile')
 
-    try:
-        cleaned_blood_groups = [group.strip("[]'") for group in request.user.bloodbank.bloodbankgroups]
-    except:
-        cleaned_blood_groups = []
-    
     if request.method == "GET":
         st=request.GET.get('searchBloodGroup')
         if st != None:
@@ -44,6 +39,5 @@ def blood_availability(request):
     data={
         'bankdata' : bankdata,
         'users' : users_with_profiles,
-        'cleaned_blood_groups' : cleaned_blood_groups, 
     }
     return render(request, "bloodavailability.html", data)
