@@ -39,14 +39,16 @@
     <div>
       <section id="portfolio" class="portfolio">
         <div class="container">
-          <div class="row portfolio-container">
+          <div class="row portfolio-container"> 
               {% for user in users %}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 {% if user.userprofile.image %}
-                  <img src="{{ user.userprofile.image.url }}" class="img-fluid" alt="">
+                <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                {% else %}
+                <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
                 {% endif %}
                 <div class="portfolio-info"> 
-                  <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                  <h4>{{ user.first_name }}</h4>
                   <p>{{ user.userprofile.bloodgroup }}</p>
                   
                   <a href="/donor/donor-details/{{ user.id }}/" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
@@ -56,7 +58,12 @@
 
               {% for n in bankdata%}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <img src="{% static '\images\blood-bank.jpg' %}" class="img-fluid" alt="">
+
+                {% if n.user.bloodbank.image %} 
+                <img src="{{ n.user.bloodbank.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                {% else %}
+                <img src="{% static '\images\blood-bank.jpg' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                {% endif %} 
 
                 <div class="portfolio-info"> 
                   <h4>{{n.user.bloodbank.bloodbankname}}</h4>

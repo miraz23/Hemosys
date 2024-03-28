@@ -23,6 +23,7 @@ class bloodbank(models.Model):
     bloodbanklink = models.CharField(max_length=150)
     bloodbanklocation = models.CharField(max_length=150)
     bloodbankgroups = models.CharField(max_length=150)
+    image = models.FileField(upload_to='Bloodbank-picture', blank=True, null=True)
 
     def __str__(self):
         return self.user.username
