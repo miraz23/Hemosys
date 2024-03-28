@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% block title %} Hemosys | Blood Availability {% endblock title %}
-
+{% load static %}
 {% block content %}
 
 <section id="bloodavailability" class="bloodavailability">
@@ -14,79 +14,63 @@
     <div class="container mt-3 mb-3">
       <form method="GET" action="">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-4">
             <input type="text" class="form-control" id="searchAddress" name="searchAddress" placeholder="Search with location"/>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <input type="text" class="form-control" id="searchBloodGroup" name="searchBloodGroup" placeholder="Search with blood group"/>
+          </div>
+          <div class="blood-grp">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="Donor" name="searchType" value="Donor">
+              <label class="form-check-label" for="Donor">Donor</label> 
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="Blood" name="searchType" value="Blood Bank">
+              <label class="form-check-label" for="BloodBank">Blood Bank</label> 
+            </div>
           </div>
         </div>
         <br/>
         <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Search </button>
       </form>
     </div>
-
-    <ul class="nav nav-tabs mx-3">
-      <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="#donortab" data-bs-toggle="tab">Donors</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#bbtab" data-bs-toggle="tab">Blood Bank</a>
-      </li>
-    </ul>
     
-    <div class="tab-content mx-3">
-      <div class="tab-pane fade show active" id="donortab">
-        <section id="portfolio" class="portfolio">
-          <div class="container">
-            <div class="row portfolio-container">
+    <div>
+      <section id="portfolio" class="portfolio">
+        <div class="container">
+          <div class="row portfolio-container">
               {% for user in users %}
-                <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                  {% if user.userprofile.image %}
-                    <img src="{{ user.userprofile.image.url }}" class="img-fluid" alt="">
-                  {% endif %}
-                  <div class="portfolio-info"> 
-                    <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-                    <p>{{ user.userprofile.bloodgroup }}</p>
-                    
-                    <a href="/donor/donor-details/{{ user.id }}/" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                  </div>
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                {% if user.userprofile.image %}
+                  <img src="{{ user.userprofile.image.url }}" class="img-fluid" alt="">
+                {% endif %}
+                <div class="portfolio-info"> 
+                  <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                  <p>{{ user.userprofile.bloodgroup }}</p>
+                  
+                  <a href="/donor/donor-details/{{ user.id }}/" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
+              </div>
               {% endfor %}
-            </div>
-          </div>
-        </section>
-      </div>
-    
-      <div class="tab-pane fade" id="bbtab">
-        <div class="tab-content mx-3">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>Bank name</th>
-                <th>Website link</th>
-                <th>Phone number</th>
-                <th>Email</th>
-                <th>Location</th>
-                <th>Available groups</th>
-              </tr>
-            </thead>
-            <tbody>
+
               {% for n in bankdata%}
-              <tr>
-                <td>{{n.user.bloodbank.bloodbankname}}</td>
-                <td>{{n.user.bloodbank.bloodbankemail}}</td>
-                <td>{{n.user.bloodbank.bloodbankphone}}</td>
-                <td>{{n.user.bloodbank.bloodbanklink}}</td>
-                <td>{{n.user.bloodbank.bloodbanklocation}}</td>
-                <td>{{n.user.bloodbank.bloodbankgroups}}</td>
-              </tr>
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <img src="{% static '\images\blood-bank.jpg' %}" class="img-fluid" alt="">
+
+                <div class="portfolio-info"> 
+                  <h4>{{n.user.bloodbank.bloodbankname}}</h4>
+                  <p>{{n.user.bloodbank.bloodbankgroups}}</p>
+                  
+                  <a href="/bloodbank/bloodbank-details/{{ n.user_id }}/" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                </div>
+              </div>
               {% endfor %}
-            </tbody>
-          </table>
+          </div>
         </div>
-      </div>
+      </section>
     </div>
+
   </div>
 </section>
 

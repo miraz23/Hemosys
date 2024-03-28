@@ -547,7 +547,6 @@ section {
   border-radius: 8px;
   z-index: 1;
   text-align: center;
-  border: 1.5px solid #e43c5c;
   box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 

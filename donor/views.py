@@ -11,7 +11,7 @@ from authentication.models import userprofile
 def donation_request(request):
     if request.user.is_authenticated:
         try:
-            profile = request.user.userprofile
+            profile = request.user.userprofile 
 
             if profile.phone:
                 return render(request, "donationrequest.html")
@@ -30,7 +30,7 @@ def donation_request(request):
 
 def donor_details(request, user_id):
     donor = get_object_or_404(userprofile, user_id=user_id)
-    return render(request, "donordetails.html", {"donor": donor})
+    return render(request, "donordetails.html", {"donor": donor}) 
 
 def ami_eligible(request):
     return  render(request,"eligibility.html") 

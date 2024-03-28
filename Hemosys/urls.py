@@ -29,7 +29,7 @@ urlpatterns = [
     path('auth/', include("authentication.urls")),
     path('donor/', include("donor.urls")),
     path('recipient/', include("Recipient.urls")),
-    #path('blood-bank/', include("Bloodbank.urls")),
+    path('bloodbank/', include("Bloodbank.urls")),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

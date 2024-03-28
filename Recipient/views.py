@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import recipient
-from authentication.models import bloodbank
+from authentication.models import bloodbank, userprofile
 from django.contrib.auth.models import User
 from django.contrib import messages
 
@@ -33,11 +33,30 @@ def blood_availability(request):
     users_with_profiles = User.objects.filter(userprofile__isnull=False).select_related('userprofile')
 
     if request.method == "GET":
-        st=request.GET.get('searchBloodGroup')
-        if st != None:
-            bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = st)
+        search_blood_group = request.GET.get('searchBloodGroup', None)
+        search_location = request.GET.get('searchAddress', None)
+
+        donors = []
+
+        for user in users_with_profiles:
+                if user.userprofile.phone:
+                    donors.append(user)
+
+        if search_blood_group or search_location:
+        
+            if search_blood_group:
+                bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = search_blood_group)
+                donors = [user for user in donors if user.userprofile.bloodgroup.lower() == search_blood_group.lower()]
+
+            if search_location:
+                bankdata=bloodbank.objects.filter(bloodbanklocation__icontains = search_location)
+
+                search_parts = search_location.split()
+                for part in search_parts:
+                    donors = [user for user in donors if part.lower() in user.userprofile.location.lower()]
+
     data={
         'bankdata' : bankdata,
-        'users' : users_with_profiles,
+        'users' : donors,
     }
     return render(request, "bloodavailability.html", data)
