@@ -33,9 +33,7 @@ class bloodbankForm(forms.ModelForm):
     class Meta:
         model = bloodbank
         fields = ('bloodbankname', 'bloodbankemail', 'bloodbankphone', 'bloodbanklink', 'bloodbanklocation', 'bloodbankgroups', 'image')
-        widgets = {
-            'bloodbankgroups': forms.SelectMultiple(),
-        }
+
 
 class UpdateUserForm(UserChangeForm):
     class Meta:

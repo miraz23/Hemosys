@@ -173,8 +173,18 @@ def edit_bloodbank(request):
     bloodbank_profile = request.user.bloodbank
     if request.method == 'POST':
         form = bloodbankForm(request.POST, request.FILES, instance=bloodbank_profile)
+
+        try:
+            cleaned_blood_groups = [group.strip("[]'") for group in request.POST.getlist('bloodbankgroups')]
+            groupdata = ', '.join(cleaned_blood_groups)
+        except:
+            groupdata = ''
+
         if form.is_valid():
-            form.save()
+            bloodbank = form.save(commit=False)
+            bloodbank.user = request.user
+            bloodbank.bloodbankgroups = groupdata
+            bloodbank.save()
             return redirect('/auth/profile/')
     else:
         form = bloodbankForm(instance=bloodbank_profile)
