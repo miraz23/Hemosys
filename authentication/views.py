@@ -121,6 +121,7 @@ def complete_profile(request):
             profile = profile_form.save(commit=False)
             profile.user = request.user
             profile.save()
+            messages.success(request, "SUCCESSFULLY REGISTERED AS DONOR")
             return redirect('/auth/profile/')
     
     else:
@@ -159,6 +160,7 @@ def add_blood_bank(request):
             bloodbank.user = request.user
             bloodbank.bloodbankgroups = groupdata
             bloodbank.save()
+            messages.success(request, "BLOOD BANK ADDED SUCCESSFULLY")
             return redirect('/auth/profile/')
     
     else:

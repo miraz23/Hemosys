@@ -18,7 +18,8 @@ def request_blood(request):
                 recipientdonationtype=request.POST.get('recipientdonationtype'),
                 recipientdonationquantity=request.POST.get('recipientdonationquantity'),
                 recipientcondition=request.POST.get('recipientcondition'),
-                recipientdate=request.POST.get('recipientdate')
+                recipientdate=request.POST.get('recipientdate'),
+                recipienttime=request.POST.get('recipienttime'),
             )
             data.save()
             return redirect("/donor/donation-request/")
@@ -35,25 +36,44 @@ def blood_availability(request):
     if request.method == "GET":
         search_blood_group = request.GET.get('searchBloodGroup', None)
         search_location = request.GET.get('searchAddress', None)
+        search_type = request.GET.get('searchType', None)
 
         donors = []
 
         for user in users_with_profiles:
-                if user.userprofile.phone:
-                    donors.append(user)
+            if user.userprofile.phone:
+                donors.append(user)
 
         if search_blood_group or search_location:
-        
+            
             if search_blood_group:
                 bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = search_blood_group)
                 donors = [user for user in donors if user.userprofile.bloodgroup.lower() == search_blood_group.lower()]
 
             if search_location:
                 bankdata=bloodbank.objects.filter(bloodbanklocation__icontains = search_location)
-
                 search_parts = search_location.split()
                 for part in search_parts:
                     donors = [user for user in donors if part.lower() in user.userprofile.location.lower()]
+
+
+
+        if search_type == 'Donor':
+            bankdata = ""
+            if search_blood_group:
+                donors = [user for user in donors if user.userprofile.bloodgroup.lower() == search_blood_group.lower()]
+            if search_location:
+                search_parts = search_location.split()
+                for part in search_parts:
+                    donors = [user for user in donors if part.lower() in user.userprofile.location.lower()]
+
+        if search_type == 'BloodBank':
+            donors = ""
+            if search_blood_group:
+                bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = search_blood_group)
+            if search_location:
+                bankdata=bloodbank.objects.filter(bloodbanklocation__icontains = search_location)
+
 
     data={
         'bankdata' : bankdata,

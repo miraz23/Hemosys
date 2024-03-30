@@ -4,7 +4,7 @@
 {% load static %}
 <!-- ======= Portfolio Details Section ======= -->
 <section id="portfolio-details" class="portfolio-details">
-  <br><br><br><br>
+  <br><br><br>
   <div class="section-title">
     <h2>Donor</h2>
   </div>
@@ -13,9 +13,9 @@
     <div class="row gy-4"> 
       <div class="col-lg-8">
         {% if donor.user.userprofile.image %}
-        <img src="{{ donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+        <img src="{{ donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% else %}
-        <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+        <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% endif %}
       </div>
       <div class="col-lg-4">

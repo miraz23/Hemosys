@@ -158,4 +158,23 @@
 </section>
 <!-- End Portfolio Details Section -->
 
-{% endblock content %}
+{% for message in messages %}
+
+  <div class="message-box">
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show fixed-top" role="alert" style="position: fixed; top: 80px">
+      <strong>{{message}}</strong>
+    </div>
+
+    <script>
+      $(document).ready(function () {
+        setTimeout(function () {
+          $(".alert").fadeOut("slow", function () {
+            $(this).remove();
+          });
+        }, 800);
+      });
+    </script>
+  </div>
+{% endfor %}
+
+{% endblock content %} 

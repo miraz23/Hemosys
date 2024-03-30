@@ -12,5 +12,6 @@ class recipient(models.Model):
     recipientdonationquantity = models.CharField(max_length=150)
     recipientcondition = models.CharField(max_length=150)
     recipientdate = models.CharField(max_length=150)
+    recipienttime = models.CharField(max_length=150, default = None)
     
 # Create your models here.
