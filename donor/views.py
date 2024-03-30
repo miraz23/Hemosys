@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from authentication.models import userprofile
+from Recipient.models import recipient
 
 # Create your views here.
 
@@ -14,7 +15,8 @@ def donation_request(request):
             profile = request.user.userprofile 
 
             if profile.phone:
-                return render(request, "donationrequest.html")
+                reqdata = recipient.objects.all()
+                return render(request, "donationrequest.html",  {'reqdata': reqdata})
             else:
                 messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET")
                 return redirect('/')

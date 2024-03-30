@@ -2,7 +2,7 @@
 {% block title %} Hemosys | Donation Request {%endblock title %} 
 {% block content %}
 
-<section id="donationrequest" class="donationrequest">
+<section id="portfolio-details" class="portfolio-details">
   <div class="container">
     <div class="section-title">
       <br /><br />
@@ -10,24 +10,32 @@
       <h3>Donation <span>Request</span></h3>
     </div>
   </div>
+  
   <div class="container">
-    {% for n in reqdata %}
-    <ul>
-      <li><h3><b>{{ n.recipientname }}<b><h3></li>
-      <ul>Phone Number: {{ n.recipientphone }}</ul>
-      <ul>Location: {{ n.recipientlocation }}</ul>
-      <ul>Age: {{ n.recipientage }}</ul>
-      <ul>Gender: {{ n.recipientgender }}</ul>
-      <ul>Blood Group: {{ n.recipientblood }}</ul>
-      <ul>Donation Type: {{ n.recipientdonationtype }}</ul>
-      <ul>Quantity: {{ n.recipientdonationquantity }}</ul>
-      <ul>Patient Condition: {{ n.recipientcondition }}</ul>
-      <ul>Requested Date: {{ n.recipientdate }}</ul>
-      <ul><button>Confirm</button></ul>
-    </ul>
-    
-    <br>
-    {% endfor %}
+    <div class="row gy-4"> 
+      {% for n in reqdata %}
+      <div class="col-lg-4">
+        <div class="portfolio-info">
+          <h3>{{ n.recipientname }}</h3>
+          <ul>
+            <li><strong>Contact</strong>: {{ n.recipientphone }} </li>
+            <li><strong>Location</strong>: {{ n.recipientlocation }} </li>
+            <li><strong>Age</strong>: {{ n.recipientage }} </li>
+            <li><strong>Gender</strong>: {{ n.recipientgender }} </li>
+            <li><strong>Blood Group</strong>: {{ n.recipientblood }} </li>
+            <li><strong>Donation Type</strong>: {{ n.recipientdonationtype }} </li>
+            <li><strong>Quantity</strong>: {{ n.recipientdonationquantity }} </li>
+            <li><strong>Patient's Condition</strong>: {{ n.recipientcondition }} </li>
+            <li><strong>Requested Time</strong>: {{ n.recipientdate }} </li>
+            <li><strong>Requested Date</strong>: {{ n.recipienttime }} </li>
+          </ul>
+        </div>
+        <br>
+        {% url 'completeprofile' as url %}
+        <a href="{{url}}" type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 340px;"> Confirm </a>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
