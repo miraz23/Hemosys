@@ -31,7 +31,7 @@ def request_blood(request):
             blood_banks = bloodbank.objects.all()
             for bank in blood_banks:
                 email_subject = "Donation Request"
-                message = render_to_string('donationemail.html', {
+                message = render_to_string('bankemail.html', {
                     'recipient_name': data.recipientname,
                     'recipient_phone': data.recipientphone,
                     'recipient_location': data.recipientlocation,
@@ -47,13 +47,40 @@ def request_blood(request):
                     'domain': '127.0.0.1:8000',
                 })
 
-                email_message = EmailMessage(
-                    email_subject,
-                    message,
-                    settings.EMAIL_HOST_USER,
-                    [bank.bloodbankemail]
-                )
-                email_message.send()
+            email_message = EmailMessage(
+                email_subject,
+                message,
+                settings.EMAIL_HOST_USER,
+                [bank.bloodbankemail]
+            )
+            email_message.send()
+
+            donors = User.objects.filter(userprofile__isnull=False)
+            for donor in donors:
+                donor_email_subject = "Donation Request"
+                donor_message = render_to_string('donoremail.html', {
+                    'recipient_name': data.recipientname,
+                    'recipient_phone': data.recipientphone,
+                    'recipient_location': data.recipientlocation,
+                    'recipient_age': data.recipientage,
+                    'recipient_gender': data.recipientgender,
+                    'recipient_blood': data.recipientblood,
+                    'recipient_donationtype': data.recipientdonationtype,
+                    'recipient_donationquantity': data.recipientdonationquantity,
+                    'recipient_condition': data.recipientcondition,
+                    'recipient_date': data.recipientdate,
+                    'recipient_time': data.recipienttime,
+                    'donor_name': donor.first_name,
+                    'domain': '127.0.0.1:8000',
+                })
+
+            donor_email_message = EmailMessage(
+                donor_email_subject,
+                donor_message,
+                settings.EMAIL_HOST_USER,
+                [donor.email]
+            )
+            donor_email_message.send()
 
             return redirect("/donor/donation-request/")
         return render(request, "requestblood.html") 

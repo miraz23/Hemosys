@@ -1,0 +1,23 @@
+{% autoescape off %}
+
+Hi {{ donor_name }},
+
+A donation request has been made as follows:
+
+Recipient Name: {{ recipient_name }}
+Blood Type Needed: {{ recipient_blood }}
+Recipient Age: {{ recipient_age }}
+Recipient Gender: {{ recipient_gender }}
+Recipient Condition: {{ recipient_condition }}
+Recipient Contact: {{ recipient_phone }}
+Donate Location: {{ recipient_location }}
+Donation Date: {{ recipient_date }}
+Donation Time: {{ recipient_time }}
+Donation Type: {{ recipient_donationtype }}
+Donation Quantity: {{ recipient_donationquantity }} Bag
+
+Please consider responding to this request. http://127.0.0.1:8000/donor/donation-request/
+
+Thank you.
+
+{% endautoescape %}

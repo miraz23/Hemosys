@@ -9,30 +9,21 @@ from Recipient.models import recipient
 
 # Create your views here.
 
+
 def donation_request(request):
     if request.user.is_authenticated:
-        try:
-            profile = request.user.userprofile 
+        reqdata = recipient.objects.all()
+        return render(request, "donationrequest.html", {"reqdata": reqdata})
 
-            if profile.phone:
-                reqdata = recipient.objects.all()
-                return render(request, "donationrequest.html",  {'reqdata': reqdata})
-            else:
-                messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET")
-                return redirect('/')
-
-        except ObjectDoesNotExist:
-            messages.warning(request, "YOU ARE NOT REGISTERED AS DONOR YET")
-            return redirect('/')
-    
-    else: 
+    else:
         messages.warning(request, "PLEASE LOG IN TO DONATE")
-        return redirect('/') 
-    
+        return redirect("/")
+
 
 def donor_details(request, user_id):
     donor = get_object_or_404(userprofile, user_id=user_id)
-    return render(request, "donordetails.html", {"donor": donor}) 
+    return render(request, "donordetails.html", {"donor": donor})
+
 
 def ami_eligible(request):
-    return  render(request,"eligibility.html") 
+    return render(request, "eligibility.html")
