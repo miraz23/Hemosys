@@ -3,6 +3,11 @@ from .models import recipient
 from authentication.models import bloodbank, userprofile
 from django.contrib.auth.models import User
 from django.contrib import messages
+from django.utils.encoding import force_bytes,force_str
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils.http import urlsafe_base64_encode
 
 # Create your views here. 
 def request_blood(request): 
@@ -22,6 +27,34 @@ def request_blood(request):
                 recipienttime=request.POST.get('recipienttime'),
             )
             data.save()
+
+            blood_banks = bloodbank.objects.all()
+            for bank in blood_banks:
+                email_subject = "Donation Request"
+                message = render_to_string('donationemail.html', {
+                    'recipient_name': data.recipientname,
+                    'recipient_phone': data.recipientphone,
+                    'recipient_location': data.recipientlocation,
+                    'recipient_age': data.recipientage,
+                    'recipient_gender': data.recipientgender,
+                    'recipient_blood': data.recipientblood,
+                    'recipient_donationtype': data.recipientdonationtype,
+                    'recipient_donationquantity': data.recipientdonationquantity,
+                    'recipient_condition': data.recipientcondition,
+                    'recipient_date': data.recipientdate,
+                    'recipient_time': data.recipienttime,
+                    'bank_name': bank.bloodbankname,
+                    'domain': '127.0.0.1:8000',
+                })
+
+                email_message = EmailMessage(
+                    email_subject,
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [bank.bloodbankemail]
+                )
+                email_message.send()
+
             return redirect("/donor/donation-request/")
         return render(request, "requestblood.html") 
     else:
