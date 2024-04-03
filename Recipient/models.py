@@ -4,6 +4,7 @@ class recipient(models.Model):
 
     recipientname = models.CharField(max_length=150)
     recipientphone = models.CharField(max_length=150)
+    recipientemail = models.CharField(max_length=150)
     recipientlocation = models.CharField(max_length=150) 
     recipientage = models.CharField(max_length=150) 
     recipientgender = models.CharField(max_length=150) 

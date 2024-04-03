@@ -34,6 +34,7 @@ def request_blood(request):
                 message = render_to_string('bankemail.html', {
                     'recipient_name': data.recipientname,
                     'recipient_phone': data.recipientphone,
+                    'recipient_email': data.recipientemail,
                     'recipient_location': data.recipientlocation,
                     'recipient_age': data.recipientage,
                     'recipient_gender': data.recipientgender,
@@ -61,6 +62,7 @@ def request_blood(request):
                 donor_message = render_to_string('donoremail.html', {
                     'recipient_name': data.recipientname,
                     'recipient_phone': data.recipientphone,
+                    'recipient_email': data.recipientemail,
                     'recipient_location': data.recipientlocation,
                     'recipient_age': data.recipientage,
                     'recipient_gender': data.recipientgender,
