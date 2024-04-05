@@ -32,7 +32,10 @@
           </ul>
         </div>
         <br>
-        <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 340px;"> Confirm </button>
+        <form method="post" action="/donor/confirm-donation/{{n.id}}/">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 340px;"> Confirm </button>
+        </form>      
       </div>
       {% endfor %}
     </div>

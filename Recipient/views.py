@@ -3,11 +3,9 @@ from .models import recipient
 from authentication.models import bloodbank, userprofile
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.utils.encoding import force_bytes,force_str
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
-from django.utils.http import urlsafe_base64_encode
 
 # Create your views here. 
 def request_blood(request): 
@@ -16,6 +14,7 @@ def request_blood(request):
             data = recipient(
                 recipientname=request.POST.get('recipientname'),
                 recipientphone=request.POST.get('recipientphone'),
+                recipientemail=request.POST.get('recipientemail'),
                 recipientlocation=request.POST.get('recipientlocation'),
                 recipientage=request.POST.get('recipientage'),
                 recipientgender=request.POST.get('recipientgender'),
@@ -27,62 +26,67 @@ def request_blood(request):
                 recipienttime=request.POST.get('recipienttime'),
             )
             data.save()
+            try:
+                blood_banks = bloodbank.objects.all()
+                for bank in blood_banks:
+                    email_subject = "Donation Request"
+                    message = render_to_string('bankemail.html', {
+                        'recipient_name': data.recipientname,
+                        'recipient_phone': data.recipientphone,
+                        'recipient_email': data.recipientemail,
+                        'recipient_location': data.recipientlocation,
+                        'recipient_age': data.recipientage,
+                        'recipient_gender': data.recipientgender,
+                        'recipient_blood': data.recipientblood,
+                        'recipient_donationtype': data.recipientdonationtype,
+                        'recipient_donationquantity': data.recipientdonationquantity,
+                        'recipient_condition': data.recipientcondition,
+                        'recipient_date': data.recipientdate,
+                        'recipient_time': data.recipienttime,
+                        'bank_name': bank.bloodbankname,
+                        'domain': '127.0.0.1:8000',
+                    })
 
-            blood_banks = bloodbank.objects.all()
-            for bank in blood_banks:
-                email_subject = "Donation Request"
-                message = render_to_string('bankemail.html', {
-                    'recipient_name': data.recipientname,
-                    'recipient_phone': data.recipientphone,
-                    'recipient_email': data.recipientemail,
-                    'recipient_location': data.recipientlocation,
-                    'recipient_age': data.recipientage,
-                    'recipient_gender': data.recipientgender,
-                    'recipient_blood': data.recipientblood,
-                    'recipient_donationtype': data.recipientdonationtype,
-                    'recipient_donationquantity': data.recipientdonationquantity,
-                    'recipient_condition': data.recipientcondition,
-                    'recipient_date': data.recipientdate,
-                    'recipient_time': data.recipienttime,
-                    'bank_name': bank.bloodbankname,
-                    'domain': '127.0.0.1:8000',
-                })
+                email_message = EmailMessage(
+                    email_subject,
+                    message,
+                    settings.EMAIL_HOST_USER,
+                    [bank.bloodbankemail]
+                )
+                email_message.send()
+            
+            except:
+                pass
 
-            email_message = EmailMessage(
-                email_subject,
-                message,
-                settings.EMAIL_HOST_USER,
-                [bank.bloodbankemail]
-            )
-            email_message.send()
-
-            donors = User.objects.filter(userprofile__isnull=False)
-            for donor in donors:
-                donor_email_subject = "Donation Request"
-                donor_message = render_to_string('donoremail.html', {
-                    'recipient_name': data.recipientname,
-                    'recipient_phone': data.recipientphone,
-                    'recipient_email': data.recipientemail,
-                    'recipient_location': data.recipientlocation,
-                    'recipient_age': data.recipientage,
-                    'recipient_gender': data.recipientgender,
-                    'recipient_blood': data.recipientblood,
-                    'recipient_donationtype': data.recipientdonationtype,
-                    'recipient_donationquantity': data.recipientdonationquantity,
-                    'recipient_condition': data.recipientcondition,
-                    'recipient_date': data.recipientdate,
-                    'recipient_time': data.recipienttime,
-                    'donor_name': donor.first_name,
-                    'domain': '127.0.0.1:8000',
-                })
-
-            donor_email_message = EmailMessage(
-                donor_email_subject,
-                donor_message,
-                settings.EMAIL_HOST_USER,
-                [donor.email]
-            )
-            donor_email_message.send()
+            try:
+                donors = User.objects.filter(userprofile__isnull=False)
+                for donor in donors:
+                    donor_email_subject = "Donation Request"
+                    donor_message = render_to_string('donoremail.html', {
+                        'recipient_name': data.recipientname,
+                        'recipient_phone': data.recipientphone,
+                        'recipient_email': data.recipientemail,
+                        'recipient_location': data.recipientlocation,
+                        'recipient_age': data.recipientage,
+                        'recipient_gender': data.recipientgender,
+                        'recipient_blood': data.recipientblood,
+                        'recipient_donationtype': data.recipientdonationtype,
+                        'recipient_donationquantity': data.recipientdonationquantity,
+                        'recipient_condition': data.recipientcondition,
+                        'recipient_date': data.recipientdate,
+                        'recipient_time': data.recipienttime,
+                        'donor_name': donor.first_name,
+                        'domain': '127.0.0.1:8000',
+                    })
+                donor_email_message = EmailMessage(
+                    donor_email_subject,
+                    donor_message,
+                    settings.EMAIL_HOST_USER,
+                    [donor.email]
+                )
+                donor_email_message.send()
+            except:
+                pass
 
             return redirect("/donor/donation-request/")
         return render(request, "requestblood.html") 

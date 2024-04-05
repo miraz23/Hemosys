@@ -10,6 +10,7 @@ class userprofile(models.Model):
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=10)
     image = models.FileField(upload_to='profile-picture', blank=True, null=True)
+    donor_donationcount = models.IntegerField(default = 0)
 
     def __str__(self):
         return self.user.username

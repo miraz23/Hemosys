@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from authentication.models import userprofile
 from Recipient.models import recipient
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -27,3 +30,44 @@ def donor_details(request, user_id):
 
 def ami_eligible(request):
     return render(request, "eligibility.html")
+
+
+def donation(request, request_id):
+    if request.method == 'POST':
+        user_profile = request.user.userprofile
+        user_profile.donor_donationcount += 1
+        user_profile.save()
+
+
+        recipient_obj = get_object_or_404(recipient, pk=request_id)
+        recipient_name = recipient_obj.recipientname
+        recipient_email = recipient_obj.recipientemail
+
+        recipient_email_subject = "Request Confirmation"
+        recipient_message = render_to_string('recipientemail.html', {
+            'donor_name': request.user.first_name,
+            'donor_phone': request.user.userprofile.phone,
+            'donor_email': request.user.email,
+            'donor_location': request.user.userprofile.location,
+            'donor_bloodgroup': request.user.userprofile.bloodgroup,
+            'donor_age': request.user.userprofile.age,
+            'donor_gender': request.user.userprofile.gender,
+            'recipient_name' : recipient_name,
+            'domain': '127.0.0.1:8000',
+        })
+        
+        recipient_email_message = EmailMessage(
+            recipient_email_subject,
+            recipient_message,
+            settings.EMAIL_HOST_USER,
+            [recipient_email]
+        )
+        recipient_email_message.send()
+
+
+        recipient_obj.delete()
+
+        messages.success(request, 'THANK YOU FOR YOUR DONATION')
+        return redirect('profile')
+    else:
+        redirect('/')

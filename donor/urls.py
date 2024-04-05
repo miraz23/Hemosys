@@ -9,5 +9,6 @@ urlpatterns = [
     path('donor-details/<int:user_id>/', views.donor_details, name="donordetails"), 
     path('blood-donation-camp/', donation_camp, name="donationcamp"), 
     path('am-i-eligible/', views.ami_eligible, name="amieligible"),
+    path('confirm-donation/<int:request_id>/', views.donation, name="donation"),
     
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
