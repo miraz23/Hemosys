@@ -32,7 +32,7 @@ class userprofileForm(forms.ModelForm):
 class bloodbankForm(forms.ModelForm):
     class Meta:
         model = bloodbank
-        fields = ('bloodbankname', 'bloodbankemail', 'bloodbankphone', 'bloodbanklink', 'bloodbanklocation', 'bloodbankgroups', 'image')
+        fields = ('bloodbankname', 'bloodbankemail', 'bloodbankphone', 'bloodbanklink', 'bloodbanklocation', 'bloodbanktypes', 'bloodbankgroups', 'bloodbankaccreditations', 'image')
 
 
 class UpdateUserForm(UserChangeForm):

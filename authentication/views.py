@@ -152,13 +152,19 @@ def add_blood_bank(request):
         try:
             cleaned_blood_groups = [group.strip("[]'") for group in request.POST.getlist('bloodbankgroups')]
             groupdata = ', '.join(cleaned_blood_groups)
+            
+            cleaned_blood_types = [group.strip("[]'") for group in request.POST.getlist('bloodbanktypes')]
+            typedata = ', '.join(cleaned_blood_types)
+
         except:
             groupdata = ''
+            typedata = ''
 
         if bank_form.is_valid():
             bloodbank = bank_form.save(commit=False)
             bloodbank.user = request.user
             bloodbank.bloodbankgroups = groupdata
+            bloodbank.bloodbanktypes = typedata
             bloodbank.save()
             messages.success(request, "BLOOD BANK ADDED SUCCESSFULLY")
             return redirect('/auth/profile/')
@@ -179,13 +185,19 @@ def edit_bloodbank(request):
         try:
             cleaned_blood_groups = [group.strip("[]'") for group in request.POST.getlist('bloodbankgroups')]
             groupdata = ', '.join(cleaned_blood_groups)
+            
+            cleaned_blood_types = [group.strip("[]'") for group in request.POST.getlist('bloodbanktypes')]
+            typedata = ', '.join(cleaned_blood_types)
+
         except:
             groupdata = ''
+            typedata = ''
 
         if form.is_valid():
             bloodbank = form.save(commit=False)
             bloodbank.user = request.user
             bloodbank.bloodbankgroups = groupdata
+            bloodbank.bloodbanktypes = typedata
             bloodbank.save()
             return redirect('/auth/profile/')
     else:

@@ -23,7 +23,9 @@ class bloodbank(models.Model):
     bloodbankphone = models.CharField(max_length=150)
     bloodbanklink = models.CharField(max_length=150)
     bloodbanklocation = models.CharField(max_length=150)
+    bloodbanktypes = models.CharField(max_length=150)
     bloodbankgroups = models.CharField(max_length=150)
+    bloodbankaccreditations = models.CharField(max_length=150)
     image = models.FileField(upload_to='Bloodbank-picture', blank=True, null=True)
 
     def __str__(self):

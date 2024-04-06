@@ -35,9 +35,25 @@
     <label for="bloodbanklocation">Location</label>
     <div class="form-group">
       <input type="text" class="form-control p-2" id="bloodbanklocation" name="bloodbanklocation" required/>
+    </div><br>
+
+    <label for="bloodbanktypes">Blood Types</label>
+    <div class="blood-grp">
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="WholeBlood" name="bloodbanktypes" value="Whole Blood">
+          <label class="form-check-label" for="WholeBlood">Whole Blood</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="Plasma" name="bloodbanktypes" value="Plasma">
+          <label class="form-check-label" for="Plasma">Plasma</label>
+      </div>
+      <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="Platelet" name="bloodbanktypes" value="Platelet">
+          <label class="form-check-label" for="Platelet">Platelet</label>
+      </div>
     </div>
 
-    <label for="bloodbankgroups">Available groups</label>
+    <br><label for="bloodbankgroups">Available groups</label>
     <div class="blood-grp">
       <div class="form-check">
           <input class="form-check-input" type="checkbox" id="bloodA+" name="bloodbankgroups" value="A+">
@@ -73,6 +89,12 @@
       </div>
 
     </div>
+
+    <br><label for="bloodbankaccreditations">Accreditations</label>
+    <div class="form-group">
+      <input type="text" class="form-control p-2" id="bloodbankaccreditations" name="bloodbankaccreditations" required/>
+    </div>
+
     <label for="image">Upload image</label> 
     <br>
     <div class="form-group">

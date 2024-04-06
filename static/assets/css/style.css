@@ -721,6 +721,8 @@ section {
 }
 
 .portfolio-details .portfolio-info {
+  width: 350px;
+  height: 420px;
   padding: 30px;
   box-shadow: 0px 0 30px rgba(73, 60, 62, 0.08);
 }
