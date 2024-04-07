@@ -725,6 +725,7 @@ section {
   height: 420px;
   padding: 30px;
   box-shadow: 0px 0 30px rgba(73, 60, 62, 0.08);
+  overflow: auto;
 }
 
 .portfolio-details .portfolio-info h3 {
@@ -1155,4 +1156,25 @@ table .rwtxt{
 
 .message-box {
   text-align: center;
+}
+
+
+/*--------------------------------------------------------------
+# Pagination
+--------------------------------------------------------------*/
+.pagination .page-link {
+  color: #e43c5c;
+  background-color: transparent;
+  border-color: #e43c5c;
+}
+
+.pagination .page-link:hover {
+  color: #fff;
+  background-color: #e43c5c;
+  border-color: #e43c5c;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #e43c5c;
+  border-color: #e43c5c;
 }

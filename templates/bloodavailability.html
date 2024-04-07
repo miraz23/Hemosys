@@ -11,6 +11,8 @@
       <h3>Blood <span>Availability</span></h3>
     </div>
 
+    <!-- ===== Searching Functionality ===== -->
+
     <div class="container mt-3 mb-3">
       <form method="GET" action="">
         <div class="row">
@@ -35,12 +37,14 @@
         <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Search </button>
       </form>
     </div>
+
+    <!-- ===== Donor and Blood Bank Profiles ===== -->
     
     <div>
       <section id="portfolio" class="portfolio">
         <div class="container">
           <div class="row portfolio-container"> 
-              {% for user in users %}
+              {% for user in page_obj %}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 {% if user.userprofile.image %}
                 <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
@@ -56,7 +60,7 @@
               </div>
               {% endfor %}
 
-              {% for n in bankdata%}
+              {% for n in page_obj2%}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
 
                 {% if n.user.bloodbank.image %} 
@@ -78,6 +82,38 @@
       </section>
     </div>
 
+    <!-- ===== Pagination ===== -->
+
+    <div class="container d-flex justify-content-center">
+      <nav aria-label="...">
+        <ul class="pagination">
+          {% if page_obj.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1">First</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+          {% endif %}
+    
+          {% for num in page_obj.paginator.page_range %}
+            <li class="page-item {% if page_obj.number == num %}active{% endif %}" aria-current="page">
+              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+          {% endfor %}
+    
+          {% if page_obj.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+    
   </div>
 </section>
 
