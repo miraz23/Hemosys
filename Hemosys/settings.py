@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Donationcamp',
     'Recipient',
     'Bloodbank',
+    'contact',
 ]
 
 MIDDLEWARE = [
