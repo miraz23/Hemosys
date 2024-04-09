@@ -1126,19 +1126,29 @@ section {
 }
 .imgtxt img{
   width: 500px;
-  height: 400px;
+  height: 270px;
 }
 .tcol{
   display: flex;
 }
- table .thdr{
-  font-size: 20px;
+
+.table {
+  font-size: 16px;
+}
+
+.thdr{
+  font-size: 18px;
   color: white;
   background-color: #e43c5c;
+}
+
+.rwtxt {
+  font-size: 18px;
+}
+
+.table td,
+.table th {
   padding: 5px;
- }
-table .rwtxt{
-  font-size: 20px;
 }
 
 .blood-grp{
@@ -1177,4 +1187,59 @@ table .rwtxt{
 .pagination .page-item.active .page-link {
   background-color: #e43c5c;
   border-color: #e43c5c;
+}
+
+/*--------------------------------------------------------------
+# Am I Eligiable
+--------------------------------------------------------------*/
+
+.eligibility-terms ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.eligibility-terms li {
+  margin-bottom: 15px;
+}
+
+.eligibility-terms li strong {
+  color: #e43c5c;
+}
+
+/*--------------------------------------------------------------
+# Tod
+--------------------------------------------------------------*/
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+.tab_label {
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.tab_radio {
+  display: none;
+}
+
+.tab_content {
+  order: 1;
+  width: 100%;
+  border-bottom: 3px solid #dddddd;
+  line-height: 1.5;
+  font-size: 0.9em;
+  display: none;
+}
+
+.tab_radio:checked + .tab_label {
+  font-weight: bold;
+  color: #e43c5c;
+  border-bottom: 2px solid #e43c5c;
+}
+
+.tab_radio:checked + .tab_label + .tab_content {
+  display: initial;
 }
