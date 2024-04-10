@@ -6,7 +6,6 @@ from django.contrib import messages
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
-from django.core.paginator import Paginator
 
 # Create your views here. 
 def request_blood(request): 
@@ -146,19 +145,8 @@ def blood_availability(request):
 
 
 
-    #------ ======= Pagination ======= ------#
-
-    paginator=Paginator(donors,1)
-    paginator2=Paginator(bankdata,1)
-    page_number=request.GET.get('page',)
-    page_obj=paginator.get_page(page_number)
-    page_obj2=paginator2.get_page(page_number)
-
-
     data={
         'bankdata' : bankdata,
         'users' : donors,
-        'page_obj' :page_obj, 
-        'page_obj2' :page_obj2, 
     }
     return render(request, "bloodavailability.html", data)

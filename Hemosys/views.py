@@ -6,6 +6,7 @@ from Donationcamp.views import donationCamp
 from authentication.models import userprofile
 from django.contrib import messages
 from contact.models import Contact
+from django.db.models import Count
 
 # Create your views here.
 def index(request):
@@ -16,12 +17,21 @@ def index(request):
     
     faqdet= faq.objects.all()
 
+    top_donors = userprofile.objects.order_by('-donor_donationcount')[:3]
+    first_donor = top_donors[0] if len(top_donors) > 0 else None
+    second_donor = top_donors[1] if len(top_donors) > 1 else None
+    third_donor = top_donors[2] if len(top_donors) > 2 else None
+    print("toppers", top_donors), 
+    
     data={
         'faqdet' : faqdet,
         'user_count' : user_count,
         'donor_count' : donor_count,
         'bank_count' : bank_count,
-        'camp_count' : camp_count
+        'camp_count' : camp_count, 
+        'first_donor' : first_donor,
+        'second_donor' : second_donor,
+        'third_donor' : third_donor,
     }
     return render(request, "index.html", data)
 

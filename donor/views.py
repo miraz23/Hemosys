@@ -9,6 +9,7 @@ from Recipient.models import recipient
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.core.paginator import Paginator
 
 # Create your views here.
 
@@ -16,7 +17,16 @@ from django.template.loader import render_to_string
 def donation_request(request):
     if request.user.is_authenticated:
         reqdata = recipient.objects.all()
-        return render(request, "donationrequest.html", {"reqdata": reqdata})
+
+
+        #======= Pagination =======#
+        paginator=Paginator(reqdata,12)
+        page_number=request.GET.get('page')
+        page_obj=paginator.get_page(page_number)
+    
+    
+        
+        return render(request, "donationrequest.html", {"page_obj": page_obj})
 
     else:
         messages.warning(request, "PLEASE LOG IN TO DONATE")

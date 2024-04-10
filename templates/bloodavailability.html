@@ -22,14 +22,13 @@
           <div class="col-md-4">
             <input type="text" class="form-control" id="searchBloodGroup" name="searchBloodGroup" placeholder="Search with blood group"/>
           </div>
-          <div class="blood-grp">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="Donor" name="searchType" value="Donor">
-              <label class="form-check-label" for="Donor">Donor</label> 
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="BloodBank" name="searchType" value="BloodBank">
-              <label class="form-check-label" for="BloodBank">Blood Bank</label> 
+          <div class="col-md-4">
+            <div class="form-group">
+              <select class="form-control" id="searchType" name="searchType">
+                <option value="Select">Select</option>
+                <option value="Donor">Donor</option>
+                <option value="BloodBank">Blood Bank</option>
+              </select>
             </div>
           </div>
         </div>
@@ -44,7 +43,7 @@
       <section id="portfolio" class="portfolio">
         <div class="container">
           <div class="row portfolio-container"> 
-              {% for user in page_obj %}
+              {% for user in users %}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 {% if user.userprofile.image %}
                 <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
@@ -60,7 +59,7 @@
               </div>
               {% endfor %}
 
-              {% for n in page_obj2%}
+              {% for n in bankdata %}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
 
                 {% if n.user.bloodbank.image %} 
@@ -81,39 +80,6 @@
         </div>
       </section>
     </div>
-
-    <!-- ===== Pagination ===== -->
-
-    <div class="container d-flex justify-content-center">
-      <nav aria-label="...">
-        <ul class="pagination">
-          {% if page_obj.has_previous %}
-            <li class="page-item">
-              <a class="page-link" href="?page=1">First</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-            </li>
-          {% endif %}
-    
-          {% for num in page_obj.paginator.page_range %}
-            <li class="page-item {% if page_obj.number == num %}active{% endif %}" aria-current="page">
-              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
-            </li>
-          {% endfor %}
-    
-          {% if page_obj.has_next %}
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-            </li>
-          {% endif %}
-        </ul>
-      </nav>
-    </div>
-    
   </div>
 </section>
 

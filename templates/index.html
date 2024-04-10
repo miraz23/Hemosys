@@ -1,6 +1,7 @@
 {% extends "base.html" %} 
 {% block title %} Hemosys | Home {% endblock title %}
 {% block content %} 
+{% load static %}
 
 <!-- ======= Hero Section ======= -->
   <section id="home">
@@ -237,40 +238,40 @@
 
       
 
-      <div class="row">
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0">
           <div class="icon-box">
             <h1><b>{{user_count}}</b></h1>
             <p class="description">
-              <b>Registered Users</b>
+              <b>Registered<br>Users</b>
             </p>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0">
           <div class="icon-box">
             <h1><b>{{donor_count}}</b></h1>
             <p class="description">
-              <b>Registered Donors</b>
+              <b>Registered<br>Donors</b>
             </p>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0">
           <div class="icon-box">
             <h1><b>{{bank_count}}</b></h1>
             <p class="description">
-              <b>Registered Banks</b>
+              <b>Registered<br>Banks</b>
             </p>
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+        <div class="col-md-6 col-lg-2 d-flex align-items-stretch mb-5 mb-lg-0">
           <div class="icon-box">
 
             <h1><b>{{camp_count}}</b></h1>
             <p class="description">
-              <b>Registered Camps</b>
+              <b>Registered<br>Camps</b>
             </p>
           </div>
         </div>
@@ -310,12 +311,53 @@
   <!-- End F.A.Q Section -->
 
   <!-- ======= Top Donors ======= -->
-  <section id="team" class="team">
+  <section id="portfolio" class="portfolio">
     <div class="container">
       <div class="section-title">
         <h2>Heros</h2>
         <h3>Our <span>Top Donors</span></h3>
       </div>
+      
+      <div class="row portfolio-container">
+        
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          {% if first_donor.user.userprofile.image %}
+          <img src="{{ first_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          {% else %}
+          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          {% endif %}
+          <div class="portfolio-info">
+            <h4>{{ first_donor.user.first_name }}</h4>
+            <p>Donation count: {{ first_donor.donor_donationcount }}</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          {% if second_donor.user.userprofile.image %}
+          <img src="{{ second_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          {% else %}
+          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          {% endif %}
+          <div class="portfolio-info">
+            <h4>{{ second_donor.user.first_name }}</h4>
+            <p>Donation count: {{ second_donor.donor_donationcount }}</p>
+          </div>
+        </div>
+        
+        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+          {% if third_donor.user.userprofile.image %}
+          <img src="{{ third_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          {% else %}
+          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          {% endif %}
+          <div class="portfolio-info">
+            <h4>{{ third_donor.user.first_name }}</h4>
+            <p>Donation count: {{ third_donor.donor_donationcount }}</p>
+          </div>
+        </div>
+        
+      </div>
+
     </div>
   </section>
   <!-- End Top Donors -->
