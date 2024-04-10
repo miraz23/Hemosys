@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %} Hemosys | Donation Camp{% endblock title%}
+{% block content %}
+
+<div class="card bg-light p-5">
+  <br><br> 
+  <div class= "section-title">
+      <h2>Donation Camp</h2>
+      <h3>Organize <span>Doantion Camp</span></h3>
+  </div>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <label for="campname">Camp name</label>
+    <div class="form-group">
+      <input type="text" class="form-control p2" id="campname" name="campname" required/>
+    </div>
+    
+    <label for="campdate">Date</label>
+    <div class="form-group">
+      <input type="date" class="form-control p-2" id="campdate" name="campdate" required/>
+    </div>
+
+    <label for="camptime">Time</label>
+    <div class="form-group">
+      <input type="time" class="form-control p-2" id="camptime" name="camptime" required/>
+    </div>
+    
+    <label for="campaddress">Address</label>
+    <div class="form-group">
+      <input type="text" class="form-control p-2" id="campaddress" name="campaddress" required/>
+    </div>
+
+    <label for="campcontact">Contact</label>
+    <div class="form-group">
+      <input type="tel" class="form-control p-2" id="campcontact" name="campcontact" required/>
+    </div> 
+    
+    <label for="camporganizer">Organizer</label>
+    <div class="form-group">
+      <input type="tel" class="form-control p-2" id="camporganizer" name="camporganizer" required/>
+    </div> 
+
+    <button type="submit" class="btn btn-dark">Submit</button></form>
+</div>
+{% endblock content %} 

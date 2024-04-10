@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 from authentication.models import userprofile
-from Recipient.models import recipient
+from Recipient.models import recipient, donationCamp
 from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
@@ -86,3 +86,16 @@ def donation(request, request_id):
             return redirect('profile')
     else:
         redirect('/')
+
+
+def donation_camp(request):
+    campdata = donationCamp.objects.all()
+
+    if request.method == "GET":   
+            st=request.GET.get('search')
+            if st != None:
+                campdata=donationCamp.objects.filter(campaddress__icontains = st)
+    data={
+        'campdata' : campdata,
+    }
+    return render(request, 'donationcamp.html', data)

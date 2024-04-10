@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'FAQ',
     'tinymce',
     'donor',
-    'Donationcamp',
     'Recipient',
     'Bloodbank',
     'contact',

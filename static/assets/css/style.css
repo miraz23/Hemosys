@@ -1243,3 +1243,17 @@ section {
 .tab_radio:checked + .tab_label + .tab_content {
   display: initial;
 }
+
+/*--------------------------------------------------------------
+# Donation Camp
+--------------------------------------------------------------*/
+
+.bdc .table td{
+  padding:15px;
+}
+
+.bdc .table th{
+  padding:10px;
+  color: white;
+  background-color: #e43c5c;
+}

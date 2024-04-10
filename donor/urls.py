@@ -2,7 +2,7 @@ from django.urls import path
 from donor import views
 from django.conf import settings
 from django.conf.urls.static import static
-from Donationcamp.views import donation_camp
+from donor.views import donation_camp
 
 urlpatterns = [
     path('donation-request/', views.donation_request, name="donationrequest"),

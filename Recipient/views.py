@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import recipient
+from .models import recipient, donationCamp
 from authentication.models import bloodbank, userprofile
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -150,3 +150,28 @@ def blood_availability(request):
         'users' : donors,
     }
     return render(request, "bloodavailability.html", data)
+
+
+
+def organize_camp(request):
+    if request.user.is_authenticated:
+
+        if request.method == "POST":   
+
+            data = donationCamp(
+                campname = request.POST.get('campname'), 
+                campdate = request.POST.get('campdate'), 
+                camptime = request.POST.get('camptime'), 
+                campaddress = request.POST.get('campaddress'), 
+                campcontact = request.POST.get('campcontact'), 
+                camporganizer = request.POST.get('camporganizer'), 
+            )
+            data.save()
+            messages.success(request, "DONATION CAMP ORGANIZED SUCCESSFULLY")
+            return redirect('/')
+        else:
+            return render(request, 'organizecamp.html')
+        
+    else:
+        messages.warning(request, "PLEASE LOGIN TO ORGANIZE BLOOD DONATION CAMP")
+        return render(request, 'index.html')

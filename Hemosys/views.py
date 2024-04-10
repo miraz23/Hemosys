@@ -2,11 +2,10 @@ from django.shortcuts import render, redirect
 from FAQ.models import faq
 from django.contrib.auth.models import User
 from authentication.models import bloodbank
-from Donationcamp.views import donationCamp
+from Recipient.models import donationCamp
 from authentication.models import userprofile
 from django.contrib import messages
 from contact.models import Contact
-from django.db.models import Count
 
 # Create your views here.
 def index(request):
@@ -21,7 +20,6 @@ def index(request):
     first_donor = top_donors[0] if len(top_donors) > 0 else None
     second_donor = top_donors[1] if len(top_donors) > 1 else None
     third_donor = top_donors[2] if len(top_donors) > 2 else None
-    print("toppers", top_donors), 
     
     data={
         'faqdet' : faqdet,
