@@ -320,6 +320,7 @@
       
       <div class="row portfolio-container">
         
+        {% if first_donor.user.first_name %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if first_donor.user.userprofile.image %}
           <img src="{{ first_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
@@ -331,7 +332,9 @@
             <p>Donation count: {{ first_donor.donor_donationcount }}</p>
           </div>
         </div>
-        
+        {% endif %}
+
+        {% if second_donor.user.first_name %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if second_donor.user.userprofile.image %}
           <img src="{{ second_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
@@ -343,7 +346,9 @@
             <p>Donation count: {{ second_donor.donor_donationcount }}</p>
           </div>
         </div>
-        
+        {% endif %}
+
+        {% if third_donor.user.first_name %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if third_donor.user.userprofile.image %}
           <img src="{{ third_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
@@ -355,6 +360,7 @@
             <p>Donation count: {{ third_donor.donor_donationcount }}</p>
           </div>
         </div>
+        {% endif %}
         
       </div>
 
