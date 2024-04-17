@@ -14,6 +14,7 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .models import bloodbank
 from django import forms
+from django.urls import reverse
 
 # Create your views here.
 def signup(request):
@@ -86,13 +87,13 @@ def handlelogin(request):
             user = authenticate(username=username, password=password)
 
             if user is not None:
-                login(request,user)
-                messages.success(request,"LOG IN SUCCESS")
-                return redirect('/')
-            else:
-                messages.error(request,"INVALID CREDENTIALS")
-                return redirect('/auth/login')
-
+                login(request, user)
+                if user.is_superuser:
+                    messages.success(request, "LOG IN SUCCESS")
+                    return redirect(reverse('admin:index'))
+                else:
+                    messages.success(request, "LOG IN SUCCESS")
+                    return redirect('/')
     
     form = AuthenticationForm()
     return render(request,'login.html')

@@ -73,6 +73,18 @@
           {% url 'contact' as url %}
           <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">CONTACT</a></li>
           
+          {% if request.user.is_superuser %}
+
+          <li class="dropdown"><a href="#"><span>Admin <i class="fa-solid fa-user"></i></span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              {% url 'profile' as url %}
+              <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">{{ user }}<i class="fa-solid fa-user"></i></a></li>
+              <li><a href="/admin">Dashboard</a></li>
+            </ul>
+          </li>
+
+          {% else %}
+
           {% if request.user.is_authenticated %}
           {% url 'profile' as url %}
           <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">{{ user.first_name }}</a></li>
@@ -80,6 +92,9 @@
           {% url 'profile' as url %}
           <li><a class="{% if request.path == url %} active {% endif %}" href="{{url}}">Anonymous</a></li>
           {% endif %}
+
+          {% endif %}
+          
           {% if request.user.is_authenticated %}
           <li><a  class="nav-link scrollto" href="/auth/logout/">LOG OUT<i class="fa-solid fa-right-from-bracket"></i>          
           </a></li>
