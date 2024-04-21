@@ -1257,3 +1257,33 @@ section {
   color: white;
   background-color: #e43c5c;
 }
+
+.formbg{
+  width: 100%;
+  height: 120vh;
+  background: url("../../images/bg.jpg") top center;
+  background-size: cover;
+  position: relative;
+}
+
+.formbg:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.forms{
+  position: relative;
+  width: 400px;
+  height: 515px;
+  background: transparent;
+  border: 2px solid #d01d3f;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
