@@ -539,16 +539,16 @@ section {
 }
 
 .activity .icon-box {
-  padding: 60px 30px;
+  padding: 40px 50px;
   position: relative;
   overflow: hidden;
-  background: #fff;
+  background-color: #fff;
   box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12);
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   z-index: 1;
   text-align: center;
-  box-shadow: 2px 0 35px 0 rgba(68, 88, 144, 0.12), 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .activity .icon-box::before {
@@ -584,6 +584,7 @@ section {
   font-size: 15px;
   line-height: 28px;
   margin-bottom: 0;
+  align-items: center;
 }
 
 .activity .icon-box:hover .title a,
@@ -1258,6 +1259,11 @@ section {
   color: white;
   background-color: #e43c5c;
 }
+
+
+/*--------------------------------------------------------------
+# Signup and Login Form 
+--------------------------------------------------------------*/
 
 .formbg{
   width: 100%;
