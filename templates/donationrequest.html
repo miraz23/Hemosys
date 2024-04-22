@@ -5,8 +5,7 @@
 <section id="portfolio-details" class="portfolio-details">
   <div class="container">
     <div class="section-title">
-      <br /><br />
-      <h2>Request</h2>
+      <br><br>
       <h3>Donation <span>Request</span></h3>
     </div>
   </div>
@@ -24,14 +23,13 @@
             <li><strong>Age</strong>: {{ n.recipientage }} </li>
             <li><strong>Gender</strong>: {{ n.recipientgender }} </li>
             <li><strong>Blood Group</strong>: {{ n.recipientblood }} </li>
-            <li><strong>Donation Type</strong>: {{ n.recipientdonationtype }} </li>
-            <li><strong>Quantity</strong>: {{ n.recipientdonationquantity }} </li>
+            <li><strong>Donation</strong>: {{ n.recipientdonationtype }} - {{ n.recipientdonationquantity }} Bag</li>
             <li><strong>Patient's Condition</strong>: {{ n.recipientcondition }} </li>
-            <li><strong>Requested Time</strong>: {{ n.recipientdate }} </li>
-            <li><strong>Requested Date</strong>: {{ n.recipienttime }} </li>
+            <li><strong>Date & Time</strong>: {{ n.recipientdate }} {{ n.recipienttime }} </li>
+            <br><br>
           </ul>
         </div>
-        <br>
+        
         <form method="post" action="/donor/confirm-donation/{{n.id}}/">
           {% csrf_token %}
           <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 340px;"> Confirm </button>

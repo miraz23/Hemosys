@@ -4,21 +4,23 @@
 
 <!-- ======= Portfolio Details Section ======= -->
 <section id="portfolio-details" class="portfolio-details">
-  <br><br><br>
+  <br>
   
+  <!-- -------------------------------- Donor || No Blood Bank -------------------------------- -->
+
   {% if not user.bloodbank.bloodbankname and user.userprofile.phone %}
 
   <div class="container">
     <div class="row gy-4"> 
       <div class="col-lg-8"> 
-
+        <br>
         {% if user.userprofile.image %}
         <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% else %}
         <img src="\static\images\default-profile-picture.png" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto; border: 1px solid #e43c5c;"/>
         {% endif %}
 
-        <br><br>
+        <br><br><br>
         <div>
           {% if not user.bloodbank.bloodbankname %}
           {% url 'addbloodbank' as url %}
@@ -86,7 +88,7 @@
 
 
 
-
+  <!-- -------------------------------- Not Donor || No Blood Bank -------------------------------- -->
 
   {% elif not user.userprofile.phone and not user.bloodbank.bloodbankname %}
   
@@ -129,21 +131,20 @@
 
   
 
-
-
-
+ <!-- -------------------------------- Not Donor || Blood Bank -------------------------------- -->
 
   {% elif not user.userprofile.phone and user.bloodbank.bloodbankname%}
 
   <div class="container">
     <div class="row gy-4"> 
       <div class="col-lg-8">
+        <br>
         {% if user.bloodbank.image %}
         <img src="{{ user.bloodbank.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% else %}
         <img src="\static\images\blood-bank.jpg" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto; border: 1px solid #e43c5c;"/>
         {% endif %}
-        <br><br>
+        <br><br><br>
         <div>
           {% if not user.userprofile.phone %}
           {% url 'completeprofile' as url %}
@@ -157,10 +158,9 @@
 
       <div class="col-lg-4">
         <div class="portfolio-info">
-          <h3>Blood Bank</h3>
+          <h3>{{ user.bloodbank.bloodbankname }}</h3>
           <ul>
             {% if user.is_authenticated %}
-            <li><strong>Name</strong>: {{ user.bloodbank.bloodbankname }} </li>
             <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
             <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
             <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
@@ -187,7 +187,7 @@
 
 
 
-
+ <!-- -------------------------------- Donor || Blood Bank -------------------------------- -->
 
   {% else %}
 
@@ -255,10 +255,9 @@
       </div>
       <div class="col-lg-4">
         <div class="portfolio-info">
-          <h3>Blood Bank</h3>
+          <h3>{{ user.bloodbank.bloodbankname }}</h3>
           <ul>
             {% if user.is_authenticated %}
-            <li><strong>Name</strong>: {{ user.bloodbank.bloodbankname }} </li>
             <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
             <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
             <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
