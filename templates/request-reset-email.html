@@ -3,42 +3,24 @@
 {% block content %}
 
 <div class="formbg">
-    <br><br><br>
-    <div class="d-flex justify-content-center">
-        <div class="card bg-light p-5 forms">
-            
-            {% for message in messages %}
-            <div class="message-box">
-              <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-                <strong>{{message}}</strong> 
-              </div>
-              <script>
-                $(document).ready(function(){
-                  setTimeout(function(){
-                    $(".alert").fadeOut("slow", function(){
-                      $(this).remove();
-                    });
-                  }, 1000);
-                });
-              </script>
-            </div>
-            {% endfor %}
+  <br><br><br>
+  <div class="d-flex justify-content-center">
+    <div class="card bg-light p-5 forms">
 
-            <h2 class="text-dark d-flex justify-content-center">Request Link</h2>
+      <h2 class="text-dark d-flex justify-content-center">Request Link</h2>
 
-            <form action="/auth/request-reset-email/" method="post">
-                {% csrf_token %}
-                <br>
-
-                <label for="email">Email</label>
-                <div class="form-group">
-                    <input type="email" class="form-control p-2" id="email" name="email" required/>
-                </div>
-                <br>
-                <button type="submit" class="btn btn-dark">Submit</button>
-            </form>
+      <form action="/auth/request-reset-email/" method="post">
+        {% csrf_token %}
+        <br>
+        <label for="email">Email</label>
+        <div class="form-group">
+            <input type="email" class="form-control p-2" id="email" name="email" required/>
         </div>
+        <br>
+        <button type="submit" class="btn btn-dark">Submit</button>
+      </form>
     </div>
+  </div>
 </div>
 
 {% endblock content %}
