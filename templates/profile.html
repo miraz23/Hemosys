@@ -13,7 +13,7 @@
   <div class="container">
     <div class="row gy-4"> 
       <div class="col-lg-8"> 
-        <br>
+        <br><br>
         {% if user.userprofile.image %}
         <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% else %}
@@ -33,7 +33,7 @@
         
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4"><br>
         <div class="portfolio-info">
           <h3>Bio</h3>
           <ul>
@@ -92,7 +92,7 @@
 
   {% elif not user.userprofile.phone and not user.bloodbank.bloodbankname %}
   
-  <div class="container">
+  <div class="container"><br>
     <div class="row justify-content-center gy-1"> 
       <div class="col-lg-4">
         <div class="portfolio-info">
@@ -138,7 +138,7 @@
   <div class="container">
     <div class="row gy-4"> 
       <div class="col-lg-8">
-        <br>
+        <br><br>
         {% if user.bloodbank.image %}
         <img src="{{ user.bloodbank.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% else %}
@@ -156,7 +156,7 @@
         </div>
       </div>
 
-      <div class="col-lg-4">
+      <div class="col-lg-4"><br>
         <div class="portfolio-info">
           <h3>{{ user.bloodbank.bloodbankname }}</h3>
           <ul>
@@ -193,7 +193,7 @@
 
   <div class="container">
     <div class="row gy-4"> 
-      <div class="col-lg-4"><br>
+      <div class="col-lg-4"><br><br>
         {% if user.userprofile.image %}
         <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 80%; height: auto;"/>
         {% else %}
@@ -209,7 +209,7 @@
         <br><br>
 
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-4"><br>
         <div class="portfolio-info">
           <h3>Bio</h3>
           <ul>
@@ -253,7 +253,7 @@
           {% endif %}
         </div>
       </div>
-      <div class="col-lg-4">
+      <div class="col-lg-4"><br>
         <div class="portfolio-info">
           <h3>{{ user.bloodbank.bloodbankname }}</h3>
           <ul>

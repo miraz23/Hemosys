@@ -34,6 +34,7 @@ h6 {
   z-index: 997;
   padding: 10px 0;
   background: url("../../images/headerbg.jpg") top center;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 #header .logo {
@@ -724,7 +725,7 @@ section {
 
 .portfolio-details .portfolio-info {
   width: 350px;
-  height: 460px;
+  height: 462px;
   padding: 30px;
   box-shadow: 0px 0 30px rgba(73, 60, 62, 0.08);
   overflow: hidden;
