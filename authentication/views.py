@@ -4,7 +4,7 @@ from django.views.generic import View
 from .forms import signupForm, userprofileForm, bloodbankForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import messages
-from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth import authenticate,login,logout, get_user_model
 from django.template.loader import render_to_string
 from django.utils.http import urlsafe_base64_decode,urlsafe_base64_encode
 from .utils import generate_token
@@ -21,6 +21,13 @@ def signup(request):
         form = signupForm(request.POST)
 
         if form.is_valid():
+            email = form.cleaned_data.get('email')
+
+            if get_user_model().objects.filter(email=email).exists():
+                messages.warning(request, "YOU ARE ALREADY REGISTERED WITH THIS EMAIL")
+                return redirect('/auth/signup/')
+
+            
             user = form.save(commit=False)
             user.is_active = False
             user.save()
@@ -41,15 +48,8 @@ def signup(request):
             return redirect('/auth/login/')
         
         else:
-            password1 = form.cleaned_data.get('password1')
-            password2 = form.cleaned_data.get('password2')
-
-            if password1 != password2:
-                messages.warning(request,"PASSWORD NOT MATCHED")
-                return redirect('/auth/signup/')
-            else:
-                messages.warning(request,"EMAIL IS ALREADY REGISTERED")
-                return redirect('/auth/signup/')
+            messages.warning(request,"INVALID PASSWORD")
+            return redirect('/auth/signup/')
             
     else:
         form = signupForm()
@@ -162,6 +162,10 @@ def handlelogin(request):
                 else:
                     messages.success(request, "LOG IN SUCCESS")
                     return redirect('/')
+            
+        else:
+            messages.error(request, "INVALID EMAIL OR PASSWORD")
+            return redirect('/auth/login')
     
     form = AuthenticationForm()
     return render(request,'login.html')
