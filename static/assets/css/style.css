@@ -725,10 +725,11 @@ section {
 
 .portfolio-details .portfolio-info {
   width: 350px;
-  height: 462px;
+  height: 440px;
   padding: 30px;
   box-shadow: 0px 0 30px rgba(73, 60, 62, 0.08);
   overflow: hidden;
+  margin-top: 0px;
 }
 
 .portfolio-details .portfolio-info h3 {

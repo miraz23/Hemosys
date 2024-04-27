@@ -321,9 +321,9 @@
         {% if first_donor.user.first_name %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if first_donor.user.userprofile.image %}
-          <img src="{{ first_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          <img src="{{ first_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
           {% else %}
-          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
           {% endif %}
           <div class="portfolio-info">
             <h4>{{ first_donor.user.first_name }}</h4>
@@ -335,9 +335,9 @@
         {% if second_donor.user.first_name %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if second_donor.user.userprofile.image %}
-          <img src="{{ second_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          <img src="{{ second_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
           {% else %}
-          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
           {% endif %}
           <div class="portfolio-info">
             <h4>{{ second_donor.user.first_name }}</h4>
@@ -349,9 +349,9 @@
         {% if third_donor.user.first_name %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if third_donor.user.userprofile.image %}
-          <img src="{{ third_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          <img src="{{ third_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
           {% else %}
-          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+          <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
           {% endif %}
           <div class="portfolio-info">
             <h4>{{ third_donor.user.first_name }}</h4>

@@ -46,9 +46,9 @@
               {% for user in users %}
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                 {% if user.userprofile.image %}
-                <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% else %}
-                <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 230px;"/>
                 {% endif %}
                 <div class="portfolio-info"> 
                   <h4>{{ user.first_name }}</h4>
@@ -63,9 +63,9 @@
               <div class="col-lg-4 col-md-6 portfolio-item filter-app">
 
                 {% if n.user.bloodbank.image %} 
-                <img src="{{ n.user.bloodbank.image.url }}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                <img src="{{ n.user.bloodbank.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% else %}
-                <img src="{% static '\images\blood-bank.jpg' %}" alt="" class="img-fluid rounded" style="max-width: 100%; height: auto;"/>
+                <img src="{% static '\images\blood-bank.jpg' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% endif %} 
 
                 <div class="portfolio-info"> 
