@@ -19,14 +19,15 @@
         {% endif %}      </div>
       <div class="col-lg-4">
         <div class="portfolio-info">
-          <h3>Blood Bank</h3>
+          <h3>{{ bank.bloodbankname }}</h3>
           <ul>
-            <li><strong>Name</strong>: {{ bank.bloodbankname }} </li>
-            <li><strong>Email</strong>: {{ bank.bloodbankemail }} </li>
-            <li><strong>Contact</strong>: {{ bank.bloodbankphone }} </li>
-            <li><strong>Website</strong>: {{ bank.bloodbanklink }} </li>
-            <li><strong>Location</strong>: {{ bank.bloodbanklocation }} </li>
-            <li><strong>Available groups</strong>: {{ bank.bloodbankgroups }} </li>
+            <li><strong>Email</strong>: {{ bank.bloodbankemail }} </li> 
+            <li><strong>Contact</strong>: {{ bank.bloodbankphone }} </li> 
+            <li><strong>Website</strong>: {{ bank.bloodbanklink }} </li> 
+            <li><strong>Location</strong>: {{ bank.bloodbanklocation }} </li> 
+            <li><strong>Available Types</strong>: {{ bank.bloodbanktypes }}</li> 
+            <li><strong>Available Groups</strong>: {{ bank.bloodbankgroups}}</li> 
+            <li><strong>Accreditations</strong>: {{ bank.bloodbankaccreditations}}</li> 
           </ul>
         </div>
       </div>
