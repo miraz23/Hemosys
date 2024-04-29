@@ -18,9 +18,23 @@ def donation_request(request):
     if request.user.is_authenticated:
         reqdata = recipient.objects.all()
 
+        #-------------------------- Searching Functionality --------------------------#
 
-        #======= Pagination =======#
-        paginator=Paginator(reqdata,12)
+        if request.method == "GET":
+            search_blood_group = request.GET.get('searchBloodGroup', None)
+            search_location = request.GET.get('searchAddress', None)
+
+
+            if search_blood_group:
+                reqdata = recipient.objects.filter(recipientblood__icontains=search_blood_group)
+            
+            if search_location:
+                reqdata = recipient.objects.filter(recipientlocation__icontains=search_location)
+            
+
+
+        #-------------------------- Pagination --------------------------#
+        paginator=Paginator(reqdata, 15)
         page_number=request.GET.get('page')
         page_obj=paginator.get_page(page_number)
     
