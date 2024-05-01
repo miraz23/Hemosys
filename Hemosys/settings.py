@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-vggk6@=1u4$m=vx$&p+&0zo4em0=u=5bx!l69$!n_*6)!1p%xf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost', "hemosys.onrender.com"]
 
 
 # Application definition
