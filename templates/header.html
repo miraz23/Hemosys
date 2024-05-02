@@ -111,6 +111,20 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
+      <script>
+        $(document).on('click', '.mobile-nav-toggle', function(nav) {
+          $('#navbar').toggleClass('navbar-mobile');
+          $(this).toggleClass('bi-list').toggleClass('bi-x');
+        });
+      
+        $(document).on('click', '.navbar .dropdown > a', function(nav) {
+          if ($('#navbar').hasClass('navbar-mobile')) {
+            nav.preventDefault();
+            $(this).next().toggleClass('dropdown-active');
+          }
+        });
+      </script>
+
     </div>
   </header>
   <!-- End Header -->
