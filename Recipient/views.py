@@ -12,6 +12,7 @@ def request_blood(request):
     if request.user.is_authenticated:
         if request.method == 'POST':
             data = recipient(
+                user_id=request.user.id,
                 recipientname=request.POST.get('recipientname'),
                 recipientphone=request.POST.get('recipientphone'),
                 recipientemail=request.POST.get('recipientemail'),

@@ -48,12 +48,19 @@
           </ul>
         </div>
         
-        <form method="post" action="/donor/confirm-donation/{{n.id}}/">
+        {% if n.user.id == user.id %}
+        <form method="post" action="/donor/delete-donation-request/{{ n.id }}/">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 340px;"> Delete </button>
+        </form> 
+        {% else %}
+        <form method="post" action="/donor/confirm-donation/{{ n.id }}/">
           {% csrf_token %}
           <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c; width: 340px;"> Confirm </button>
-        </form>      
+        </form>
+        {% endif %}   
       </div>
-      {% endfor %}
+        {% endfor %}
     </div>
   </div>
 

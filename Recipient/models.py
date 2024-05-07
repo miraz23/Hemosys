@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class recipient(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     recipientname = models.CharField(max_length=150, verbose_name="Name")
     recipientphone = models.CharField(max_length=150, verbose_name="Contact")

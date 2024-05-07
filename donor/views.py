@@ -102,6 +102,15 @@ def donation(request, request_id):
         redirect('/')
 
 
+def delete_request(request, request_id):
+    if request.method == 'POST':
+        recipient_obj = get_object_or_404(recipient, pk=request_id)
+        recipient_obj.delete()
+        messages.success(request, 'DONATION REQUEST DELETED SUCCESSFULLY')
+        return redirect('/')
+    else:
+        redirect('/')
+
 def donation_camp(request):
     campdata = donationCamp.objects.all()
 
