@@ -94,8 +94,12 @@ if not DEBUG:
 else:
     DATABASES = {
         'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'hemosys_db',
+            'USER': 'hemosys_db_user',
+            'PASSWORD': 'NiIzKDYkUs30sER4jyfWRtaQhwp9pWhf',
+            'PORT': '5432',
+            'HOST':'dpg-cop8r0q0si5c73bshck0-a.singapore-postgres.render.com',
         }
     }
 
