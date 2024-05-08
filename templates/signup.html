@@ -4,11 +4,11 @@
 {% block content %}
 
 <br>
-<div class="formbg">
+<div class="formsignupbg">
   <br><br>
   
   <div class="d-flex justify-content-center">
-    <div class="card bg-light p-5 forms">
+    <div class="card bg-light p-5 formsignup">
     
       <h3 class="text-dark d-flex justify-content-center">Sign up</h3>
       
@@ -29,11 +29,24 @@
         <div class="form-group">
           <input type="password" class="form-control" id="password1" name="password1" required/>
         </div>
+        <div class="col">
+          <ul>
+            <li>Your password can't be too similar to other information.</li>
+            <li>Your password must contain at least 8 characters.</li>
+            <li>Your password can't be a commonly used password.</li>
+            <li>Your password can't be entirely numeric.</li>
+          </ul>
+        </div>
         <label for="password2">Confirm Password</label>
         <div class="form-group">
           <input type="password" class="form-control p-2" id="password2" name="password2" required/>
         </div>
-      
+        <div class="col">
+          <ul>
+            <li>Enter the same password as before, for verification.</li>
+          </ul>
+        </div>
+        <br>
         <button type="submit" class="btn btn-dark">Sign up</button>
       </form>
     </div> 

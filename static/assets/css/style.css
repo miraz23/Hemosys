@@ -1264,12 +1264,47 @@ section {
 
 
 /*--------------------------------------------------------------
-# Signup and Login Form 
+# Signup
+--------------------------------------------------------------*/
+
+.formsignupbg{
+  width: 100%;
+  height: 150vh;
+  background: url("../../images/bg.jpg") top center;
+  background-size: cover;
+  position: relative;
+}
+
+.formsignupbg:before {
+  content: "";
+  background: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.formsignup{
+  position: relative;
+  width: 600px;
+  height: 750px;
+  background: transparent;
+  border: 2px solid #d01d3f;
+  border-radius: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+
+/*--------------------------------------------------------------
+# Login Form 
 --------------------------------------------------------------*/
 
 .formbg{
   width: 100%;
-  height: 120vh;
+  height: 100vh;
   background: url("../../images/bg.jpg") top center;
   background-size: cover;
   position: relative;
