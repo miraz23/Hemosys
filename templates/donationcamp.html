@@ -18,7 +18,7 @@
           <button type="submit" class="btn btn-secondary" style="background-color: #e43c5c">Search</button>
         </form>
       </div>
-      
+      {% if campdata %}
       <div class="container mt-5">
         <table class="table table-bordered">
           <thead>
@@ -45,6 +45,11 @@
           </tbody>
         </table><br>
       </div>
+      {% else %}
+      <div class="col d-flex justify-content-center">
+        <h4>No donation camp available.</h4>
+      </div>
+      {% endif %}
     </div>
   </section>
 

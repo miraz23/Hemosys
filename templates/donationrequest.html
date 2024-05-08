@@ -27,7 +27,7 @@
       <br/>
     </form>
   </div>
-  
+  {% if page_obj %}
   <div class="container">
     <div class="row gy-4"> 
       {% for n in page_obj %}
@@ -63,6 +63,11 @@
         {% endfor %}
     </div>
   </div>
+  {% else %}
+  <div class="col d-flex justify-content-center">
+    <h4>No donation request available.</h4>
+  </div>
+  {% endif %}
 
 
   <!-- ===== Pagination ===== -->

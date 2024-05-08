@@ -40,6 +40,7 @@
     <!-- ===== Donor and Blood Bank Profiles ===== -->
     
     <div>
+      {% if users or bankdata %}
       <section id="portfolio" class="portfolio">
         <div class="container">
           <div class="row portfolio-container"> 
@@ -79,6 +80,11 @@
           </div>
         </div>
       </section>
+      {% else %}
+      <div class="col d-flex justify-content-center">
+        <h4>No donor or blood bank available.</h4>
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
