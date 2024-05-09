@@ -308,11 +308,12 @@
   <!-- End F.A.Q Section -->
 
   {% if first_donor.user.first_name %}
+  {% if first_donor.donor_donationcount %}
   <!-- ======= Top Donors ======= -->
   <section id="portfolio" class="portfolio">
     <div class="container">
       <div class="section-title">
-        <h2>Heros</h2>
+        <h2>Heroes</h2>
         <h3>Our <span>Top Donors</span></h3>
       </div>
       
@@ -365,6 +366,7 @@
     </div>
   </section>
   <!-- End Top Donors -->
+{% endif %}
 {% endif %}
 
 </main>
