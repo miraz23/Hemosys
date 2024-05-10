@@ -20,9 +20,12 @@
             <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="about">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="contact">Contact us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="/auth/profile/">Profile</a></li>
+              {% url 'about' as url %}
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url}}">About us</a></li>
+              {% url 'contact' as url %}
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url}}">Contact us</a></li>
+              {% url 'profile' as url %}
+              <li><i class="bx bx-chevron-right"></i> <a href="{{url}}">Profile</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#faq">FAQ</a></li>
             </ul>
           </div>
