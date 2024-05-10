@@ -20,12 +20,24 @@
             <input type="text" class="form-control" id="searchAddress" name="searchAddress" placeholder="Search with location"/>
           </div>
           <div class="col-md-4">
-            <input type="text" class="form-control" id="searchBloodGroup" name="searchBloodGroup" placeholder="Search with blood group"/>
+            <div class="form-group">
+              <select class="form-control" id="searchBloodGroup" name="searchBloodGroup">
+                <option value="Select">Select Blood Group</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+            </div>
           </div>
           <div class="col-md-4">
             <div class="form-group">
               <select class="form-control" id="searchType" name="searchType">
-                <option value="Select">Select</option>
+                <option value="Select">Select Type</option>
                 <option value="Donor">Donor</option>
                 <option value="BloodBank">Blood Bank</option>
               </select>
