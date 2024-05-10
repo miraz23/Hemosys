@@ -307,8 +307,7 @@
   </section>
   <!-- End F.A.Q Section -->
 
-  {% if first_donor.user.first_name %}
-  {% if first_donor.donor_donationcount %}
+  {% if first_donor.user.first_name and first_donor.donor_donationcount %}
   <!-- ======= Top Donors ======= -->
   <section id="portfolio" class="portfolio">
     <div class="container">
@@ -319,7 +318,7 @@
       
       <div class="row portfolio-container">
         
-        {% if first_donor.user.first_name %}
+        {% if first_donor.user.first_name and first_donor.donor_donationcount %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if first_donor.user.userprofile.image %}
           <img src="{{ first_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
@@ -333,7 +332,7 @@
         </div>
         {% endif %}
 
-        {% if second_donor.user.first_name %}
+        {% if second_donor.user.first_name and second_donor.donor_donationcount %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if second_donor.user.userprofile.image %}
           <img src="{{ second_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
@@ -347,7 +346,7 @@
         </div>
         {% endif %}
 
-        {% if third_donor.user.first_name %}
+        {% if third_donor.user.first_name and third_donor.donor_donationcount %}
         <div class="col-lg-4 col-md-6 portfolio-item filter-app">
           {% if third_donor.user.userprofile.image %}
           <img src="{{ third_donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
@@ -367,7 +366,7 @@
   </section>
   <!-- End Top Donors -->
 {% endif %}
-{% endif %}
+
 
 </main>
 <!-- End #main -->
