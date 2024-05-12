@@ -3,129 +3,117 @@
 {% block content %}
 
 <div class="card bg-light p-5">
-    <br><br> 
+    <br>
     <div class="section-title">
-        <h2>Recipient</h2>
         <h3>Request <span>Blood</span></h3>
     </div>
 
     <form action="/recipient/request-blood/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-    
-        <label for="recipientname">Name</label>
-        <div class="form-group">
-          <input type="text" class="form-control p-2" id="recipientname" name="recipientname" required/>
+
+        <div class="row">
+          <div class="col-md-4">
+          <label for="recipientname">Patient's name</label>
+          <div class="form-group">
+            <input type="text" class="form-control p-2" id="recipientname" name="recipientname" required/>
+          </div>
+          </div>
+          <div class="col-md-4">
+          <label for="recipientemail">Patient's email</label>
+          <div class="form-group">
+            <input type="email" class="form-control p-2" id="recipientemail" name="recipientemail" required/>
+          </div>
+          </div>
+          <div class="col-md-4">
+            <label for="recipientphone">Patient's contact</label>
+            <div class="form-group">
+              <input type="tel" class="form-control p-2" id="recipientphone" name="recipientphone" required/>
+            </div>
+          </div>
+          
         </div>
-    
-        <label for="recipientphone">Phone number</label>
-        <div class="form-group">
-          <input type="tel" class="form-control p-2" id="recipientphone" name="recipientphone" required/>
+        <div class="row">
+          <div class="col-md-4">
+            <label for="recipientage">Patient's age</label>
+            <div class="form-group">
+              <input type="number" class="form-control p-2" id="recipientage" name="recipientage" required/>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="recipientgender">Patient's gender</label>
+            <div class="form-group">
+              <select class="form-control" id="recipientgender" name="recipientgender" requried>
+                <option value="">Select gender</option>
+                <option id="recipientgender" value="Male">Male</option>
+                <option id="recipientgender" value="Female">Female</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-4">
+          <label for="recipientlocation">Patient's location</label>
+          <div class="form-group">
+            <input type="text" class="form-control p-2" id="recipientlocation" name="recipientlocation" required/>
+          </div>
+          </div>
         </div>
             
-        <label for="recipientemail">Email</label>
-        <div class="form-group">
-          <input type="email" class="form-control p-2" id="recipientemail" name="recipientemail" required/>
-        </div>
-    
-        <label for="recipientlocation">Patient's location</label>
-        <div class="form-group">
-          <input type="text" class="form-control p-2" id="recipientlocation" name="recipientlocation" required/>
-        </div>
+        
 
-        <label for="recipientgender">Gender</label>
-        <div class = "blood-grp">
-          <div class="form-check" >
-            <input class="form-check-input" type="radio" id="recipientgender" name="recipientgender" value="Male" required>
-            <label class="form-check-label" for="recipientgender">Male</label>
-          </div>
-          <div class="form-check" >
-            <input class="form-check-input" type="radio" id="recipientgender" name="recipientgender" value="Female" required>
-            <label class="form-check-label" for="recipientgender">Female</label>
+        <div class="row">
+        <div class="col-md-4">
+          <label for="recipientcondition">Donation cause</label>
+          <div class="form-group">
+            <input type="text" class="form-control p-2" id="recipientcondition" name="recipientcondition" required/>
           </div>
         </div>
-        <br>
-            
-        <label for="recipientage">Age</label>
+        <div class="col-md-4">
+        <label for="recipientblood">Patient's blood group</label>
         <div class="form-group">
-          <input type="number" class="form-control p-2" id="recipientage" name="recipientage" required/>
+          <select class="form-control" id="recipientblood" name="recipientblood" requried>
+            <option value="">Select blood group</option>
+            <option id="bloodA+" value="A+">A+</option>
+            <option id="bloodA-" value="A-">A-</option>
+            <option id="bloodB+" value="B+">B+</option>
+            <option id="bloodB-" value="B-">B-</option>
+            <option id="bloodAB+" value="AB+">AB+</option>
+            <option id="bloodAB-" value="AB-">AB-</option>
+            <option id="bloodO+" value="O+">O+</option>
+            <option id="bloodO-" value="O-">O-</option>
+          </select>
         </div>
-
-    
-        <label for="recipientblood">Blood group</label>
-        <div class="blood-grp">
-            <div class="form-check" >
-                <input class="form-check-input" type="radio" id="bloodA+" name="recipientblood" value="A+" required>
-                <label class="form-check-label" for="bloodA+">A+</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="bloodA-" name="recipientblood" value="A-">
-                <label class="form-check-label" for="bloodA-">A-</label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" id="bloodB+" name="recipientblood" value="B+">
-              <label class="form-check-label" for="bloodB">B+</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="bloodB-" name="recipientblood" value="B-">
-                <label class="form-check-label" for="bloodB-">B-</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="bloodAB" name="recipientblood" value="AB">
-                <label class="form-check-label" for="bloodAB">AB+</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="bloodAB-" name="recipientblood" value="AB-">
-                <label class="form-check-label" for="bloodAB-">AB-</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="bloodO+" name="recipientblood" value="O+">
-                <label class="form-check-label" for="bloodO+">O+</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="bloodO-" name="recipientblood" value="O-">
-                <label class="form-check-label" for="bloodO-">O-</label>
-            </div>
         </div>
-        <br>
-
-        <label for="recipientcondition">Donation cause</label>
-        <div class="form-group">
-          <input type="text" class="form-control p-2" id="recipientcondition" name="recipientcondition" required/>
-        </div>
-
+        <div class="col-md-4">
         <label for="recipientdonationtype">Donation type</label>
-        <div class="blood-grp">
-          <div class="form-check" style="margin-right:30px">
-            <input class="form-check-input" type="radio" id="red-blood" name="recipientdonationtype" value="Red Blood">
-            <label class="form-check-label" for="red-blood">Red Blood</label>
-          </div>
-
-          <div class="form-check" style="margin-right:30px">
-            <input class="form-check-input" type="radio" id="platelet" name="recipientdonationtype" value="Platelet">
-            <label class="form-check-label" for="platelet">Platelet</label>
-          </div>
-
-          <div class="form-check">
-            <input class="form-check-input" type="radio" id="plasma" name="recipientdonationtype" value="Plasma">
-            <label class="form-check-label" for="Plasma">Plasma</label> 
-          </div>
-        </div>
-        <br>
-
-
-        <label for="recipientdonationquantity">Quantity</label>
         <div class="form-group">
-          <input type="number" class="form-control p-2" id="recipientdonationquantity" name="recipientdonationquantity" placeholder = "Bag" required/>
+          <select class="form-control" id="recipientdonationtype" name="recipientdonationtype" requried>
+            <option value="">Select type</option>
+            <option id="red-blood" value="Red Blood">Red Blood</option>
+            <option id="platelet" value="Platelet">Platelet</option>
+            <option id="plasma" value="Plasma">Plasma</option>
+          </select>
         </div>
-
-        <label for="recipientdate">Donation date</label>
-        <div class="form-group">
-          <input type="date" class="form-control p-2" id="recipientdate" name="recipientdate" required/>
         </div>
+        </diV>
 
-        <label for="recipienttime">Donation time</label> 
-        <div class="form-group">
-          <input type="time" class="form-control p-2" id="recipienttime" name="recipienttime" required/>
+        <div class = "row">
+          <div class="col-md-4">
+            <label for="recipientdonationquantity">Donation quantity</label>
+            <div class="form-group">
+              <input type="number" class="form-control p-2" id="recipientdonationquantity" name="recipientdonationquantity" placeholder = "Bag" required/>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="recipientdate">Donation date</label>
+            <div class="form-group">
+              <input type="date" class="form-control p-2" id="recipientdate" name="recipientdate" required/>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="recipienttime">Donation time</label> 
+            <div class="form-group">
+              <input type="time" class="form-control p-2" id="recipienttime" name="recipienttime" required/>
+            </div>
+          </div>
         </div>
     
         <br>
