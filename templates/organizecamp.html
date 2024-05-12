@@ -1,47 +1,60 @@
 {% extends "base.html" %}
-{% block title %} Hemosys | Donation Camp{% endblock title%}
+{% block title %} Hemosys | Donation Camp {% endblock title %}
 {% block content %}
-
+<br><br>
 <div class="card bg-light p-5">
-  <br><br> 
-  <div class= "section-title">
-      <h2>Donation Camp</h2>
-      <h3>Organize <span>Donation Camp</span></h3>
-  </div>
+  <div class="section-title">
+    <h3>Organize <span>Donation Camp</span></h3>
+  </div><br>
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    <label for="campname">Camp name</label>
-    <div class="form-group">
-      <input type="text" class="form-control p2" id="campname" name="campname" required/>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <label for="campname">Camp name</label>
+        <div class="form-group">
+          <input type="text" class="form-control" id="campname" name="campname" required/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="campaddress">Camp address</label>
+        <div class="form-group">
+          <input type="text" class="form-control" id="campaddress" name="campaddress" required/>
+        </div>
+      </div>
     </div>
-    
-    <label for="campdate">Date</label>
-    <div class="form-group">
-      <input type="date" class="form-control p-2" id="campdate" name="campdate" required/>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <label for="camporganizer">Camp organizer</label>
+        <div class="form-group">
+          <input type="tel" class="form-control" id="camporganizer" name="camporganizer" required/>
+        </div> 
+      </div>
+      <div class="col-md-4">
+        <label for="campcontact">Contact</label>
+        <div class="form-group">
+          <input type="tel" class="form-control" id="campcontact" name="campcontact" required/>
+        </div>
+      </div>
     </div>
-
-    <label for="camptime">Time</label>
-    <div class="form-group">
-      <input type="time" class="form-control p-2" id="camptime" name="camptime" required/>
+    <div class="row justify-content-center">
+      <div class="col-md-4">
+        <label for="campdate">Date</label>
+        <div class="form-group">
+          <input type="date" class="form-control" id="campdate" name="campdate" required/>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <label for="camptime">Time</label>
+        <div class="form-group">
+          <input type="time" class="form-control" id="camptime" name="camptime" required/>
+        </div>
+      </div>
     </div>
-    
-    <label for="campaddress">Address</label>
-    <div class="form-group">
-      <input type="text" class="form-control p-2" id="campaddress" name="campaddress" required/>
+    <br><br>
+    <div class="row justify-content-center">
+        <button type="submit" class="btn btn-dark" style="background-color: #e43c5c">Submit</button>
     </div>
-
-    <label for="campcontact">Contact</label>
-    <div class="form-group">
-      <input type="tel" class="form-control p-2" id="campcontact" name="campcontact" required/>
-    </div> 
-    
-    <label for="camporganizer">Organizer</label>
-    <div class="form-group">
-      <input type="tel" class="form-control p-2" id="camporganizer" name="camporganizer" required/>
-    </div> 
-
-    <button type="submit" class="btn btn-dark">Submit</button></form>
+  </form>
 </div>
-{% endblock content %} 
+{% endblock content %}
