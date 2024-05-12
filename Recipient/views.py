@@ -98,7 +98,7 @@ def request_blood(request):
 def blood_availability(request): 
 
     bankdata = bloodbank.objects.all()
-    users_with_profiles = User.objects.filter(userprofile__isnull=False).select_related('userprofile')
+    donors = User.objects.filter(userprofile__isnull=False).select_related('userprofile')
 
     #------ ====== Searching Functionality ===== -----#
 
@@ -107,30 +107,27 @@ def blood_availability(request):
         search_location = request.GET.get('searchAddress', None)
         search_type = request.GET.get('searchType', None)
 
-        donors = []
-
-        for user in users_with_profiles:
-            if user.userprofile.phone:
-                donors.append(user)
 
         if search_blood_group or search_location:
             
             if search_blood_group:
+
                 bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = search_blood_group)
-                donors = [user for user in donors if user.userprofile.bloodgroup.lower() == search_blood_group.lower()]
+                donors = [user for user in donors if user.userprofile.bloodgroup == search_blood_group]
 
             if search_location:
-                bankdata=bloodbank.objects.filter(bloodbanklocation__icontains = search_location)
+
                 search_parts = search_location.split()
                 for part in search_parts:
                     donors = [user for user in donors if part.lower() in user.userprofile.location.lower()]
+                    bankdata = [bank for bank in bankdata if part.lower() in bank.bloodbanklocation.lower()]
 
 
 
         if search_type == 'Donor':
             bankdata = ""
             if search_blood_group:
-                donors = [user for user in donors if user.userprofile.bloodgroup.lower() == search_blood_group.lower()]
+                donors = [user for user in donors if user.userprofile.bloodgroup == search_blood_group]
             if search_location:
                 search_parts = search_location.split()
                 for part in search_parts:
@@ -141,7 +138,9 @@ def blood_availability(request):
             if search_blood_group:
                 bankdata=bloodbank.objects.filter(bloodbankgroups__icontains = search_blood_group)
             if search_location:
-                bankdata=bloodbank.objects.filter(bloodbanklocation__icontains = search_location)
+                search_parts = search_location.split()
+                for part in search_parts:
+                    bankdata = [bank for bank in bankdata if part.lower() in bank.bloodbanklocation.lower()]
 
 
 

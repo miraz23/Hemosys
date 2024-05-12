@@ -24,12 +24,14 @@ def donation_request(request):
             search_blood_group = request.GET.get('searchBloodGroup', None)
             search_location = request.GET.get('searchAddress', None)
 
-
-            if search_blood_group:
-                reqdata = recipient.objects.filter(recipientblood__icontains=search_blood_group)
-            
-            if search_location:
-                reqdata = recipient.objects.filter(recipientlocation__icontains=search_location)
+            if search_blood_group or search_location:
+                if search_blood_group:
+                    reqdata = recipient.objects.filter(recipientblood__icontains=search_blood_group)
+                
+                if search_location:
+                    search_parts = search_location.split()
+                    for part in search_parts:
+                        reqdata = [req for req in reqdata if part.lower() in req.recipientlocation.lower()]
             
 
 
