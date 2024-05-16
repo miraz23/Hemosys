@@ -61,13 +61,11 @@
                 {% if user.userprofile.image %}
                 <img src="{{ user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% else %}
-                <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 230px;"/>
+                <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% endif %}
                 <div class="portfolio-info"> 
-                  <h4>{{ user.first_name }}</h4>
+                  <a href="/donor/donor-details/{{ user.id }}/"><h4>{{ user.first_name }}</h4></a>
                   <p>{{ user.userprofile.bloodgroup }}</p>
-                  
-                  <a href="/donor/donor-details/{{ user.id }}/" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               {% endfor %}
@@ -78,14 +76,12 @@
                 {% if n.user.bloodbank.image %} 
                 <img src="{{ n.user.bloodbank.image.url }}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% else %}
-                <img src="{% static '\images\blood-bank.jpg' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
+                <img src="{% static '\images\blood-bank.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% endif %} 
 
                 <div class="portfolio-info"> 
-                  <h4>{{n.user.bloodbank.bloodbankname}}</h4>
+                  <a href="/bloodbank/bloodbank-details/{{ n.user_id }}/"><h4>{{n.user.bloodbank.bloodbankname}}</h4></a>
                   <p>{{n.user.bloodbank.bloodbankgroups}}</p>
-                  
-                  <a href="/bloodbank/bloodbank-details/{{ n.user_id }}/" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
               {% endfor %}
