@@ -2,7 +2,7 @@
 {% block title %} Hemosys | Donation Request {%endblock title %} 
 {% block content %}
 
-<section id="portfolio-details" class="portfolio-details">
+<section id="donation-request" class="donation-request">
   <div class="container">
     <div class="section-title">
       <br><br>
@@ -44,7 +44,7 @@
     <div class="row gy-4"> 
       {% for n in page_obj %}
       <div class="col-lg-4">
-        <div class="portfolio-info">
+        <div class="donation-info">
           <h3>{{ n.recipientname }}</h3>
           <ul>
             <li><strong>Contact</strong>: {{ n.recipientphone }} </li>

@@ -1465,3 +1465,44 @@ section {
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
   overflow: hidden;
 }
+
+
+
+/*-----------------------------------------------------------
+Donation Request 
+-------------------------------------------------------------*/
+
+.donation-request {
+  padding-top: 40px;
+}
+
+.donation-request .donation-request img {
+  width: 100%;
+}
+
+.donation-request .donation-info {
+  width: 350px;
+  height: 440px;
+  padding: 30px;
+  box-shadow: 0px 0 30px rgba(73, 60, 62, 0.08);
+  overflow: hidden;
+  margin-top: 0px;
+}
+
+.donation-request .donation-info h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.donation-request .donation-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.donation-request .donation-info ul li+li {
+  margin-top: 10px;
+}
