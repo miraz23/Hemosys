@@ -4,35 +4,48 @@
 {% load static %}
 <!-- ======= Portfolio Details Section ======= -->
 <section id="portfolio-details" class="portfolio-details">
-  <br><br>
-  <div class="section-title">
-    <h2>Donor</h2>
-  </div>
+  <br>
 
-  <div class="container">
-    <div class="row gy-4"> 
-      <div class="col-lg-8">
-        {% if donor.user.userprofile.image %}
-        <img src="{{ donor.user.userprofile.image.url }}" alt="" class="img-fluid rounded" style="width: 600px; height: 415px;"/>
-        {% else %}
-        <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 600px; height: 415px;"/>
-        {% endif %}
-      </div>
-      <div class="col-lg-4">
-        <div class="portfolio-info">
-          <h3>Bio</h3>
-          <ul>
-            <li><strong>Name</strong>: {{ donor.user.first_name }}</li>
-            <li><strong>Email</strong>: {{ donor.user.email }} </li>
+  <div class="profile">
+  
+    <img src="\static\images\donor-bb-bg.png" alt=""/>
+  
+    <div class="profile-photo">
+      {% if donor.user.userprofile.image %}
+      <img src="{{ user.userprofile.image.url }}" alt=""/>
+      {% else %}
+      <img src="\static\images\default-profile-picture.png" alt=""/>
+      {% endif %}
+    </div>
+  
+    <div class="profile-info">
+
+      {% if donor.user.is_authenticated %}
+
+      <h1>{{ donor.user.first_name }}</h1>
+      <p> {{ donor.user.userprofile.location }} </p><br>
+      <ul>
+        <div class="row">
+          <div class="col-lg-7">
+
             <li><strong>Number</strong>: {{ donor.user.userprofile.phone }} </li>
-            <li><strong>Address</strong>: {{ donor.user.userprofile.location }}</li>
+            <li><strong>Email</strong>:  {{ donor.user.email }} </li>
             <li><strong>Blood group</strong>: {{ donor.user.userprofile.bloodgroup }}</li>
+          </div>
+          <div class="col-lg-4">
+
             <li><strong>Age</strong>: {{ donor.user.userprofile.age }}</li>
-            <li><strong>Gender</strong>: {{  donor.user.userprofile.gender }}</li>
+            <li><strong>Gender</strong>: {{ donor.user.userprofile.gender }}</li>
+
+            {% if donor.user.userprofile.donor_donationcount %}
             <li><strong>Donation count</strong>: {{ donor.user.userprofile.donor_donationcount }} </li>
-          </ul>
+            {% else %}
+            <li><strong>Donation count</strong>: 0 </li>
+            {% endif %}
+
+          </div>
         </div>
-      </div>
+      {% endif %}
     </div>
   </div>
 </section>

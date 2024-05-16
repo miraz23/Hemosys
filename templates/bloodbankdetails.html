@@ -4,33 +4,39 @@
 {% load static %}
 <!-- ======= Portfolio Details Section ======= -->
 <section id="portfolio-details" class="portfolio-details"> 
-  <br><br>
-  <div class="section-title">
-    <h2>Blood Bank</h2>
-  </div>
+  <br>
+  
+  <div class="profile">
 
-  <div class="container">
-    <div class="row gy-4"> 
-      <div class="col-lg-8">
-        {% if bank.image %} 
-        <img src="{{ bank.image.url }}" alt="" class="img-fluid rounded" style="width: 600px; height: 415px;"/>
-        {% else %}
-        <img src="{% static '\images\blood-bank.jpg' %}" alt="" class="img-fluid rounded" style="width: 600px; height: 415px;"/>
-        {% endif %}      </div>
-      <div class="col-lg-4">
-        <div class="portfolio-info">
-          <h3>{{ bank.bloodbankname }}</h3>
-          <ul>
-            <li><strong>Email</strong>: {{ bank.bloodbankemail }} </li> 
+    <img src="\static\images\donor-bb-bg.png" alt=""/>
+    
+    <div class="profile-photo">
+      {% if bank.image %}
+      <img src="{{ bank.image.url }}" alt=""/>
+      {% else %}
+      <img src="\static\images\blood-bank.jpg" alt=""/>
+      {% endif %}
+    </div>
+  
+    <div class="profile-info">
+      {% if user.is_authenticated %}
+      <h1>{{ bank.bloodbankname }}</h1>
+      <p> {{ bank.bloodbanklocation }} </p><br>
+      <ul>
+        <div class="row">
+          <div class="col-lg-5">
             <li><strong>Contact</strong>: {{ bank.bloodbankphone }} </li> 
+            <li><strong>Email</strong>: {{ bank.bloodbankemail }} </li> 
+            <li><strong>Accreditations</strong>: {{bank.bloodbankaccreditations}}</li>
+          </div>
+          <div class="col-lg-7">
+            <li><strong>Available Types</strong>: {{bank.bloodbanktypes}}</li> 
+            <li><strong>Available Groups</strong>: {{bank.bloodbankgroups}}</li> 
             <li><strong>Website</strong>: {{ bank.bloodbanklink }} </li> 
-            <li><strong>Location</strong>: {{ bank.bloodbanklocation }} </li> 
-            <li><strong>Available Types</strong>: {{ bank.bloodbanktypes }}</li> 
-            <li><strong>Available Groups</strong>: {{ bank.bloodbankgroups}}</li> 
-            <li><strong>Accreditations</strong>: {{ bank.bloodbankaccreditations}}</li> 
-          </ul>
+          </div>
         </div>
-      </div>
+        {% endif %}
+      </ul>
     </div>
   </div>
 </section>
