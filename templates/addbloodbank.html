@@ -5,103 +5,144 @@
 <div class="card bg-light p-5">
   <br><br> 
   <div class= "section-title">
-      <h2>Blood Bank</h2>
       <h3>Add <span>Blood Bank</span></h3>
   </div>
 
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    
-    <label for="bloodbankname">Blood bank name</label>
-    <div class="form-group">
-      <input type="text" class="form-control p2" id="bloodbankname" name="bloodbankname" required/>
-    </div>
-    
-    <label for="bloodbankemail">Email</label>
-    <div class="form-group">
-      <input type="email" class="form-control p-2" id="bloodbankemail" name="bloodbankemail" required/>
-    </div>
-    
-    <label for="bloodbankphone">Phone number</label>
-    <div class="form-group">
-      <input type="tel" class="form-control p-2" id="bloodbankphone" name="bloodbankphone" required/>
-    </div> 
-    
-    <label for="bloodbanklink">Website link</label>
-    <div class="form-group">
-      <input type="link" class="form-control p-2" id="bloodbanklink" name="bloodbanklink" required/>
-    </div>
-    
-    <label for="bloodbanklocation">Location</label>
-    <div class="form-group">
-      <input type="text" class="form-control p-2" id="bloodbanklocation" name="bloodbanklocation" required/>
-    </div><br>
 
-    <label for="bloodbanktypes">Blood Types</label>
-    <div class="blood-grp">
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="WholeBlood" name="bloodbanktypes" value="Whole Blood">
-          <label class="form-check-label" for="WholeBlood">Whole Blood</label>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <label for="bloodbankname">Blood bank name</label>
+        <div class="form-group">
+          <input type="text" class="form-control p2" id="bloodbankname" name="bloodbankname" required/>
+        </div>
       </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="Plasma" name="bloodbanktypes" value="Plasma">
-          <label class="form-check-label" for="Plasma">Plasma</label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="Platelet" name="bloodbanktypes" value="Platelet">
-          <label class="form-check-label" for="Platelet">Platelet</label>
+      <div class="col-lg-4">
+        <label for="bloodbankphone">Blood bank contact</label>
+        <div class="form-group">
+          <input type="tel" class="form-control p-2" id="bloodbankphone" name="bloodbankphone" required/>
+        </div> 
+      </div> 
+      <div class="col-lg-8">
+        <label for="bloodbanklocation">Blood bank location</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="bloodbanklocation" name="bloodbanklocation" required/>
+        </div>
       </div>
     </div>
 
-    <br><label for="bloodbankgroups">Available groups</label>
-    <div class="blood-grp">
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodA+" name="bloodbankgroups" value="A+">
-          <label class="form-check-label" for="bloodA+">A+</label>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <label for="bloodbankemail">Blood bank email</label>
+        <div class="form-group">
+          <input type="email" class="form-control p-2" id="bloodbankemail" name="bloodbankemail" required/>
+        </div>
       </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodA-" name="bloodbankgroups" value="A-">
-          <label class="form-check-label" for="bloodA-">A-</label>
+      <div class="col-lg-4">
+        <label for="bloodbanklink">Blood bank page</label>
+        <div class="form-group">
+          <input type="link" class="form-control p-2" id="bloodbanklink" name="bloodbanklink"/>
+        </div>
       </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodB+" name="bloodbankgroups" value="B+">
-          <label class="form-check-label" for="bloodB+">B+</label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodB-" name="bloodbankgroups" value="B-">
-          <label class="form-check-label" for="bloodB-">B-</label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodAB" name="bloodbankgroups" value="AB+">
-          <label class="form-check-label" for="bloodAB">AB+</label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodAB-" name="bloodbankgroups" value="AB-">
-          <label class="form-check-label" for="bloodAB-">AB-</label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodO+" name="bloodbankgroups" value="O+">
-          <label class="form-check-label" for="bloodO+">O+</label>
-      </div>
-      <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="bloodO-" name="bloodbankgroups" value="O-">
-          <label class="form-check-label" for="bloodO-">O-</label>
-      </div>
-
     </div>
 
-    <br><label for="bloodbankaccreditations">Accreditations</label>
-    <div class="form-group">
-      <input type="text" class="form-control p-2" id="bloodbankaccreditations" name="bloodbankaccreditations" required/>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <br>
+        <label for="bloodbankgroups">Donation types</label> 
+        <div class="blood-grp">
+          <div class="col">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="WholeBlood" name="bloodbanktypes" value="Whole Blood">
+                <label class="form-check-label" for="WholeBlood">Whole Blood</label>
+            </div><br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Plasma" name="bloodbanktypes" value="Plasma">
+                <label class="form-check-label" for="Plasma">Plasma</label>
+            </div><br>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="Platelet" name="bloodbanktypes" value="Platelet">
+                <label class="form-check-label" for="Platelet">Platelet</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <br><label for="bloodbankgroups">Available groups</label>
+        <div class="blood-grp">
+          <div class="col">
+            <div class="form-check">
+              <div class="row">
+                <div class="col-lg-10">
+                  <input class="form-check-input" type="checkbox" id="bloodA+" name="bloodbankgroups" value="A+">
+                  <label class="form-check-label" for="bloodA+">A+</label>
+                </div>
+                <div class="col-lg-0">
+                  <input class="form-check-input" type="checkbox" id="bloodA-" name="bloodbankgroups" value="A-">
+                  <label class="form-check-label" for="bloodA-">A-</label>
+                </div>
+              </div>
+            </div><br>
+            <div class="form-check">
+              <div class="row">
+                <div class="col-lg-10">
+                  <input class="form-check-input" type="checkbox" id="bloodB+" name="bloodbankgroups" value="B+">
+                  <label class="form-check-label" for="bloodB+">B+</label>
+                </div>
+                <div class="col-lg-0">
+                  <input class="form-check-input" type="checkbox" id="bloodB-" name="bloodbankgroups" value="B-">
+                  <label class="form-check-label" for="bloodB-">B-</label>
+                </div>
+              </div>
+            </div><br>
+            <div class="form-check">
+              <div class="row">
+                <div class="col-lg-10">
+                  <input class="form-check-input" type="checkbox" id="bloodAB" name="bloodbankgroups" value="AB+">
+                  <label class="form-check-label" for="bloodAB">AB+</label>
+                </div>
+                <div class="col-lg-0">
+                  <input class="form-check-input" type="checkbox" id="bloodAB-" name="bloodbankgroups" value="AB-">
+                  <label class="form-check-label" for="bloodAB-">AB-</label>
+                </div>
+              </div>
+            </div><br>
+            <div class="form-check">
+              <div class="row">
+                <div class="col-lg-10">
+                  <input class="form-check-input" type="checkbox" id="bloodO+" name="bloodbankgroups" value="O+">
+                  <label class="form-check-label" for="bloodO+">O+</label>
+                </div>
+                <div class="col-lg-0">
+                  <input class="form-check-input" type="checkbox" id="bloodO-" name="bloodbankgroups" value="O-">
+                  <label class="form-check-label" for="bloodO-">O-</label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <label for="image">Upload image</label> 
     <br>
-    <div class="form-group">
-      <input type="file" class="form-control-file" id="image" name="image"/>
+    <div class="row justify-content-center">
+      <div class="col-lg-4">
+        <br><label for="bloodbankaccreditations">Accreditations</label>
+        <div class="form-group">
+          <input type="text" class="form-control p-2" id="bloodbankaccreditations" name="bloodbankaccreditations" required/>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <br><label for="image">Upload image</label> 
+        <br>
+        <div class="form-group">
+          <input type="file" class="form-control-file" id="image" name="image"/>
+        </div>
+      </div>
     </div>
     <br>
-
-    <button type="submit" class="btn btn-dark">Submit</button></form>
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-dark" style="background-color: #e43c5c">Submit</button></form>
+    </div>
 </div>
 {% endblock content %} 
