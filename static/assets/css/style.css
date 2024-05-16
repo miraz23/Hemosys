@@ -1468,3 +1468,12 @@ Donation Request
 .donation-request .donation-info ul li+li {
   margin-top: 10px;
 }
+
+
+.card2{
+  background: url("../../images/edit-bg.png") top center;
+  width: 100%;
+  height: 120vh;
+  background-size: cover;
+  position: relative;
+}

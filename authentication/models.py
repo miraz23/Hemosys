@@ -5,7 +5,7 @@ class userprofile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     phone = models.CharField(max_length=100)
-    location = models.TextField()
+    location = models.CharField(max_length=5000)
     bloodgroup = models.CharField(max_length=100, verbose_name="Blood Group")
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=10)
@@ -25,11 +25,11 @@ class bloodbank(models.Model):
     bloodbankname = models.CharField(max_length=150, verbose_name="Name")
     bloodbankemail = models.CharField(max_length=150, verbose_name="Email")
     bloodbankphone = models.CharField(max_length=150, verbose_name="Contact")
-    bloodbanklink = models.TextField(verbose_name="Website Link")
-    bloodbanklocation = models.TextField(verbose_name="Location")
+    bloodbanklink = models.CharField(max_length=5000, verbose_name="Website Link")
+    bloodbanklocation = models.CharField(max_length=5000, verbose_name="Location")
     bloodbanktypes = models.CharField(max_length=150, verbose_name="Types")
     bloodbankgroups = models.CharField(max_length=150, verbose_name="Available Groups")
-    bloodbankaccreditations = models.TextField(verbose_name="Accreditaions")
+    bloodbankaccreditations = models.CharField(max_length=2000, verbose_name="Accreditaions")
     image = models.FileField(upload_to='Bloodbank-picture', blank=True, null=True, verbose_name="Image")
 
     def __str__(self):

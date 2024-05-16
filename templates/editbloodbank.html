@@ -2,19 +2,89 @@
 {% block title %} Hemosys | Edit Blood Bank {% endblock title %} 
 {% block content %}
 
-<div class="card bg-light p-5">
+<div class="card2 bg-light p-5">
     <br><br> 
     <div class="section-title">
-        <h2>Edit</h2>
         <h3>Edit <span>Blood Bank</span></h3>
     </div>
 
-    <form method="post" enctype="multipart/form-data">
+    <form style="margin-left:12%" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{form.as_p}}
+    
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <label for="bloodbankname">Blood bank name</label>
+            <div class="form-group">
+              {{form.bloodbankname}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="bloodbankphone">Blood bank contact</label>
+            <div class="form-group">
+                {{form.bloodbankphone}}
+            </div> 
+          </div> 
+        </div>
 
-      <button type="submit" class="btn btn-dark">Update</button>
-  </form>
+        <div class="row justify-content-center"> 
+            <div class="col-lg-4">
+              <label for="bloodbanklocation">Blood bank location</label>
+              <div class="form-group">
+                  {{form.bloodbanklocation}}
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <label for="bloodbankemail">Blood bank email</label>
+              <div class="form-group">
+                  {{form.bloodbankemail}}
+              </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <label for="bloodbanklink">Blood bank page</label>
+            <div class="form-group">
+                {{form.bloodbanklink}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="bloodbankaccreditations">Accreditations</label>
+            <div class="form-group">
+                {{form.bloodbankaccreditations}}
+            </div>
+          </div>
+        </div>
+    
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <label for="bloodbankgroups">Donation types</label> 
+            <div class="blood-grp">
+              {{form.bloodbanktypes}}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <label for="bloodbankgroups">Available groups</label>
+            <div class="blood-grp">
+              {{form.bloodbankgroups}}
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-4">
+            <label for="image">Upload image</label> 
+            <br>
+            {{form.image}}
+          </div>
+          <div class="col-lg-4">
+            
+          </div>
+        </div>
+        <br><br>
+
+        <button type="submit" class="btn btn-dark" style="background-color: #e43c5c; margin-left:40%">Submit</button></form>
+
+    </form>
 
 </div>
 

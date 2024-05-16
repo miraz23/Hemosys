@@ -2,19 +2,63 @@
 {% block title %} Hemosys | Edit Profile {% endblock title %} 
 {% block content %}
 
-<div class="card bg-light p-5">
+<div class="card2 bg-light p-5">
     <br><br> 
     <div class="section-title">
-        <h2>Edit</h2>
         <h3>Edit <span>Profile</span></h3>
-    </div>
+    </div><br>
 
-    <form method="post" enctype="multipart/form-data">
+    <form style="margin-left:12%" method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      {{ form.as_p }}
-      <br>
-      <button type="submit" class="btn btn-dark">Update Profile</button>
-  </form>
+          
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <label for="phone">Donor's phone number</label>
+            <div class="form-group">
+              {{form.phone}}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="location">Donor's address</label>
+            <div class="form-group">
+              {{form.location}}
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <label for="age">Donor's age</label>
+            <div class="form-group">
+              {{form.age}}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="gender">Donor's gender</label>
+            <div class="form-group">
+              {{form.gender}}
+            </div>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <label for="bloodgroup">Donor's blood group</label>
+            <div class="form-group">
+              {{form.bloodgroup}}
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label for="image">Update profile picture</label> 
+            <br>
+            <div class="form-group">
+              {{form.image}}
+            </div>
+          </div>
+        </div>
+        <br><br>
+
+        <button type="submit" class="btn btn-dark" style="background-color: #e43c5c; margin-left:40%">Update</button>
+
+      </form>
 
 </div>
 
