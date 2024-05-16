@@ -704,9 +704,9 @@ section {
 }
 
 .profile img {
-  width: 1000px;
-  height: 570px;
-  margin-top:20px;
+  width: 980px;
+  height: 480px;
+  margin-top:60px;
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
 }
@@ -714,7 +714,7 @@ section {
 .profile-info {
   position: absolute;
   top: 55%;
-  left: 33%;
+  left: 35%;
   right: 10%;
   transform: translate(-50%, -50%);
   text-align: left;
@@ -728,7 +728,7 @@ section {
 .profile-photo {
   width: 100px;
   position: absolute;
-  top: 30%;
+  top: 25%;
   margin-left: 850px;
 }
 
@@ -752,9 +752,11 @@ section {
   color: #fff;
   margin-left: 15px;
 }
-.profile-info a{
-  margin-left: 10px;
+
+.profile-info .profile-button{
+  margin-left: 1px;
 }
+
 .profile-info .profile-button:hover {
   background: #421b1b;
   border: 2px solid #421b1b;
@@ -772,18 +774,18 @@ section {
 
 
 .profile2{
-  margin-bottom: -70px;
+  margin-bottom: -20px;
 }
 .profile-info2{
-  margin-top: 100px;
+  margin-top: 120px;
 }
 .profile-photo2{
-  margin-top: 120px;
+  margin-top: 60px;
 }
 
 .profile2 img {
-  width: 1000px;
-  height: 570px;
+  width: 1050px;
+  height: 480px;
   margin-top:50px;
   margin-left:270px;
   border-top-left-radius: 100px;
@@ -792,7 +794,7 @@ section {
 
 .profile-info2 {
   position: absolute;
-  top: 115%;
+  top: 100%;
   left: 35%;
   right: 2%;
   color: white;
@@ -803,7 +805,7 @@ section {
   width: 100px;
   position: absolute;
   top: 108%;
-  left: -110px;
+  left: -120px;
 }
 
 .profile-photo2 img {
@@ -825,9 +827,7 @@ section {
   border: 2px solid #fff;
   color: #fff;
 }
-.profile-info2 a{
-  margin-left: 15px;
-}
+
 .profile2 .profile-info2 .profile-button2:hover {
   background: #421b1b;
   border: 2px solid #421b1b;
@@ -848,7 +848,7 @@ section {
 .profile3 {
   width: 100%;
   height: 120vh;
-  background: url("../../images/download.png") top center;
+  background: url("../../images/profile-bg.png") top center;
   background-size: cover;
   position: relative;
   margin-top: -150px;

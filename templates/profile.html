@@ -47,7 +47,7 @@
 
   <div class="profile">
   
-    <img src="\static\images\donor-bg.jpg" alt=""/>
+    <img src="\static\images\donor-bb-bg.png" alt=""/>
   
     <div class="profile-photo">
       {% if user.userprofile.image %}
@@ -89,7 +89,7 @@
 
       <div class="row">
 
-        <div>
+        <div class="col-lg-7">
           {% if not user.userprofile.phone %}
           {% url 'completeprofile' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Donor Registration </a>
@@ -98,8 +98,8 @@
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Edit Profile </a>
           {% endif %}
         </div>
-
-        <div>
+        
+        <div class=" col-lg-5">
           {% if not user.bloodbank.bloodbankname %}
           {% url 'addbloodbank' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Add Blood Bank </a>
@@ -125,7 +125,7 @@
 
   <div class="profile">
 
-    <img src="\static\images\donor-bg.jpg" alt=""/>
+    <img src="\static\images\donor-bb-bg.png" alt=""/>
     
     <div class="profile-photo">
       {% if user.bloodbank.image %}
@@ -141,21 +141,23 @@
       <p> {{ user.bloodbank.bloodbanklocation }} </p><br>
       <ul>
         <div class="row">
-          <div class="col-lg-6">
+          <div class="col-lg-5">
             <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
             <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
-            <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
+            <li><strong>Accreditations</strong>: {{user.bloodbank.bloodbankaccreditations}}</li>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-7">
             <li><strong>Available Types</strong>: {{user.bloodbank.bloodbanktypes}}</li> 
             <li><strong>Available Groups</strong>: {{user.bloodbank.bloodbankgroups}}</li> 
-            <li><strong>Accreditations</strong>: {{user.bloodbank.bloodbankaccreditations}}</li>
+            <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
           </div>
         </div>
         {% endif %}
       </ul><br>
+
       <div class="row">
-        <div>
+        
+        <div class=" col-lg-5">
           {% if not user.bloodbank.bloodbankname %}
           {% url 'addbloodbank' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Add Blood Bank </a>
@@ -164,7 +166,8 @@
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Edit Blood Bank</a>
           {% endif %}
         </div>
-        <div>
+
+        <div class="col-lg-6">
           {% if not user.userprofile.phone %}
           {% url 'completeprofile' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Donor Registration </a>
@@ -173,7 +176,9 @@
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Edit Profile </a>
           {% endif %}
         </div>
+
       </div>
+
     </div>
   </div>
 
@@ -184,7 +189,7 @@
 
   <div class="profile">
   
-    <img src="\static\images\donor-bg.jpg" alt=""/>
+    <img src="\static\images\donor-bb-bg.png" alt=""/>
   
     <div class="profile-photo">
       {% if user.userprofile.image %}
@@ -237,7 +242,7 @@
 
   <div class="profile2">
 
-    <img src="\static\images\bank-bg.jpg" alt=""/>
+    <img src="\static\images\donor-bb-bg.png" alt=""/>
     
     <div class="profile-photo2">
       {% if user.bloodbank.image %}
