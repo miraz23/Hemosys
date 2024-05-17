@@ -12,7 +12,7 @@
   
     <div class="profile-photo">
       {% if donor.user.userprofile.image %}
-      <img src="{{ user.userprofile.image.url }}" alt=""/>
+      <img src="{{ donor.user.userprofile.image.url }}" alt=""/>
       {% else %}
       <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
       {% endif %}
