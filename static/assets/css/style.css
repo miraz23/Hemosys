@@ -531,7 +531,6 @@ section {
   color: #fff;
   text-decoration: none;
 }
-
 /*--------------------------------------------------------------
 # Activity
 --------------------------------------------------------------*/
@@ -540,7 +539,7 @@ section {
 }
 
 .activity .icon-box {
-  padding: 40px 50px;
+  padding: 30px 30px;
   position: relative;
   overflow: hidden;
   background-color: #fff;
@@ -550,6 +549,8 @@ section {
   border-radius: 8px;
   z-index: 1;
   text-align: center;
+  margin: 15px;
+  flex: 1 1 300px;
 }
 
 .activity .icon-box::before {
@@ -570,7 +571,6 @@ section {
   border-radius: 0px;
 }
 
-
 .activity .title {
   font-weight: 700;
   margin-bottom: 15px;
@@ -589,12 +589,50 @@ section {
 }
 
 .activity .icon-box:hover .title a,
-.services .icon-box:hover .description {
+.activity .icon-box:hover .description {
   color: #fff;
 }
 
 .activity .icon-box:hover .icon i {
   color: #fff;
+}
+
+.activity .row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .activity .icon-box {
+    flex: 1 1 200px;
+    margin: 10px;
+    padding: 20px;
+  }
+
+  .activity .title {
+    font-size: 16px;
+  }
+
+  .activity .description {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .activity .icon-box {
+    flex: 1 1 100%;
+    margin: 10px 0;
+  }
+
+  .activity .title {
+    font-size: 14px;
+  }
+
+  .activity .description {
+    font-size: 12px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -655,6 +693,26 @@ section {
 .portfolio .portfolio-item .portfolio-info {
   opacity: 1;
   bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .portfolio .portfolio-item img {
+    width: 100%;
+    height: auto;
+  }
+
+  .portfolio .portfolio-item .portfolio-info {
+    opacity: 1;
+    bottom: 0;
+    top: auto;
+    left: 0;
+    right: 0;
+    padding: 15px;
+  }
+
+  .portfolio .portfolio-item .portfolio-info h4 {
+    font-size: 16px;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -732,6 +790,7 @@ section {
 .portfolio-details .profile-info ul li+li {
   margin-top: 10px;
 }
+
 
 
 
@@ -1157,86 +1216,66 @@ section {
   color: #e43c5c;
 }
 
-#footer .footer-newsletter {
-  font-size: 15px;
+@media (max-width: 767px) {
+  #footer .footer-top .footer-links,
+  #footer .footer-top .footer-contact {
+      text-align: center;
+  }
+
+  #footer .footer-top .footer-contact {
+      margin-bottom: 20px;
+  }
+
+  #footer .footer-top .footer-links {
+      margin-bottom: 20px;
+  }
+
+  #footer .footer-top .footer-contact p {
+      margin-bottom: 10px;
+  }
+
+  #footer .footer-top .footer-links ul {
+      padding-left: 0;
+  }
+
+  #footer .footer-top .footer-links ul li {
+      justify-content: center;
+  }
 }
-
-#footer .footer-newsletter h4 {
-  font-size: 16px;
-  font-weight: bold;
-  color: #444444;
-  position: relative;
-  padding-bottom: 12px;
-}
-
-#footer .footer-newsletter form {
-  margin-top: 30px;
-  background: #fff;
-  padding: 6px 10px;
-  position: relative;
-  border-radius: 50px;
-  text-align: left;
-  border: 1px solid #f7c2cc;
-}
-
-#footer .footer-newsletter form input[type=email] {
-  border: 0;
-  padding: 4px 8px;
-  width: calc(100% - 100px);
-}
-
-#footer .footer-newsletter form input[type=submit] {
-  position: absolute;
-  top: 0;
-  right: -2px;
-  bottom: 0;
-  border: 0;
-  background: none;
-  font-size: 15px;
-  padding: 0 22px;
-  background: #e43c5c;
-  color: #fff;
-  transition: 0.3s;
-  border-radius: 50px;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-#footer .footer-newsletter form input[type=submit]:hover {
-  background: #d01d3f;
-}
-
-#footer .credits {
-  padding-top: 5px;
-  font-size: 13px;
-  color: #444444;
-}
-
-
 
 /*--------------------------------------------------------------
 # Learn About Donation
 --------------------------------------------------------------*/
-.img_tbl{
+.img_tbl {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
+.imgtxt {
+  flex: 1 1 300px;
+  text-align: center;
 }
-.imgtxt{
-  width: 50%;
+
+.imgtxt img {
+  max-width: 100%;
+  height: auto;
 }
-.imgtxt img{
-  width: 500px;
-  height: 270px;
-}
-.tcol{
+
+.tcol {
+  flex: 1 1 300px;
   display: flex;
+  justify-content: center;
 }
 
 .table {
+  width: 100%;
   font-size: 16px;
+  margin: 0;
 }
 
-.thdr{
+.thdr {
   font-size: 18px;
   color: white;
   background-color: #e43c5c;
@@ -1249,23 +1288,64 @@ section {
 .table td,
 .table th {
   padding: 5px;
+  text-align: center;
 }
 
-.blood-grp{
+.blood-grp {
   display: flex;
-  padding:10px;
+  flex-wrap: wrap;
+  padding: 10px;
 }
-.blood-grp .form-check{
+
+.blood-grp .form-check {
   margin-right: 40px;
 }
 
-.rowtabInfo{
+.rowtabInfo {
   display: flex;
   width: 33.33%;
 }
 
 .message-box {
   text-align: center;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .img_tbl {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tcol {
+    width: 100%;
+  }
+
+  .table {
+    font-size: 14px;
+  }
+
+  .thdr, .rwtxt {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    font-size: 12px;
+  }
+
+  .thdr, .rwtxt {
+    font-size: 14px;
+  }
+
+  .imgtxt, .tcol {
+    width: 100%;
+  }
+
+  .blood-grp .form-check {
+    margin-right: 20px;
+  }
 }
 
 
@@ -1348,14 +1428,57 @@ section {
 # Donation Camp
 --------------------------------------------------------------*/
 
-.bdc .table td{
-  padding:15px;
+.bdc .table td,
+.bdc .table th {
+  padding: 10px; /* Adjust padding */
 }
 
-.bdc .table th{
-  padding:10px;
+.bdc .table th {
   color: white;
   background-color: #e43c5c;
+}
+
+
+@media only screen and (max-width: 767px) {
+  .bdc .container {
+    padding: 0 10px; 
+  }
+
+  .bdc .section-title h2 {
+    font-size: 24px; 
+  }
+
+  .bdc .section-title h3 {
+    font-size: 20px; 
+  }
+
+  .bdc form {
+    margin-bottom: 20px; 
+  }
+
+
+  .bdc table {
+    overflow-x: auto; 
+    display: block; 
+    width: 100%; 
+  }
+
+  .bdc table th,
+  .bdc table td {
+    padding: 8px; 
+  }
+
+  .bdc table th {
+    font-size: 16px; 
+  }
+
+  .bdc table td {
+    font-size: 14px;
+  }
+
+  .bdc .col {
+    width: 100%;
+  }
 }
 
 
@@ -1393,6 +1516,36 @@ section {
   overflow: hidden;
 }
 
+@media only screen and (max-width: 767px) {
+  .formsignupbg {
+    padding: 20px; 
+  }
+
+  .formsignup {
+    width: 90%; 
+    max-width: 350px; 
+    margin: 0 auto; 
+    height: 870px;
+  }
+
+  .formsignup h3 {
+    font-size: 1.5rem; 
+  }
+
+  .formsignup .form-group {
+    margin-bottom: 10px;
+  }
+
+  .formsignup button {
+    width: 90%; 
+
+  }
+
+  .formsignup ul {
+    padding-left: 15px; 
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Login Form 
@@ -1418,8 +1571,10 @@ section {
 
 .forms{
   position: relative;
-  width: 400px;
-  height: 515px;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  height: auto;
   background: transparent;
   border: 2px solid #d01d3f;
   border-radius: 20px;
@@ -1428,6 +1583,13 @@ section {
   overflow: hidden;
 }
 
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+  .forms {
+    width: 90%;
+    max-width: 90%;
+  }
+}
 
 
 /*-----------------------------------------------------------
@@ -1443,8 +1605,8 @@ Donation Request
 }
 
 .donation-request .donation-info {
-  width: 350px;
-  height: 440px;
+  width: 100%;
+  max-width: 350px;
   padding: 30px;
   box-shadow: 0px 0 30px rgba(73, 60, 62, 0.08);
   overflow: hidden;
@@ -1469,6 +1631,25 @@ Donation Request
   margin-top: 10px;
 }
 
+/* Media Query for responsiveness */
+@media (min-width: 768px) {
+  .donation-request .donation-info {
+    max-width: 100%;
+  }
+}
+
+/* Space between the searching options */
+@media (max-width: 767px) {
+  .donation-request .container .row > div {
+    margin-bottom: 10px;
+  }
+}
+
+
+
+/*-----------------------------------------------------------
+  Edit profile bg
+-------------------------------------------------------------*/
 
 .card2{
   background: url("../../images/edit-bg.png") top center;
