@@ -2,6 +2,8 @@
 {% block title %} Hemosys | Profile{% endblock title %} 
 {% block content %}
 
+{% load static %}
+
 <!-- ======= Portfolio Details Section ======= -->
 <section id="portfolio-details" class="portfolio-details">
   <br>
@@ -47,13 +49,13 @@
 
   <div class="profile">
   
-    <img src="\static\images\donor-bb-bg.png" alt=""/>
+    <img src="{% static '/images/donor-bb-bg.png' %}" alt=""/>
   
     <div class="profile-photo">
       {% if user.userprofile.image %}
       <img src="{{ user.userprofile.image.url }}" alt=""/>
       {% else %}
-      <img src="\static\images\default-profile-picture.png" alt=""/>
+      <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
       {% endif %}
     </div>
   
@@ -125,13 +127,13 @@
 
   <div class="profile">
 
-    <img src="\static\images\donor-bb-bg.png" alt=""/>
+    <img src="{% static '\images\donor-bb-bg.png' %}" alt=""/>
     
     <div class="profile-photo">
       {% if user.bloodbank.image %}
       <img src="{{ user.bloodbank.image.url }}" alt=""/>
       {% else %}
-      <img src="\static\images\blood-bank.png" alt=""/>
+      <img src="{% static '\images\blood-bank.png' %}" alt=""/>
       {% endif %}
     </div>
   
@@ -189,13 +191,13 @@
 
   <div class="profile">
   
-    <img src="\static\images\donor-bb-bg.png" alt=""/>
+    <img src="{% static '\images\donor-bb-bg.png' %}" alt=""/>
   
     <div class="profile-photo">
       {% if user.userprofile.image %}
       <img src="{{ user.userprofile.image.url }}" alt=""/>
       {% else %}
-      <img src="\static\images\default-profile-picture.png" alt=""/>
+      <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
       {% endif %}
     </div>
   
@@ -242,13 +244,13 @@
 
   <div class="profile2">
 
-    <img src="\static\images\donor-bb-bg.png" alt=""/>
+    <img src="{% static '\images\donor-bb-bg.png' %}" alt=""/>
     
     <div class="profile-photo2">
       {% if user.bloodbank.image %}
       <img src="{{ user.bloodbank.image.url }}" alt=""/>
       {% else %}
-      <img src="\static\images\blood-bank.png" alt=""/>
+      <img src="{% static '\images\blood-bank.png' %}" alt=""/>
       {% endif %}
     </div>
   

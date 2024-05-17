@@ -7,7 +7,6 @@
   <div class="container">
     <div class="section-title">
       <br/><br/>
-      <h2>Availability</h2>
       <h3>Blood <span>Availability</span></h3>
     </div>
 
@@ -16,10 +15,10 @@
     <div class="container mt-3 mb-3">
       <form method="GET" action="">
         <div class="row">
-          <div class="col-md-4">
+          <div class="col-md-4 mb-3 mb-md-0">
             <input type="text" class="form-control" id="searchAddress" name="searchAddress" placeholder="Search with location"/>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4 mb-1 mb-md-0">
             <div class="form-group">
               <select class="form-control" id="searchBloodGroup" name="searchBloodGroup">
                 <option value="">Select Blood Group</option>
@@ -34,7 +33,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-4"> <!-- No margin added -->
             <div class="form-group">
               <select class="form-control" id="searchType" name="searchType">
                 <option value="Select">Select Type</option>
@@ -44,6 +43,7 @@
             </div>
           </div>
         </div>
+        
         <br/>
         <button type="submit" class="btn btn-secondary mx-2" style="background-color: #e43c5c"> Search </button>
       </form>

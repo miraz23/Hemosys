@@ -8,13 +8,13 @@
   
   <div class="profile">
 
-    <img src="\static\images\donor-bb-bg.png" alt=""/>
+    <img src="{% static '\images\donor-bb-bg.png' %}" alt=""/>
     
     <div class="profile-photo">
       {% if bank.image %}
       <img src="{{ bank.image.url }}" alt=""/>
       {% else %}
-      <img src="\static\images\blood-bank.png" alt=""/>
+      <img src="{% static '\images\blood-bank.png' %}" alt=""/>
       {% endif %}
     </div>
   
