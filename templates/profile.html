@@ -15,49 +15,57 @@
   {% if not user.bloodbank.bloodbankname and user.userprofile.phone %}
 
 
-  <div class="profile">
-  
-    <div class="profile-photo">
-      {% if user.userprofile.image %}
-      <img src="{{ user.userprofile.image.url }}" alt=""/>
-      {% else %}
-      <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
-      {% endif %}
-    </div>
-  
-    <div class="profile-info">
+  <div class="dashboard d-flex justify-content-center">
 
-      {% if user.is_authenticated %}
+    <div class="profile">
 
-      <h1>{{ user.first_name }}</h1>
-      <p> {{ user.userprofile.location }} </p><br>
-      <ul>
-        <div class="row">
-          <div class="col-lg-5">
+      <div class="profile-photo d-flex justify-content-center">
+        {% if user.userprofile.image %}
+        <img src="{{ user.userprofile.image.url }}" alt=""/>
+        {% else %}
+        <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
+        {% endif %}
+      </div>
 
-            <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
-            <li><strong>Email</strong>:  {{ user.email }} </li>
-            <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
-          </div>
-          <div class="col-lg-4">
+      <div class="title justify-content-center">
+        <h1>{{ user.first_name }}</h1>
+        <p> {{ user.userprofile.location }} </p><br>
+      </div>
+      <div class="d-flex justify-content-center">
 
-            <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
-            <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
+        <div class="profile-info">
+        
+          {% if user.is_authenticated %}
 
-            {% if user.userprofile.donor_donationcount %}
-            <li><strong>Donation count</strong>: {{ user.userprofile.donor_donationcount }} </li>
-            {% else %}
-            <li><strong>Donation count</strong>: 0 </li>
+          <ul>
+            <div class="row">
+              <div class="col-lg-7">
+                <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
+                <li><strong>Email</strong>:  {{ user.email }} </li>
+                <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
+              </div>
+              <div class="col-lg-4">
+
+                <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
+                <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
+
+                {% if user.userprofile.donor_donationcount %}
+                <li><strong>Donation count</strong>: {{ user.userprofile.donor_donationcount }} </li>
+                {% else %}
+                <li><strong>Donation count</strong>: 0 </li>
+                {% endif %}
+
+              </div>
+            </div>
             {% endif %}
+          </ul><br>
 
-          </div>
         </div>
-      {% endif %}
-      </ul><br>
+      </div>
 
-      <div class="row">
+      <div class="button d-flex justify-content-center">
 
-        <div class="col-lg-5">
+        <div class="mr-3">
           {% if not user.userprofile.phone %}
           {% url 'completeprofile' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Donor Registration </a>
@@ -67,7 +75,7 @@
           {% endif %}
         </div>
         
-        <div class=" col-lg-5">
+        <div class="">
           {% if not user.bloodbank.bloodbankname %}
           {% url 'addbloodbank' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Add Blood Bank </a>
@@ -91,39 +99,49 @@
 
   {% elif not user.userprofile.phone and user.bloodbank.bloodbankname%}
 
-  <div class="profile">
+  <div class="dashboard d-flex justify-content-center">
     
-    <div class="profile-photo">
-      {% if user.bloodbank.image %}
-      <img src="{{ user.bloodbank.image.url }}" alt=""/>
-      {% else %}
-      <img src="{% static '\images\blood-bank.png' %}" alt=""/>
-      {% endif %}
-    </div>
-  
-    <div class="profile-info">
-      {% if user.is_authenticated %}
-      <h1>{{ user.bloodbank.bloodbankname }}</h1>
-      <p> {{ user.bloodbank.bloodbanklocation }} </p><br>
-      <ul>
-        <div class="row">
-          <div class="col-lg-5">
-            <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
-            <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
-            <li><strong>Accreditations</strong>: {{user.bloodbank.bloodbankaccreditations}}</li>
-          </div>
-          <div class="col-lg-7">
-            <li><strong>Available Types</strong>: {{user.bloodbank.bloodbanktypes}}</li> 
-            <li><strong>Available Groups</strong>: {{user.bloodbank.bloodbankgroups}}</li> 
-            <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
-          </div>
-        </div>
-        {% endif %}
-      </ul><br>
+    <div class="profile">
 
-      <div class="row">
+      <div class="profile-photo d-flex justify-content-center">
+        {% if user.bloodbank.image %}
+        <img src="{{ user.bloodbank.image.url }}" alt=""/>
+        {% else %}
+        <img src="{% static '\images\blood-bank.png' %}" alt=""/>
+        {% endif %}
+      </div>
+
+      <div class="title">
+        <h1>{{ user.bloodbank.bloodbankname }}</h1>
+        <p> {{ user.bloodbank.bloodbanklocation }} </p><br>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="profile-info">
+          {% if user.is_authenticated %}
+
+          <ul>
+            <div class="row">
+              <div class="col-lg-7">
+                <li><strong>Available Types</strong>: {{user.bloodbank.bloodbanktypes}}</li> 
+                <li><strong>Available Groups</strong>: {{user.bloodbank.bloodbankgroups}}</li> 
+                <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
+              </div>
+              <div class="col-lg-4">
+                <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
+                <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
+                <li><strong>Accreditations</strong>: {{user.bloodbank.bloodbankaccreditations}}</li>
+              </div>
+            </div>
+            {% endif %}
+          </ul><br>
+
+        </div> 
+      </div>
+
+      <div class="button d-flex justify-content-center">
         
-        <div class=" col-lg-5">
+        <div class="mr-3">
           {% if not user.bloodbank.bloodbankname %}
           {% url 'addbloodbank' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Add Blood Bank </a>
@@ -133,7 +151,7 @@
           {% endif %}
         </div>
 
-        <div class="col-lg-6">
+        <div class="">
           {% if not user.userprofile.phone %}
           {% url 'completeprofile' as url %}
           <a href="{{url}}" type="submit" class="profile-button scrollto"> Donor Registration </a>
@@ -152,35 +170,39 @@
 
 
 
+
   <!-- -------------------------------- Not Donor || No Blood Bank -------------------------------- -->
 
   {% elif not user.userprofile.phone and not user.bloodbank.bloodbankname %}
 
-  <div class="profile3">
+  <div class="d-flex justify-content-center">
+    <div class="register">
 
-    <div class="profile-info3">
+      <div class="register-info">
 
-      {% if user.is_authenticated %}
+        {% if user.is_authenticated %}
+          <div>
+            <ul>
+              <li><strong>Name</strong>: {{ user.first_name }} </li>
+              <li><strong>Email</strong>:  {{ user.email }} </li>
+            </ul>
+          </div>
+        {% endif %}<br>
+        
         <div>
-          <ul>
-            <li><strong>Name</strong>: {{ user.first_name }} </li>
-            <li><strong>Email</strong>:  {{ user.email }} </li>
-          </ul>
+          {% url 'completeprofile' as url %}
+          <a href="{{url}}" type="submit" class="register-button scrollto"> Donor Registration </a>
+        </div><br>
+
+        <div>
+          {% url 'addbloodbank' as url %}
+          <a href="{{url}}" type="submit" class="register-button scrollto"> Add Blood Bank </a>
         </div>
-      {% endif %}<br>
-      
-      <div>
-        {% url 'completeprofile' as url %}
-        <a href="{{url}}" type="submit" class="profile-button3 scrollto"> Donor Registration </a>
-      </div><br>
 
-      <div>
-        {% url 'addbloodbank' as url %}
-        <a href="{{url}}" type="submit" class="profile-button3 scrollto"> Add Blood Bank </a>
       </div>
-
     </div>
   </div>
+
 
 
 
@@ -189,46 +211,53 @@
  <!-- -------------------------------- Donor || Blood Bank -------------------------------- -->
 
   {% else %}
+  <div class="dashboard d-flex justify-content-center">
 
-  <div class="profile">
-  
-    <div class="profile-photo">
-      {% if user.userprofile.image %}
-      <img src="{{ user.userprofile.image.url }}" alt=""/>
-      {% else %}
-      <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
-      {% endif %}
-    </div>
-  
-    <div class="profile-info">
-      
-      {% if user.is_authenticated %}
+    <div class="profile">
 
-      <h1>{{ user.first_name }}</h1>
-      <p> {{ user.userprofile.location }} </p><br>
-      <ul>
-        <div class="row">
-          <div class="col-lg-6">
-            <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
-            <li><strong>Email</strong>:  {{ user.email }} </li>
-            <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
-          </div>
-          <div class="col-lg-4">
-
-            <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
-            <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
-
-            {% if user.userprofile.donor_donationcount %}
-            <li><strong>Donation count</strong>: {{ user.userprofile.donor_donationcount }} </li>
-            {% else %}
-            <li><strong>Donation count</strong>: 0 </li>
-            {% endif %}
-
-          </div>
-        </div>
+      <div class="profile-photo d-flex justify-content-center">
+        {% if user.userprofile.image %}
+        <img src="{{ user.userprofile.image.url }}" alt=""/>
+        {% else %}
+        <img src="{% static '\images\default-profile-picture.png' %}" alt=""/>
         {% endif %}
-      </ul><br>
-      
+      </div>
+
+      <div class="title justify-content-center">
+        <h1>{{ user.first_name }}</h1>
+        <p> {{ user.userprofile.location }} </p><br>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="profile-info">
+        
+          {% if user.is_authenticated %}
+
+          <ul>
+            <div class="row">
+              <div class="col-lg-8 pb-2">
+                <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
+                <li><strong>Email</strong>:  {{ user.email }} </li>
+                <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
+              </div>
+
+              <div class="col-lg-4">
+                <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
+                <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
+                {% if user.userprofile.donor_donationcount %}
+                <li><strong>Donation count</strong>: {{ user.userprofile.donor_donationcount }} </li>
+                {% else %}
+                <li><strong>Donation count</strong>: 0 </li>
+                {% endif %}
+              </div>
+            </div>
+            {% endif %}
+          </ul><br>
+
+        </div>
+      </div>
+
+      <div class="button d-flex justify-content-center">
         {% if not user.userprofile.phone %}
         {% url 'completeprofile' as url %}
         <a href="{{url}}" type="submit" class="profile-button scrollto"> Donor Registration </a>
@@ -236,48 +265,59 @@
         {% url 'editprofile' as url %}
         <a href="{{url}}" type="submit" class="profile-button scrollto"> Edit Profile </a>
         {% endif %}
-        
+
       </div>
+
     </div>
   </div>
 
-  <div class="profile2">
-     
-    <div class="profile-photo2">
-      {% if user.bloodbank.image %}
-      <img src="{{ user.bloodbank.image.url }}" alt=""/>
-      {% else %}
-      <img src="{% static '\images\blood-bank.png' %}" alt=""/>
-      {% endif %}
-    </div>
+  <div class="dashboard d-flex justify-content-center">
+    
+    <div class="profile">
 
-    <div class="profile-info2">
-      {% if user.is_authenticated %}
-      <h1>{{ user.bloodbank.bloodbankname }}</h1>
-      <p> {{ user.bloodbank.bloodbanklocation }} </p><br>
-      <ul>
-        <div class="row">
-          <div class="col-lg-5">
-            <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
-            <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
-            <li><strong>Accreditations</strong>: {{user.bloodbank.bloodbankaccreditations}}</li>
-          </div>
-          <div class="col-lg-7">
-            <li><strong>Available Types</strong>: {{user.bloodbank.bloodbanktypes}}</li> 
-            <li><strong>Available Groups</strong>: {{user.bloodbank.bloodbankgroups}}</li> 
-            <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
-          </div>
-        </div>
+      <div class="profile-photo d-flex justify-content-center">
+        {% if user.bloodbank.image %}
+        <img src="{{ user.bloodbank.image.url }}" alt=""/>
+        {% else %}
+        <img src="{% static '\images\blood-bank.png' %}" alt=""/>
         {% endif %}
-      </ul><br>
+      </div>
 
-      <div>
+      <div class="title">
+        <h1>{{ user.bloodbank.bloodbankname }}</h1>
+        <p> {{ user.bloodbank.bloodbanklocation }} </p><br>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <div class="profile-info">
+          {% if user.is_authenticated %}
+
+          <ul>
+            <div class="row">
+              <div class="col-lg-8 pb-2">
+                <li><strong>Available Types</strong>: {{user.bloodbank.bloodbanktypes}}</li> 
+                <li><strong>Available Groups</strong>: {{user.bloodbank.bloodbankgroups}}</li> 
+                <li><strong>Website</strong>: {{ user.bloodbank.bloodbanklink }} </li> 
+              </div>
+              <div class="col-lg-4">
+                <li><strong>Contact</strong>: {{ user.bloodbank.bloodbankphone }} </li> 
+                <li><strong>Email</strong>: {{ user.bloodbank.bloodbankemail }} </li> 
+                <li><strong>Accreditations</strong>: {{user.bloodbank.bloodbankaccreditations}}</li>
+              </div>
+            </div>
+            {% endif %}
+          </ul><br>
+
+        </div>
+      </div>
+
+      <div class="button d-flex justify-content-center">
         {% if not user.bloodbank.bloodbankname %}
         {% url 'addbloodbank' as url %}
-        <a href="{{url}}" type="submit" class="profile-button2 scrollto"> Add Blood Bank </a>
+        <a href="{{url}}" type="submit" class="profile-button scrollto"> Add Blood Bank </a>
         {% else %}
         {% url 'editbloodbank' as url %}
-        <a href="{{url}}" type="submit" class="profile-button2 scrollto"> Edit Blood Bank</a>
+        <a href="{{url}}" type="submit" class="profile-button scrollto"> Edit Blood Bank</a>
         {% endif %}
       </div>
 

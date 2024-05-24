@@ -551,6 +551,7 @@ section {
   text-align: center;
   margin: 15px;
   flex: 1 1 300px;
+  width: 220px;
 }
 
 .activity .icon-box::before {
@@ -719,76 +720,52 @@ section {
 # Portfolio Details
 --------------------------------------------------------------*/
 
-.profile{
-  max-width: 980px;
-  height: 480px;
+.profile {
+  width: 1000px;
+  height: 600px;
   background: url("../../images/donor-bb-bg.png");
   background-size: cover;
-  border-top-right-radius: 100px;
-  border-bottom-right-radius: 100px;
+  border-radius: 100px;
   position: relative;
+  margin-top: 200px;
+  margin-bottom: 100px;
 }
 
 .profile-photo img {
   position: absolute;
-  margin-top: 120px;
-  margin-left: 860px;
+  margin-top: -150px;
   border-radius: 50%;
   border: 10px solid #f6f4f4;
   width: 250px;
-  height: 250PX;
+  height: 250px;
+}
+
+.profile .title{
+  text-align: center;
+  padding-bottom: 10px;
+  color: white;
+  margin-top: 130px;
 }
 
 .profile-info {
   position: absolute;
-  margin-top: 80px;
-  left: 100px;
-  right: 0px;
-  text-align: left;
   color: white;
   overflow: hidden;
+  width:700px;
 }
 
 
-
-
-.profile2{
-  width: 980px;
-  height: 480px;
-  background: url("../../images/donor-bb-bg.png");
-  background-size: cover;
-  border-top-left-radius: 100px;
-  border-bottom-left-radius: 100px;
-  margin-top:60px;
-  margin-left:290px;
-  margin-bottom: 50px;
-  position: relative;
+.profile-info ul {
+  margin: 0;
+  padding: 0;
 }
 
-.profile-photo2 img {
-  position: absolute;
-  margin-top: 120px;
-  margin-left: -120px;
-  border-radius: 50%;
-  border: 10px solid #f6f4f4;
-  width: 250px;
-  height: 250PX;
-}
-
-.profile-info2 {
-  position: absolute;
-  margin-top: 100px;
-  left: 180px;
-  right: 0px;
-  text-align: left;
-  color: white;
-  overflow: hidden;
+.button{
+  margin-top: 180px;
 }
 
 
-
-
-.profile3 {
+.register {
   width: 100%;
   height: 120vh;
   background: url("../../images/profile-bg.png") top center;
@@ -798,7 +775,7 @@ section {
   margin-bottom: -60px;
 }
 
-.profile-info3 {
+.register-info {
   position: absolute;
   margin-top: 300px;
   margin-left: 800px;
@@ -807,37 +784,109 @@ section {
 }
 
 
+.profile-info .profile-button:hover, 
+.register-info .register-button:hover {
+  background: #421b1b;
+  border: 2px solid #421b1b;
+}
 
-.profile-info .profile-button, .profile-info2 .profile-button2, .profile-info3 .profile-button3 {
+.portfolio-details .profile-info ul, 
+.portfolio-details .register-info ul {
+  list-style: none;
+  padding: 0;
+  font-size: 15px;
+}
+
+.portfolio-details .profile-info ul li+li, 
+.portfolio-details .register-info ul li+li {
+  margin-top: 10px;
+}
+
+.dashboard .profile-button ,
+.register-info .register-button {
   width: 230px;
+  margin-top: 10px;
+  display: inline-block;
+  padding: 8px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  border: 2px solid #fff;
+  color: #fff;
   text-align: center;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 13px;
   letter-spacing: 1px;
-  display: inline-block;
-  padding: 8px 30px 9px 30px;
-  border-radius: 50px;
-  transition: 0.5s;
-  border: 2px solid #fff;
-  color: #fff;
 }
 
-.profile-info .profile-button:hover, .profile-info2 .profile-button2:hover, .profile-info3 .profile-button3:hover {
+.dashboard .profile-button:hover,  
+.register-info .register-button:hover {
   background: #421b1b;
   border: 2px solid #421b1b;
 }
 
-.portfolio-details .profile-info ul, .portfolio-details .profile-info2 ul, .portfolio-details .profile-info3 ul {
-  list-style: none;
-  padding: 0;
-  font-size: 15px;
+@media (max-width: 768px) {
+  .profile {
+    padding: 30px;
+    margin: 100px 10px 100px;
+    border-radius: 20px;
+    height: 750px;
+  }
+  
+  .profile-photo img {
+    width: 150px;
+    height: 150px;
+    top: 60px;
+  }
+  
+  .profile-info {
+    width: 400px;
+    text-align: center;
+  }
+  
+  .profile-info .row {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
-.portfolio-details .profile-info ul li+li, .portfolio-details .profile-info2 ul li+li, .portfolio-details .profile-info3 ul li+li {
-  margin-top: 10px;
+@media (max-width: 1030px) {
+
+  .register {
+    width:320px;
+    height: 500px;
+    padding: 30px;
+    margin: 10px 10px 20px;
+    border-radius: 20px;
+    background: url("../../images/profile-res.png") no-repeat;
+    background-size : cover;
+  }
+
+  .register-info {
+    margin: 100px 10px 50px;
+    text-align: center;
+  }
+  
+  .register-info .row {
+    display: flex;
+    flex-direction: column;
+  }
 }
+
+@media (max-width: 480px) {
+  .profile-info ul li, .register-info ul li {
+    font-size: 14px;
+  }
+  
+  .dashboard .profile-button, .register-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 12px;
+    margin-top: 100px;
+  }
+}
+
 
 
 /*--------------------------------------------------------------
@@ -1446,7 +1495,7 @@ section {
     width: 90%; 
     max-width: 350px; 
     margin: 0 auto; 
-    height: 870px;
+    height: 1000px;
   }
 
   .formsignup h3 {
@@ -1459,7 +1508,7 @@ section {
 
   .formsignup button {
     width: 90%; 
-
+    margin-top: 20px;
   }
 
   .formsignup ul {
