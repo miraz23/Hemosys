@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import timedelta
 # Create your models here.
+
 class userprofile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -11,6 +13,13 @@ class userprofile(models.Model):
     gender = models.CharField(max_length=10)
     image = models.FileField(upload_to='profile-picture', blank=True, null=True)
     donor_donationcount = models.IntegerField(default = 0, verbose_name="Dontion Count")
+    last_donation = models.DateTimeField(null=True, blank=True)
+
+    @property
+    def next_eligible_date(self):
+        if self.last_donation:
+            return self.last_donation + timedelta(weeks=12)
+        return None
 
     def __str__(self):
         return self.user.first_name

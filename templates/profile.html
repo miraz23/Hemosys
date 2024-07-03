@@ -42,19 +42,24 @@
               <div class="col-lg-7">
                 <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
                 <li><strong>Email</strong>:  {{ user.email }} </li>
+                <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
                 <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
               </div>
               <div class="col-lg-4">
 
                 <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
-                <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
-
                 {% if user.userprofile.donor_donationcount %}
                 <li><strong>Donation count</strong>: {{ user.userprofile.donor_donationcount }} </li>
                 {% else %}
                 <li><strong>Donation count</strong>: 0 </li>
                 {% endif %}
-
+                {% if user.userprofile.last_donation %}
+                <li><strong>Last donation</strong>: {{ user.userprofile.last_donation|date:"d M Y" }} </li>
+                <li><strong>Next donation</strong>: {{ user.userprofile.next_eligible_date|date:"d M Y" }} </li>
+                {% else %}
+                <li><strong>Last donation</strong>: Not available </li> 
+                <li><strong>Next donation</strong>: Not available </li> 
+                {% endif %}
               </div>
             </div>
             {% endif %}
@@ -238,16 +243,23 @@
               <div class="col-lg-8 pb-2">
                 <li><strong>Number</strong>: {{ user.userprofile.phone }} </li>
                 <li><strong>Email</strong>:  {{ user.email }} </li>
+                <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
                 <li><strong>Blood group</strong>: {{ user.userprofile.bloodgroup }}</li>
               </div>
 
               <div class="col-lg-4">
                 <li><strong>Age</strong>: {{ user.userprofile.age }}</li>
-                <li><strong>Gender</strong>: {{ user.userprofile.gender }}</li>
                 {% if user.userprofile.donor_donationcount %}
                 <li><strong>Donation count</strong>: {{ user.userprofile.donor_donationcount }} </li>
                 {% else %}
                 <li><strong>Donation count</strong>: 0 </li>
+                {% endif %}
+                {% if user.userprofile.last_donation %}
+                <li><strong>Last donation</strong>: {{ user.userprofile.last_donation|date:"d M Y" }} </li>
+                <li><strong>Next donation</strong>: {{ user.userprofile.next_eligible_date|date:"d M Y" }} </li>
+                {% else %}
+                <li><strong>Last donation</strong>: Not available </li> 
+                <li><strong>Next donation</strong>: Not available </li> 
                 {% endif %}
               </div>
             </div>
