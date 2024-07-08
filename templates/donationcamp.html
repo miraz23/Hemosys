@@ -36,8 +36,8 @@
             {% for n in campdata%}
             <tr>
               <td>{{n.campname}}</td>
-              <td>{{n.campdate}}</td>
-              <td>{{n.camptime}}</td>
+              <td>{{n.campdate | date:"d M Y"}}
+              <td>{{n.camptime | date:"h:i A"}}</td>
               <td>{{n.campaddress}}</td>
               <td>{{n.campcontact}}</td>
               <td>{{n.camporganizer}}</td>

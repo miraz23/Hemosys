@@ -67,10 +67,17 @@ def donation(request, request_id):
 
             if request.user.userprofile.bloodgroup == recipient_obj.recipientblood:
 
-                if timezone.now() < user_profile.next_eligible_date:
-                    messages.warning(request, 'YOU NEED TO WAIT FOR 12 WEEKS AFTER YOUR LAST DONATION.')
-                    return redirect('profile')
-                
+                if user_profile.next_eligible_date:
+
+                    if timezone.now() < user_profile.next_eligible_date:
+                        messages.warning(request, 'YOU NEED TO WAIT FOR 12 WEEKS AFTER YOUR LAST DONATION.')
+                        return redirect('profile')
+
+                    else:
+                        user_profile.donor_donationcount += 1
+                        user_profile.last_donation = timezone.now()
+                        user_profile.save()
+                        
                 else:
                     user_profile.donor_donationcount += 1
                     user_profile.last_donation = timezone.now()

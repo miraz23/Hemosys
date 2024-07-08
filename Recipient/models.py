@@ -24,8 +24,8 @@ class recipient(models.Model):
 
 class donationCamp(models.Model):
     campname = models.CharField(max_length=150, verbose_name="Name")
-    campdate = models.CharField(max_length=150, verbose_name="Date")
-    camptime = models.CharField(max_length=150, verbose_name="Time")
+    campdate = models.DateField(max_length=150, verbose_name="Date")
+    camptime = models.TimeField(max_length=150, verbose_name="Time")
     campaddress = models.TextField(verbose_name="Location")
     campcontact = models.CharField(max_length=150, verbose_name="Contact")
     camporganizer = models.TextField(verbose_name="Organizer")
