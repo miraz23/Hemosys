@@ -33,7 +33,7 @@
               </select>
             </div>
           </div>
-          <div class="col-md-4"> <!-- No margin added -->
+          <div class="col-md-4">
             <div class="form-group">
               <select class="form-control" id="searchType" name="searchType">
                 <option value="Select">Select Type</option>
@@ -64,7 +64,10 @@
                 <img src="{% static '\images\default-profile-picture.png' %}" alt="" class="img-fluid rounded" style="width: 400px; height: 250px;"/>
                 {% endif %}
                 <div class="portfolio-info"> 
-                  <a href="/donor/donor-details/{{ user.id }}/"><h4>{{ user.first_name }}</h4></a>
+                  <div class="d-flex">
+                    <a class="pr-2 pt-1" href="/donor/donor-details/{{ user.id }}/"><h4>{{ user.first_name }}</h4></a>
+                    <a href="/donor/donor-details/{{ user.id }}/"> <i class="bi bi-link-45deg" style="color:white"></i> </a>
+                  </div>
                   <p>{{ user.userprofile.bloodgroup }}</p>
                 </div>
               </div>
@@ -80,7 +83,10 @@
                 {% endif %} 
 
                 <div class="portfolio-info"> 
-                  <a href="/bloodbank/bloodbank-details/{{ n.user_id }}/"><h4>{{n.user.bloodbank.bloodbankname}}</h4></a>
+                  <div class="d-flex">
+                    <a class="pr-2 pt-1" href="/bloodbank/bloodbank-details/{{ n.user_id }}/"><h4>{{n.user.bloodbank.bloodbankname}}</h4></a>
+                    <a href="/bloodbank/bloodbank-details/{{ n.user_id }}/"> <i class="bi bi-link-45deg" style="color:white"></i> </a>
+                  </div>
                   <p>{{n.user.bloodbank.bloodbankgroups}}</p>
                 </div>
               </div>
