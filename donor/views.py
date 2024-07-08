@@ -37,7 +37,7 @@ def donation_request(request):
 
 
         #-------------------------- Pagination --------------------------#
-        paginator=Paginator(reqdata, 15)
+        paginator=Paginator(reqdata, 90)
         page_number=request.GET.get('page')
         page_obj=paginator.get_page(page_number)
     

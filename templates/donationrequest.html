@@ -55,7 +55,7 @@
             <li><strong>Blood Group</strong>: {{ n.recipientblood }} </li>
             <li><strong>Donation</strong>: {{ n.recipientdonationtype }} - {{ n.recipientdonationquantity }} Bag</li>
             <li><strong>Patient's Condition</strong>: {{ n.recipientcondition }} </li>
-            <li><strong>Date & Time</strong>: {{ n.recipientdate }} {{ n.recipienttime }} </li>
+            <li><strong>Date - Time</strong>: {{ n.recipientdate | date:"d M Y" }}, {{ n.recipienttime | date:"h:i A"}} </li>
             <br><br>
           </ul>
         </div>

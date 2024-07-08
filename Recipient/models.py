@@ -14,8 +14,8 @@ class recipient(models.Model):
     recipientdonationtype = models.CharField(max_length=150, null=True, verbose_name="Type")
     recipientdonationquantity = models.CharField(max_length=150, verbose_name="Quantity")
     recipientcondition = models.TextField(verbose_name="Condition")
-    recipientdate = models.CharField(max_length=150, verbose_name="Date")
-    recipienttime = models.CharField(max_length=150, default = None, verbose_name="Time")
+    recipientdate = models.DateField(max_length=150, verbose_name="Date")
+    recipienttime = models.TimeField(max_length=150, default = None, verbose_name="Time")
 
     class Meta:
         verbose_name = "Requested Blood"
