@@ -95,11 +95,11 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'hemosys_db',
+            'NAME': 'hemosys_database',
             'USER': 'hemosys_db_user',
-            'PASSWORD': 'NiIzKDYkUs30sER4jyfWRtaQhwp9pWhf',
+            'PASSWORD': '5taCltzHIhYCOQKNhvQvMes4PxqkeOv5',
             'PORT': '5432',
-            'HOST':'dpg-cop8r0q0si5c73bshck0-a.singapore-postgres.render.com',
+            'HOST':'dpg-cr2ak75umphs73ev1g2g-a.singapore-postgres.render.com',
         }
     }
 
