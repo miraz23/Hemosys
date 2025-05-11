@@ -14,7 +14,7 @@ from pathlib import Path
 from django.contrib import messages
 
 import os
-import dj_database_url
+# import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-vggk6@=1u4$m=vx$&p+&0zo4em0=u=5bx!l69$!n_*6)!1p%xf')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == "False"
+DEBUG = os.environ.get('DEBUG', '') != 'False'
 
 ALLOWED_HOSTS = ['127.0.0.1','localhost', "hemosys.onrender.com"]
 
@@ -87,21 +87,30 @@ WSGI_APPLICATION = 'Hemosys.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-if not DEBUG:
-    DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-}
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'hemosys_database',
-            'USER': 'hemosys_db_user',
-            'PASSWORD': '5taCltzHIhYCOQKNhvQvMes4PxqkeOv5',
-            'PORT': '5432',
-            'HOST':'dpg-cr2ak75umphs73ev1g2g-a.singapore-postgres.render.com',
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
+}
+
+
+# if not DEBUG:
+#     DATABASES = {
+#     'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+# }
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'hemosys_database',
+#             'USER': 'hemosys_db_user',
+#             'PASSWORD': '5taCltzHIhYCOQKNhvQvMes4PxqkeOv5',
+#             'PORT': '5432',
+#             'HOST':'dpg-cr2ak75umphs73ev1g2g-a.singapore-postgres.render.com',
+#         }
+#     }
 
 # DATABASES = {
 #     'default': {
